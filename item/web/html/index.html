@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            overflow-x: hidden;
+        }
+    </style>
+
+    <link rel="stylesheet" href="../css/dist.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../swiper/package/swiper-bundle.min.css">
+    <script src="../../swiper/package/swiper-bundle.min.js"></script>
+    <script src="../js/lun.js"></script>
+    <script src="../js/ajax.js"></script>
+
+
+</head>
+
+
+<body>
+    <!-- 导航栏 -->
+    <div id="vue_view">
+        <div class="index_head">
+            <div class="left bn"></div>
+            <div class="index_nav_div">
+                <ul class="index_nav">
+                    <li class="bn nav_left nav_active">
+                        <a href="http://localhost/item/web/html/index.html" class="bn white active" aria-current="page">首页
+                        </a>
+                    </li>
+                    <li class="bn nav_left"><a href="http://localhost/item/web/html/list.html" class="bn white">产品</a>
+                    </li>
+                    <li class="bn nav_left"><a href="http://localhost/item/web/html/lists.html" class="bn white">新闻</a></li>
+                    <li class="bn nav_left"><a href="/view/contact" class="bn white">联系</a></li>
+                    <li class="bn nav_left"><a href="/view/about" class="bn white">关于</a></li>
+                    <li class="bn nav_left"><a href="/view/software" class="bn white">驱动下载</a></li>
+                    <li class="bn nav_left" style="background-image: url(&quot;&quot;);"><a
+                            href="http://product.cherry.cn/statistics/pushData/1"
+                            onclick="_hmt.push(['_trackEvent','share','click','share_cherry'])" target="_blank"
+                            class="bn white">共享外设</a></li>
+                    <li class="bn nav_left"><a href="https://custom.cherry.cn/ " target="_blank"
+                            class="bn white">樱桃定制</a></li>
+                </ul>
+            </div>
+            <div class="right"></div>
+        </div>
+
+        <!-- 轮播图 -->
+        <div class="index_box"></div>
+        <div class="vue_page_container">
+            <div class="page">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="../img/lun1.png" alt=""></div>
+                        <div class="swiper-slide"><img src="../img/lun2.png" alt=""></div>
+                        <div class="swiper-slide"><img src="../img/lun3.png" alt=""></div>
+                        <div class="swiper-slide"><img src="../img/lun4.png" alt=""></div>
+                    </div>
+
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev" style="--swiper-navigation-color: gray"></div>
+                    <div class="swiper-button-next" style="--swiper-navigation-color: gray"></div>
+                </div>
+
+                <div class="index_menu">
+                    <ul class="index_menu_ul">
+                        <li class="index_menu_li">
+                            <a href="http://localhost/item/web/html/list.html" class="">
+                                <div class="index_menu_title">
+                                    产品
+                                </div>
+
+                                <div class="index_menu_img">
+                                    <img src="../img/产品.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="index_menu_li">
+                            <a href="http://localhost/item/web/html/lists.html" class="">
+                                <div class="index_menu_title">
+                                    新闻
+                                </div>
+
+                                <div class="index_menu_img">
+                                    <img src="../img/新闻.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="index_menu_li">
+                            <a href="" class="">
+                                <div class="index_menu_title">
+                                    售后
+                                </div>
+
+                                <div class="index_menu_img">
+                                    <img src="../img/售后.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="index_menu_li">
+                            <div class="index_menu_title index_menu_desc">
+                                <div class="index_menu_box">
+                                    <a href="https://mall.jd.com/index-1000000317.html" target="_blank"
+                                        class="margin_left" style="text-align: right;color:  #222222;">京东</a>
+                                    <span>|</span>
+                                    <a href="https://cherry.tmall.com/" target="_blank"
+                                        style="color:#222222;">天猫</a>
+                                </div>
+                            </div>
+
+                            <div class="index_menu_img"><img src="../img/商城.png" alt=""></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="index_footer">
+            <div class="footer_top">
+                <ul class="footer_nav">
+                    <li class="footer_li bn">
+                        <a href="http://localhost/item/web/html/lun.html" class="footer_li_a">关于CHERRY</a>
+                    </li>
+                    <li class="footer_line">|</li>
+                    <li class="footer_li bn">
+                        <a href="" class="footer_li_a">联系我们</a></li>
+                    <li class="footer_line">|</li>
+                    <li class="footer_li bn">
+                        <a href="" class="footer_li_a">新闻资讯</a>
+                    </li>
+                    <li class="footer_line">|</li>
+                    <li class="footer_li bn">
+                        <a href="https://weibo.com/wwwcherrycn" target="_bank" class="footer_li_a">新浪微博</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer_bottom">
+                <div class="footer_info">
+                    <span class="footer_span">Copyright©2020 CHERRY GmbH &amp; 北京爵维科技股份有限公司</span>
+                    <a target="_blank" href="http://www.beian.miit.gov.cn" class="beian">粤ICP备18039024号</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="../js/js.js"></script>
+   
+</body>
+
+</html>
