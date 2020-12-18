@@ -13,6 +13,7 @@
 }
 
 .index_head {
+
     width: 740px;
     height: 40px;
     background: #ee0c4b;
@@ -87,7 +88,7 @@ li {
 
 p {
     padding-top: 10px;
-    position: absolute;
+    position: fixed;
     left: 210px;
     top: 55px;
     width: 180px;
@@ -137,18 +138,24 @@ p span:nth-of-type(5) {
 
 #box1 img {
     width: 747px;
-    height: 903px;
+   
     margin: auto 405px;
 
 }
 
 #box2 img {
     width: 747px;
+  
     margin: auto 405px;
 }
 
 #box3 img {
     width: 747px;
+  
     margin: auto 405px;
+
+}
+.aaa p span:hover{
+color:red;
 
 }

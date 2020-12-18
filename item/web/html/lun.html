@@ -37,7 +37,7 @@
     <!-- 轮播 -->
     <div id="ddd">
         <div class="aaa">
-            
+
             <p>
                 <span>品牌历史</span>
                 <span>MX轴</span>
@@ -59,8 +59,30 @@
 
     </div>
 
-    </div>
-   
+    <script>
+        var span = document.querySelectorAll(".aaa span");
+     
+        var img = document.querySelectorAll(".aaa div");
+
+        // console.log(img);
+        window.onresize = function () {
+            img.forEach(function (item) {
+                item.style.height = `${innerHeight}px`
+            })
+        }
+        span.forEach(function (item,index) {
+            item.onclick = function () {
+                console.log(1);
+                scrollTo({
+                    top: index * innerHeight,
+                    behavior: `smooth`
+                })
+            }
+        })
+
+ 
+    </script>
+
 </body>
 
 </html>
