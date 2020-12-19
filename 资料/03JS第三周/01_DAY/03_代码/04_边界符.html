@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      边界符
+        + 用来限制正则的边界，也是限制字符串的边界
+
+      1. ^
+        + 开始
+      2. $
+        + 表示结束
+
+      + 在使用正则的表示表示以什么开头以什么结尾
+    */
+
+    // 表示字符串需要以 a 开头，a 要和 bcd 连着
+    // var reg = /^abcd/
+    // var str = 'abcdkjhklhksadadasad'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串需要以 d 结尾, abc 需要连着 d
+    // var reg = /abcd$/
+    // var str = 'kjhhlkhhkabcdaskjdhkabcd'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串从开头到结尾只能由 abcd 四个字母组成，并且顺序不能变
+    // var reg = /^abcd$/
+    // var str = 'abcd'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // var reg = /^\d\d\d\d\d$/
+    // var str = '111456'
+    // var res = reg.test(str)
+    // console.log(res)
+
+
+  </script>
+</body>
+</html>

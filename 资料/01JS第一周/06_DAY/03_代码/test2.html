@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+
+    var bigArr = []
+    var smallArr = []
+
+    // 通过循环按行顺序为一个5×5的二维数组a赋1到25的自然数，
+    // 然后输出该数组的左下半三角。试编程。
+    for (var i = 1; i <= 25; i++) {
+      // i 就是 1 ~ 25 的数字
+
+      smallArr.push(i)
+
+      // 当 smallArr.length = 5 的时候，把 smallArr 丢到 bigArr
+      // 让 smallArr 变成一个空数组
+
+      if (smallArr.length === 5) {
+        bigArr.push(smallArr)
+        smallArr = []
+      }
+    }
+
+
+
+    for (var j = 0; j < bigArr.length; j++) {
+      // j 0 ~ 4 的数字
+      // console.log(bigArr[j]) // 输出的东西是小数组
+
+      // j === 0 的时候，bigArr[0] 的 length === 1
+      // j === 1 的时候，bigArr[1] 的 length === 2
+      // j === 2 的时候，bigArr[2] 的 length === 3
+      // j === 3 的时候，bigArr[3] 的 length === 4
+      // j === 4 的时候，bigArr[4] 的 length === 5
+
+      bigArr[j].length = j + 1
+    }
+
+    // 把多维数组变成一个一维数组
+    console.log(bigArr)
+
+    // 方法1:
+    // concat 链接数组
+    var newArr = []
+
+    for (var k = 0; k < bigArr.length; k++) {
+      newArr = newArr.concat(bigArr[k])
+    }
+
+    console.log(newArr)
+
+    // var res = newArr.concat(bigArr[0])
+    // newArr = newArr.concat(bigArr[0])
+    // // 现在的 newArr === [1]
+    // // res = newArr.concat(bigArr[1])
+    // newArr = newArr.concat(bigArr[1])
+    // // 现在的 newArr === [1, 6, 7]
+    // // res = newArr.concat(bigArr[2])
+    // newArr = newArr.concat(bigArr[2])
+    // newArr = newArr.concat(bigArr[3])
+    // newArr = newArr.concat(bigArr[4])
+    // console.log(newArr)
+
+
+    // 方法2：
+    //   直接使用 toString()
+    // console.log(bigArr.toString().split(','))
+
+  </script>
+</body>
+</html>

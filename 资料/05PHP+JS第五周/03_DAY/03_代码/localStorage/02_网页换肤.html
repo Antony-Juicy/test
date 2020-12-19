@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .list {
+      width: 100%;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      overflow: hidden;
+      height: 0;
+      border: none;
+      transition: .3s all;
+    }
+
+    .list.active {
+      height: 200px;
+      border-bottom: 1px solid #333;
+    }
+
+    .list > p {
+      width: 150px;
+      height: 150px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="list">
+    <p style="background-color: red;"></p>
+    <p style="background-color: pink;"></p>
+    <p style="background-color: skyblue;"></p>
+    <p style="background-color: orange;"></p>
+  </div>
+
+  <button>更换皮肤</button>
+
+  <script>
+    // 每一次页面打开的时候，我要获取一下 localStorage 里面看看有没有东西
+    // 如果由，就设置上
+    // 如果没有就算了
+    const res = localStorage.getItem('color')
+
+    // 判断有没有
+    if (res) {
+      // 给 body 设置一个背景颜色就行了
+      document.body.style.backgroundColor = res
+    }
+
+
+    const btn = document.querySelector('button')
+    const list = document.querySelector('.list')
+    const ps = list.querySelectorAll('p')
+
+    btn.addEventListener('click', function () {
+      list.classList.toggle('active')
+    })
+
+    ps.forEach(item => {
+      item.addEventListener('click', function () {
+        // 获取到当前的背景颜色，设置在 body 上
+        const color = window.getComputedStyle(this).backgroundColor
+
+        // 要把背景颜色设置给 body
+        document.body.style.backgroundColor = color
+
+        // 还存储在 localStorage 里面
+        localStorage.setItem('color', color)
+
+        list.classList.remove('active')
+      })
+    })
+
+  </script>
+</body>
+</html>

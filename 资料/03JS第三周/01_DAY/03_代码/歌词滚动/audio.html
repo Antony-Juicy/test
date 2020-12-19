@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <audio src="./布拉格广场.mp3" controls></audio>
+
+  <button class="play">开始</button>
+  <button class="pause">暂停</button>
+
+
+  <script>
+    var audio = document.querySelector('audio')
+    var play = document.querySelector('.play')
+    var pause = document.querySelector('.pause')
+
+    /*
+      1. play()
+        语法： 音频或视频元素.play()
+        表示开始播放
+      2. pause()
+        语法： 音频或视频元素.pause()
+        表示暂停播放
+      3. 事件
+        timeupdate 事件
+        当音频或视频开始播放以后，时间在变化就触发
+        绑定给音频或视频元素的
+      4. 属性
+        currentTime
+        语法： 音频或视频元素.currentTime
+        返回值： 当前播放的时间
+    */
+
+    play.addEventListener('click', function () {
+      audio.play()
+    })
+
+    pause.addEventListener('click', function () {
+      audio.pause()
+    })
+
+    audio.addEventListener('timeupdate', function () {
+      // this => 一个视频或音频元素
+      console.log(this.currentTime)
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      组合模式
+        + 把多个功能一致的对象链接在一起
+        + 制作一个启动器
+        + 一次启动，多个对象同时启动
+    */
+
+    function Gohome() {}
+
+    Gohome.prototype.init = function () {
+      console.log('我是 tab 切换 我启动了')
+    }
+
+    class Playgame {
+
+      init () {
+        console.log('我是 轮播图 我启动了')
+      }
+    }
+
+    class CloseComputer {
+
+      init () {
+        console.log('我是一个分页器，我启动了')
+      }
+    }
+
+    class Sleeping {
+
+      init () {
+        console.log('我要睡觉了')
+      }
+    }
+
+    // 组合模式的构造函数
+    //   里面应该有一个属性是一个数组
+    //   [一个实例对象，一个实例对象，一个实例对象]
+    //   里面由一个方法
+    //   把这个数组中所有的实例对象都调用一下 init 方法
+
+    function Zuhe() {
+      // 用来承载所有的实例化对象
+      this.list = null
+    }
+
+    // 还应该由一个方法，向 list 这个数组里面添加内容的
+    Zuhe.prototype.add = function (obj) {
+      // obj 接受的是要我用启动器来启动的一个实例化对象
+      // 我要把 obj 这个实例化对象添加到 list 这个数组里面
+
+      // 判断，如果 list 是 null
+      // 我要把他先赋值成为一个数组，然后把 obj 放进去
+      // 如果我的 list 就是一个数组
+      // 我直接 push 进去就可以了
+
+      if (!this.list) {
+        // 能进入 if 条件，证明  this.list 是 false，是一个 null
+        // this.list = []
+        // this.list.push(obj)
+
+        this.list = [obj]
+      } else {
+        this.list.push(obj)
+      }
+    }
+
+    Zuhe.prototype.emit = function () {
+      // 就应该遍历整个数组
+      // 把里面的每一个对象的 init 方法调用一下
+      this.list.forEach(function (item) {
+        // item 就是我们 list 数组里面的每一个对象
+        // 每一个对象都有一个 init 方法来启动他们的功能
+        item.init()
+      })
+    }
+
+    const z = new Zuhe()
+
+    // const g = new Gohome()
+    z.add(new Gohome())
+
+    // const p = new Playgame()
+    z.add(new Playgame())
+
+    z.add(new CloseComputer())
+
+    z.add(new Sleeping())
+
+    z.emit()
+
+  </script>
+</body>
+</html>

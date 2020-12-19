@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /*
+      自增运算符
+        ++
+
+      分两种
+        1. 前置++
+        2. 后置++
+
+      区别，
+        在使用 前置++ 的时候，会先把变量的值 +1，然后用这个 +1 以后的值参与运算
+        在使用 后置++ 的时候，会先把变量的值参与运算，然后再把这个变量的值 +1
+
+      区别
+        在使用 前置++ 的时候，会改变变量的值，你用的是改变以后的值
+        在使用 后置++ 的时候，会改变变量的值，你用的是改变以前的值
+
+      自减运算符
+
+      分两种
+        1. 前置--
+        2. 后置--
+
+      区别
+        在使用 前置-- 的时候，会改变变量的值，你用的是改变以后的值
+        在使用 后置-- 的时候，会改变变量的值，你用的是改变以前的值
+    */
+
+    // var n = 10
+
+    // console.log(++n) // 先改变再运算
+    // console.log(n) // 11
+
+    // console.log(n++) // 先运算再改变   执行后置++ 的时候，变量的值变了，只不过你用的是改变之前的哪个值
+    // console.log(n)
+
+    var n = 1
+
+    // var res1 = n++ + ++n + ++n + n++ // 12
+    //         1 + ++n + ++n + n++    此时 n = 2
+    //         1 + 3 + ++n + n++      此时 n = 3
+    //         1 + 3 + 4 + n++        此时 n = 4
+    //         1 + 3 + 4 + 4          此时 n = 5
+
+    // console.log(res1)
+    // console.log(n)
+
+    var res2 = n++ + n++ + --n + n-- + ++n + ++n
+    //         1 + n++ + --n + n-- + ++n + ++n      n = 2
+    //         1 + 2 + --n + n-- + ++n + ++n        n = 3
+    //         1 + 2 + 2 + n-- + ++n + ++n          n = 2
+    //         1 + 2 + 2 + 2 + ++n + ++n            n = 1
+    //         1 + 2 + 2 + 2 + 2 + ++n              n = 2
+    //         1 + 2 + 2 + 2 + 2 + 3                n = 3
+
+    // console.log(res2) // 12
+    // console.log(n) // 3
+
+  </script>
+</body>
+</html>

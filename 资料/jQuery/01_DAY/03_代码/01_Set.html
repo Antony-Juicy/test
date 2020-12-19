@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      Set
+        + 是 ES6 新增的一个数据类型
+        + 是一个 js 内置的构造函数
+        + new Set()
+
+      Set 数据集合
+        + 有序的数据集合
+        + 长得和数组差不多的数据集合
+        + 不接受重复数据
+        + 在这个数据集合里面 length 是使用不了的
+
+      Set 的常用方法和属性
+        1. size
+          + 就表示这个数据集合的长度
+          + 也就是里面有多少个数据
+          + 是一个 number 数据类型
+        2. add(你要添加的成员)
+          + 向这个数据集合中添加成员的
+          + 如果添加重复成员，等于白写
+        3. delete(你要删除的成员)
+          + 把这个数据集合中的某个成员删除
+          + 删除基本数据类型，直接进行值的判断进行删除
+          + 删除复杂数据类型，要进行地址的比较进行删除
+        4. clear()
+          + 把数据集合中的所有内容全部清除
+        5. has(你要判断的数据)
+          + 判断该数据集合中是否有该数据
+          + 他进行的判断是 === 的判断方式
+        6. forEach(function () {})
+          + 不是数组的 forEach
+          + 是他自己的
+          + 使用遍历这个数据集合
+        7. 如果想获取
+          1. 遍历
+          2. 使用 ... 展开运算符
+            + 把他还原成一个数组
+            + 在进行访问
+
+      Set 目前的作用
+        + 数组去重
+    */
+
+    const arr = [1, 2, 3, 4, 5, 6, 4, 3, 5, 4, 5, 3, 2, 1, 2, 3, 4, 5]
+
+    // const s = new Set(arr)
+
+    // const newArr = [...s]
+    // console.log(newArr)
+
+    const newArr = [...new Set(arr)]
+    console.log(newArr)
+
+    // const s = new Set([1, 2, 3])
+    // const obj = {
+    //   name: 'Jack'
+    // }
+
+    // s.add(4)
+    // s.add(1)
+    // s.add(obj)
+
+    // s.delete(2)
+    // s.delete(obj)
+
+    // s.clear()
+
+    // const res = s.has('3')
+    // console.log(res)
+
+    // console.log(s)
+
+    // s.forEach(function (item, index, arr) {
+    //   // item 就是每一项
+    //   // console.log(item)
+
+    //   // index 还是每一项
+    //   // console.log(index)
+
+    //   // arr 原始 Set 集合
+    //   console.log(arr)
+    // })
+
+    // console.log([...s][0])
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      内置构造函数创建对象
+        - js 给我们提供了一个内置构造函数 Object
+        - new Object()
+        - 使用对象的语法象里面添加内容
+    */
+
+    const obj = new Object()
+    obj.btns = '三个按钮'
+    obj.tabs = '三个盒子'
+    obj.change = function () {
+      // 操作三个
+    }
+
+    console.log(obj)
+
+    const obj2 = new Object()
+    obj2.btns = '四个按钮'
+    obj2.tabs = '四个盒子'
+    obj2.change = function () {
+      // 操作四个
+    }
+
+    console.log(obj2)
+
+  </script>
+</body>
+</html>

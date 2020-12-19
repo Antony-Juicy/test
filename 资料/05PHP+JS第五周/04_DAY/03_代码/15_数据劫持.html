@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div></div>
+
+  <input type="text">
+
+  <script>
+    /*
+      我在定义一个对象的时候
+        + 我不能知道这个对象的值什么时候被改变
+
+      页面上有一个 div
+      div 里面写的是 一个名字
+      当 对象里面的 name 被改变的时候
+      我要让这个 div 里面的内容跟着被改变
+
+      数据劫持，就是一个新的给 对象添加成员的方式
+        + Object.defineProperty(你要给谁添加，添加的 key， 配置项)
+    */
+
+    // var obj = {
+    //   name: 'Jack'
+    // }
+
+
+
+    var obj = {}
+
+    Object.defineProperty(obj, 'name', {
+      // value: 就是这个对象的值
+      // value: 'Jack'
+
+      // 写一个 get 函数也能给对象添加成员
+      get () {
+        return 'Jack'
+      },
+
+      // 用来捕获以下你想改变的行为
+      set (val) {
+        // 能够接受一个参数
+        // 你想把 name 属性改成什么
+        console.log('你想把 obj 的 name 属性给改成 ' + val)
+
+        box.innerHTML = val
+      }
+    })
+
+    var box = document.querySelector('div')
+    box.innerHTML = obj.name
+
+    var inp = document.querySelector('input')
+    inp.oninput = function () {
+      // console.log(this.value)
+      obj.name = this.value
+    }
+  </script>
+</body>
+</html>

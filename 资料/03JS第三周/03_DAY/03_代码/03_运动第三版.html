@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    /*
+      问题： 不能多个方向同时运动
+        换一种方式传递参数
+        以对象的形式传递参数
+
+      function (ele, target) {
+        // 这个 target 是一个对象
+      }
+
+      将来使用的时候
+      move(div, {
+        left: 200,
+        top: 200
+      })
+
+      出现问题了？ 多个属性的时候，我们需要定义多个 timerID 变量
+    */
+
+    const box = document.querySelector('div')
+
+    box.addEventListener('click', function () {
+      move(this, {
+        top: 200,
+        left: 200,
+      })
+    })
+
+
+    function move(ele, target) {
+      // ele 是要运动的元素
+      // target 是我设置的目标位置
+      // console.log(target)
+
+      let distance = 0
+      let timerId = null
+
+      // 出现问题了？拿到 200，怎么拿到 left 这个字符串
+      // for in 遍历对象的时候可以拿到 key
+      for (let attr in target) {
+        // console.log(attr)
+        // console.log(target[attr])
+
+        timerId = setInterval(() => {
+          distance += 5
+
+          ele.style[attr] = distance + 'px'
+
+          if (distance === target[attr]) {
+            clearInterval(timerId)
+          }
+        }, 30)
+
+      }
+    }
+
+
+
+
+
+
+  </script>
+</body>
+</html>

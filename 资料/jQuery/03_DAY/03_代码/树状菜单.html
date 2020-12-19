@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid pink;
+      margin: 30px auto;
+    }
+
+    li > ol {
+      height: 0;
+      overflow: hidden;
+      display: none;
+    }
+
+    li.active > ol {
+      height: 100px;
+    }
+
+    ol {
+      padding-left: 20px;
+      /* height: 0;
+      overflow: hidden; */
+    }
+
+    ol > li {
+      height: 20px;
+      line-height: 20px;
+    }
+
+    span:before {
+      content: '+';
+    }
+
+    span.active:before {
+      content: '-';
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="">
+      <span class=""></span>
+      1级别菜单
+      <ol>
+        <li>
+          <span></span>
+          1-1
+        </li>
+        <li>
+          <span></span>
+          1-2
+        </li>
+        <li>
+          <span></span>
+          1-3
+        </li>
+      </ol>
+    </li>
+    <li>
+      <span></span>
+      2级别菜单
+      <ol>
+        <li>
+          <span></span>
+          2-1
+        </li>
+        <li>
+          <span></span>
+          2-2
+        </li>
+      </ol>
+    </li>
+    <li>
+      <span></span>
+      3级别菜单
+      <ol>
+        <li>
+          <span></span>
+          3-1
+        </li>
+        <li>
+          <span></span>
+          3-2
+        </li>
+        <li>
+          <span></span>
+          3-3
+        </li>
+        <li>
+          <span></span>
+          3-4
+        </li>
+      </ol>
+    </li>
+  </ul>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+
+    // 1. 给所有的 1级菜单绑定事件
+    $('ul > li').click(function () {
+      // 你点击的是哪一个，就让哪一个下面的 ul 展开
+      // $(this)  // 你点击的那一个
+      //   .find('ol')  // 找到 ol
+      //   .css('height', 100)
+
+      // 点击的时候给自己切换类名就可以了
+      $(this) // 你点击的那个元素
+        .toggleClass('active')  // 切换类名 返回值： 还是你点击的那个元素
+        .find('ol') // 找到 ol 返回值： ol 这个数据集合
+        .css({
+          height: 'auto'
+        }) // 设置 css 返回值： ol 这个数据集合
+        .slideToggle() // 做动画 返回值： ol 这个数据集合
+        .prev() // 上一个兄弟元素 返回值： span 这个数据集合
+        .toggleClass('active') // 切换类名 返回值： span 这个数据集合
+
+      $(this)
+        .siblings()
+        .removeClass('active')
+        .find('ol')
+        .slideUp()
+        .prev()
+        .removeClass('active')
+    })
+
+
+    /*
+      list => ul > li
+        当他被点击第一次的时候，应该让他下面的 ol 展开
+        当他再次被点击的时候，应该让他下面的 ol 收起来
+        依靠在他身上的一个类名来决定是展开还是收起来
+
+
+    */
+
+
+  </script>
+</body>
+</html>

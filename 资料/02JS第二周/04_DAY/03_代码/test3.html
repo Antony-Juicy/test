@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+    var arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Rose',
+        age: 20,
+        gender: '女'
+      },
+      {
+        name: 'Tom',
+        age: 22,
+        gender: '男'
+      }
+    ]
+
+    var tBody = document.querySelector('tbody')
+
+    var str = ''
+
+    for (var i = 0; i < arr.length; i++) {
+      // 在这里做一个判断，如果是单数行，一个颜色，双数行一个颜色
+      if (i % 2 === 0) {
+        str += '<tr style="background-color: red;">'
+      } else {
+        str += '<tr style="background-color: pink;">'
+      }
+
+      for (var attr in arr[i]) {
+        str += '<td>'
+        str += arr[i][attr]
+        str += '</td>'
+      }
+
+      str += '</tr>'
+    }
+
+    tBody.innerHTML = str
+  </script>
+</body>
+</html>

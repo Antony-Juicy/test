@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th class="a">姓名</th>
+        <th class="b">年龄</th>
+        <th>性别</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+
+    // 先准备一个数据
+    var arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Rose',
+        age: 20,
+        gender: '女'
+      },
+      {
+        name: 'Tom',
+        age: 22,
+        gender: '男'
+      }
+    ]
+
+    // 1. 先获取 tbody 标签
+    var tBody = document.querySelector('tbody')
+    bindHtml()
+    function bindHtml() {
+      // 2. 准备一个空字符串
+      var str = ''
+
+      // 3. 遍历数组
+      //    数组中有多少个成员，那么就有多少个 tr
+
+      for (var i = 0; i < arr.length; i++) {
+        str += '<tr>'
+
+        // 这里进行一些操作
+        var item = arr[i]
+        for (var attr in item) {
+          str += '<td>'
+          str += item[attr]
+          str += '</td>'
+        }
+
+        str += '<td class="del">删除</td>'
+
+        str += '</tr>'
+      }
+
+      // 渲染页面页数
+      tBody.innerHTML = str
+      bindEvent()
+    }
+
+    // 这个函数每次绑定完毕页面都要执行一次
+    function bindEvent() {
+      // 获取所有的删除按钮
+      //   是一个伪数组 [<td></td>, <td></td>, <td></td>]
+      var dels = document.querySelectorAll('.del')
+
+      // dels 获取的是一个伪数组
+      //  可以使用 for 循环进行遍历
+
+      // 循环 给 dels[0] 绑定了一个事件，点击的时候触发函数
+      // 循环 给 dels[1] 绑定了一个事件，点击的时候触发函数
+      // 循环 给 dels[2] 绑定了一个事件，点击的时候触发函数
+      // 循环结束 j === 3
+      for (var j = 0; j < dels.length; j++) {
+        // 循环再遍历伪数组
+        // dels[j] 就是每一个标签元素
+        // console.log(dels[j])
+
+        // 再加事件之前，给每一个元素一个标识符
+        //   添加一个自定义属性
+        dels[j].setAttribute('index', j)
+
+        // 要给每一个标签身上绑定一个事件
+        dels[j].onclick = function () {
+
+          // 我点上哪个删除按钮，this 就是哪一个删除按钮
+          // console.log(this)
+
+          // console.log(this.getAttribute('index') + ' 我要删除这个索引')
+          var index = this.getAttribute('index') - 0
+          // 删除数组中的第 index 个
+          arr.splice(index, 1)
+
+          // 现在数组里面只剩下两个对象了
+          bindHtml()
+        }
+      }
+    }
+
+
+    /*
+      第一次我的数组是 [{}, {}, {}]
+        用这个数组去渲染页面，渲染了三个 tr
+      当我想删除的时候，直接把数组中的某一项干掉
+        让数组变成 [{}, {}]
+      重新用这个数组去渲染页面
+        只能渲染出两个 tr
+        就相当于删除了一个
+    */
+
+    /*
+      给你 三张 100 元  每一张写这个一个字
+      我想让你的三百变两百，不是拿走一张
+      把你的三张都拿走，给你两张新的
+      为了让你看不出来，从新给你写上字
+
+      先开始渲染了三个 tr，每个 tr 的最后一个 td 上有事件
+      三个变两个
+      把你的三个 tr 都拿走了，给了你两个新的 tr
+      新的 tr 上最后一个 td 上是没有事件的
+      为了事件可以执行，再新的渲染完毕之后再给你加上事件
+    */
+
+
+
+
+
+
+
+    // 事件处理函数里面的this 就是事件源，谁身上的事件
+    // var tha = document.querySelector('.a')
+    // tha.onclick = function () {
+    //   console.log(this)
+    // }
+
+    // var thb = document.querySelector('.b')
+    // thb.onclick = function () {
+    //   console.log(this)
+    // }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <!-- <script src="./01.js"></script>
+  <script src="./02.js"></script>
+  <script src="./03.js"></script> -->
+  <script>
+    // 我们的函数应该先定义后调用
+    //   定义完毕不调用，这个函数没有意义
+    // 自执行函数
+    //   定义完毕以后，自己就把自己调用了
+    /*
+      自执行函数语法
+        1. (function () { code run here })()
+        2. ~function () { code run here }()
+        3. !function () { code run here }()
+
+      自执行函数的优点
+        + 变量不去污染全局
+        + 一般写在一个 js 文件里面
+
+      自执行函数的 this 指向
+        + 就是指向 window
+    */
+
+    // (function () {
+    //   console.log('我是一个自执行函数')
+    //   console.log(this)
+    // })()
+
+    // ~function () {
+    //   console.log('我是第二个自执行函数')
+    //   console.log(this)
+    // }()
+
+    // !function () {
+    //   console.log('我是第三个自执行函数')
+    //   console.log(this)
+    // }()
+
+    var obj = {
+      fn: function () {
+        console.log(this)
+
+        ;(function () {
+          console.log(this)
+        })()
+      }
+    }
+
+    obj.fn()
+
+  </script>
+</body>
+</html>

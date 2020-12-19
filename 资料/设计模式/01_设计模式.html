@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      设计模式
+        + 根据某一特殊的功能，给出的特定的简单而优化的解决方案
+      常见的设计模式
+        + 单例模式
+        + 组合模式
+        + 观察者模式
+        + 工厂模式
+        + 代理模式
+        + 适配器模式
+        + ...
+
+      + 单例模式
+        + 当一个构造函数只有一个实例的时候使用
+        + 这个构造函数一生只能有一个实例
+    */
+
+    // function Person() {}
+
+    // const p1 = new Person()
+    // const p2 = new Person()
+    // console.log(p1 === p2) // false
+    // // console.log(p1 === p2) // 要求得到 true
+
+    // 核心代码
+    // function Person() {}
+
+    // function singleton() {
+    //   let instance
+
+    //   return function a() {
+    //     if (!instance) {
+    //       // 如果能进入 if 条件，证明 instance 是一个 false
+    //       // 证明 instance 是一个 undefined
+    //       instance = new Person()
+    //     }
+
+    //     // 执行到这里，instance 肯定是一个对象
+    //     return instance
+    //   }
+    // }
+
+    // const p1 = singleton() // p1 得到的是 a 函数地址
+    // // p1 是一个函数，那么 p1 执行的时候就能得到一个返回值
+    // const obj = p1() // 第一次执行的时候得到的是 Person 的实例
+    // const obj2 = p1() // 第二次执行的时候得到的还是刚才哪个 Person 的实例
+    // console.log(obj === obj2)
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      特殊符号
+
+      1. () 小括号
+        + 表示一个集合
+        + 在捕获的时候单独捕获（讲方法的时候说）
+      2. []
+        + 表示一个任意选择的集合
+        + 出现在中括号内的内容出现任意一个就行
+      3. [^]
+        + 表示一个非任意选择集合
+        + 出现在这个符号中的任意一个字符都不能出现
+      4. |
+        + 或
+          + || 逻辑或
+          + |  占位或
+        + 一般和小括号一块使用
+      5. -（中划线，英文状态的中划线）
+        + 到（至）
+        + 一般和中括号一起使用
+        + 必须是 ASCII 编码挨着的
+        + [0-9] 等价于 \d
+        + [^0-9] 等价于 \D
+        + [0-9a-zA-Z_] 等价于 \w
+        + [^0-9a-zA-Z_] 等价于 \W
+    */
+
+    // 表示字符串从开头到结尾需要 abcdabcd
+    // var reg = /^(abcd){2}$/
+    // var str = 'abcdabcd'
+    // var res = reg.test(str)
+    // console.log(res)
+
+
+    // 表示字符串从开头到结尾，只能由 a 或者 b 或者 c 或者 d 组成，并且只能出现两次
+    // var reg = /^[abcd]{2}$/
+    // var str = 'ad'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示这一位字符不能是 a 不能是 b 不能是 c 不能是 d，其他的都行
+    // var reg = /^[^abcd]$/
+    // var str = 'e'
+    // var res = reg.test(str)
+    // console.log(res)
+
+
+    // 表示这个位置写的内容可以是 163 可以是 162 可以是 sina 可以是 qq
+    // var reg = /^(163|162|sina|qq)$/
+    // var str = '163'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // var reg = /^[0-9]$/
+    // var str = 'A'
+    // var res = reg.test(str)
+    // console.log(res)
+
+  </script>
+</body>
+</html>

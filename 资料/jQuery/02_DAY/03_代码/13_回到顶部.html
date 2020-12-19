@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 3000px;
+    }
+
+    div {
+      width: 50px;
+      height: 50px;
+      background-color: hotpink;
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div></div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+
+    /*
+      当滚动条滚动到一定程度的时候显示 div，小于多少的时候还要隐藏
+    */
+    $(window).scroll(() => {
+      if ($(window).scrollTop() >= 300) {
+        $('div').fadeIn(500)
+      } else {
+        $('div').fadeOut(500)
+      }
+    })
+
+    // 点击按钮的时候，让滚动条滚动着回去
+    // 再 jQuery 里面 如果让滚动条回去，我们要把这个属性设置给 html
+    $('div').click(() => {
+      $('html').animate({
+        scrollTop: 0
+      }, 500)
+    })
+  </script>
+
+</body>
+</html>

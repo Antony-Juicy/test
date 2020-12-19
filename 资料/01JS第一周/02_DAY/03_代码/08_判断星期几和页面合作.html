@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      0 周日
+      1 周一
+      ...
+      6 周六
+    */
+
+    // prompt() 弹出一个输入框
+    // alert() 弹出一个提示框
+    // alert('hello world')
+
+    // 语法： prompt('提示给用户的文字')
+    //    以返回值的形式接受用户输入的内容
+    //    当用户没有点击确定或者取消的时候，代码不会继续向下执行
+    var data = prompt('输入一个 0 - 6 的数字') - 0
+
+    switch (data) {
+      case 0:
+        console.log('星期日')
+        break
+      case 1:
+        console.log('星期一')
+        break
+      case 2:
+        console.log('星期二')
+        break
+      case 3:
+        console.log('星期三')
+        break
+      case 4:
+        console.log('星期四')
+        break
+      case 5:
+        console.log('星期五')
+        break
+      case 6:
+        console.log('星期六')
+        break
+      default:
+        console.log('请输入一个 0 - 6 的数字')
+    }
+
+
+  </script>
+</body>
+</html>

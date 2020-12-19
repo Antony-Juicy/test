@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      配置代理
+        需要服务器帮忙
+        apache 配置 http 的代理是可以的
+        apache 配置 https 的代理需要证书
+
+        nginx 服务器做一个代理
+
+
+        + 切换版本，切换到 5.45.5 nginx
+
+        + phpstudy
+          + 其他选项菜单
+            + 打开配置文件
+              + nginx-conf
+
+        打开文件以后，找到一个叫做 server 的关键字
+          + 再关闭括号的上一行配置代理
+            /suibian 是请求关键字
+            location = /suibian {
+                你的代理路径
+                proxy_pass http://127.0.0.1:80/proxy/proxy.php;
+            }
+          + 代理配置完毕以后重启服务器
+    */
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('get', '/suibian')
+
+    xhr.onload = function () {
+      console.log(xhr.responseText)
+    }
+
+    xhr.send()
+
+  </script>
+</body>
+</html>

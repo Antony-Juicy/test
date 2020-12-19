@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    var year = 2015
+    var month = 3
+    var day = 1
+
+    /*
+      先不管年的事情
+
+      月份如果是 6 应该加的是 1 2 3 4 5 月的天数
+      我需要的是从 1 到我前一个月的所有天数相加
+      写一个循环，循环我的月份
+    */
+
+    // 进行判断
+    //  1. 就是你的 month 是不是大于三月
+    //     month 是多少 1
+    var date = 0
+
+    if (month >= 3) {
+      // 三月开始了
+      // 判断是不是闰年
+      if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+        date = date + 1
+      }
+    }
+
+    while (month > 1) {
+      // 我需要的是比自己小一个月的月份
+      // console.log(month - 1)
+
+      switch (month - 1) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+          date = date + 31
+          break
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+          date = date + 30
+          break
+        case 2:
+          date = date + 28
+          break
+      }
+
+      month--
+    }
+
+    date = date + day
+
+    console.log(date)
+
+  </script>
+</body>
+</html>

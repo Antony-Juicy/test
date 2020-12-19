@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>hello world</div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      操作元素的属性
+
+        + 有两套方法
+        1. attr
+        2. prop
+
+
+      1. attr
+        + 不管是自定义属性还是原生属性，都能显示在标签上
+        + attr()
+          + 用来获取或者设置的
+          + 传递一个参数的时候就是获取
+            + 传递的一个参数就是属性名
+            + 返回值就是这个属性的值
+            + 获取到的全部都是字符串
+          + 传递两个参数的时候就是设置
+            + 第一个参数是 key
+            + 第二个参数是 value
+            + 返回值依旧是数据集合
+        + removeAttr()
+          + 用来移出的
+          + 参数就是要移出的属性
+
+      2. prop
+        + 只有设置原生属性的时候，才能在标签上显示
+          + 如果设置的是一个自定义属性，那么不会再标签上显示，但是可以使用
+        + prop()
+          + 用来获取或者设置的
+          + 传递一个参数的时候就是获取
+            + 参数是你要获取的属性名
+            + 返回值就是获取到的内容
+            + 因为如果使用 prop 获取自定义属性，只能获取使用 prop 添加的属性
+          + 传递两个参数就是设置
+            + 第一个参数是 key
+            + 第二个参数是 value
+            + 返回值依旧是数据集合
+        + removeProp()
+          + 用来移除属性的
+          + 参数就是你要移除的属性
+            + 只能移除你自己设置的属性
+            + 不能移除 class/id 这些原生属性
+
+      两个方法之间不互通
+        attr 设置的使用 removeAttr 删除 使用 attr 读取
+        prop 设置的使用 removeProp 删除 使用 prop 获取
+        + 一般不使用 attr 或者 prop 去操作 class 和 样式
+    */
+
+    // console.log($('div').attr('abc'))
+    // console.log($('div').attr('class'))
+    // console.log($('div').attr('id'))
+    // console.log($('div').attr('index'))
+
+    // console.log($('div').attr('search', '电视'))
+    // $('div').attr('a', 100)
+
+    // console.log($('div').attr('a'))
+
+    // $('div').removeAttr('abc')
+    // $('div').removeAttr('index')
+    // $('div').removeAttr('class')
+    // $('div').removeAttr('id')
+
+
+    // console.log($('div').prop('class'))
+    // console.log($('div').prop('id'))
+
+    // $('div').prop('a', 100)
+    // console.log($('div').prop('a'))
+
+    // $('div').removeProp('a')
+    // $('div').removeProp('class')
+    // console.log($('div').prop('a'))
+
+    // $('div').attr('abc', '100')
+    // console.log($('div').prop('abc'))
+  </script>
+</body>
+</html>

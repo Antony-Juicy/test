@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 300px;
+      height: 300px;
+      background-color: cyan;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="hide">隐藏</button>
+  <button class="show">显示</button>
+  <button class="toggle">切换</button>
+
+  <div></div>
+
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 里面有三个基础动画
+        1. show()
+          + 显示
+        2. hide()
+          + 隐藏
+        3. toggle()
+          + 切换
+
+        传递的参数都是一样的（可以不传递参数）
+          + 第一个参数： 时间 ms
+          + 第二个参数： 运动曲线
+          + 第三个参数： 运动结束后的回调函数
+    */
+
+    $('.hide').click(() => {
+      // 让 这个 div 隐藏
+      $('div').hide(500, 'linear', function () {
+        console.log('隐藏结束')
+      })
+    })
+
+    $('.show').click(() => {
+      $('div').show(500, 'linear', () => {
+        console.log('显示结束')
+      })
+    })
+
+    $('.toggle').click(() => {
+      $('div').toggle(500, 'linear', () => {
+        console.log('切换结束')
+      })
+    })
+
+  </script>
+</body>
+</html>

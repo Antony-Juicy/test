@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>按钮</button>
+
+  <script>
+    /*
+      localStorage
+        + 是一个在浏览器端的存储空间
+        + 只能由前端操作
+        + 时效性： 永久（除非手动删除）
+        + 只能存储字符串
+        + 存储大小大概在 20M 左右
+        + 有自己的 API
+        + 存储在浏览器本地（就是一直在浏览器呆着）
+
+      1. setItem(设置的key， 设置的value))
+        + 用来设置 localStorage
+        + 如果你想存储一个对象获取数组
+        + 你需要把这个对象获取数组转换成 json 格式存储
+      2. getItem(你要获取的key)
+        + 如果 localStorage 里面由这个数据，那么就能获取到数据的值
+        + 如果 localStorage 里面没有这个数据，那么获取到的就是 null
+        + 你存储的是什么，你获取的就是什么
+      3. removeItem(你要删除的key)
+        + 用来删除 localStorage 里面的数据
+      4. clear()
+        + 是用来清除 localStorage 的
+        + 会把所有的数据都删除了
+    */
+
+    // localStorage.setItem('a', '100')
+
+    // const res = localStorage.getItem('b')
+    // console.log(res)
+
+    var obj = {
+      name: 'Jcak',
+      age: 18,
+      gender: '男'
+    }
+
+    localStorage.setItem('data', JSON.stringify(obj))
+    localStorage.setItem('a', 100)
+    localStorage.setItem('b', 100)
+    localStorage.setItem('c', 100)
+    localStorage.setItem('d', 100)
+
+
+    // const res = JSON.parse(localStorage.getItem('data'))
+    // console.log(res)
+
+
+    const btn = document.querySelector('button')
+
+    btn.onclick = function () {
+      // localStorage.removeItem('data')
+
+      // localStorage.clear()
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；
+    // 然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+
+    // 1. 整出一个数组 [2, 4, 6, ..., 60]
+
+    // 方法1:
+    // var arr = new Array(30) // 长度是 30 的数组
+
+    // // 提前准备一个数字
+    // var num = 0
+
+    // for (var i = 0; i < arr.length; i++) {
+    //   // 这个循环会执行 30 次
+
+    //   num += 2 // num 会随着循环递增
+
+    //   // i === 0   arr[0] = 2
+    //   // i === 1   arr[1] = 4
+    //   arr[i] = num
+    // }
+    // console.log(arr)
+
+    // 方法2：
+    // var arr = []
+
+    // var num = 0
+
+    // while (arr.length < 30) {
+    //   num += 2
+    //   arr.push(num)
+    // }
+
+    // console.log(arr)
+
+    // 方法3：
+    var arr = []
+    for (var i = 1; i <= 60; i++) {
+      // i 就是 1~60 的数字
+
+      if (i % 2 === 0) { // 是个偶数
+        arr.push(i)
+      }
+
+    }
+
+    console.log(arr)
+
+    // 2. 准备一个新的数组
+    var newArr = []
+    var sum = 0
+    for (var j = 0; j < arr.length; j++) {
+      // j 就是 0 ~ 29 的数字
+      sum += arr[j]
+
+      /*
+        j === 0    sum += arr[0] 2   sum === 2
+        j === 1    sum += arr[1] 4   sum === 6
+        j === 2    sum += arr[2] 6   sum === 12
+        j === 3    sum += arr[3] 8   sum === 20
+        j === 4    sum += arr[4] 10  sum === 30  sum / 5
+        j === 5    sum += arr[5] 12  sum === 12
+        j === 6    sum += arr[6] 14  sum === 26
+        j === 7    sum += arr[7] 16  sum === 42
+        j === 8    sum += arr[8] 18  sum === 60
+        j === 9    sum += arr[9] 20  sum === 80  sum / 5
+      */
+
+      if ((j + 1) % 5 === 0) { // 每5次我满足条件一回
+        // sum / 5
+        newArr.push(sum / 5)
+        sum = 0
+      }
+    }
+
+    console.log(newArr)
+
+  </script>
+</body>
+</html>

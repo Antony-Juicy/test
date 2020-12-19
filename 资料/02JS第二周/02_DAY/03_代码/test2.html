@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    // 统计字符串中每个字符的个数？
+    var str = 'dasdasdasdasdada'
+
+    // var obj = {
+    //   a: 1
+    // }
+
+    // console.log(obj.a)
+
+    // 对象是最容易看出结果的数据格式
+    // var obj = {
+    //   a: 10,
+    //   x: 20
+    // }
+
+    // 把每一个字符拿出来当作对象的 key 放进去
+    // 因为我们的对象有一个不重名的特点
+    // 我每一次项对象中添加的时候，如果对象中有这个成员，我就让他的数字++
+    // 如果没有这个成员，那么我添加一个这个成员，把他的值写成 1
+
+    // 0. 准备一个对象
+    var obj = {}
+    // 1. 遍历字符串
+    for (var i = 0; i < str.length; i++) {
+      // str[i] 就是每一个字符
+      var s = str[i]
+
+      // obj[s] // 他能给我的值是什么  要么是一个 大于等于1 的数字，要么就是 undefined
+      // 如果是 undefined 证明对象中没有这个成员
+      // 如果不是 undefined 证明对象中有这个成员
+      if (obj[s] === undefined) {
+        obj[s] = 1
+      } else {
+        obj[s] = obj[s] + 1
+      }
+    }
+
+    var newStr = ''
+    // 直接遍历对象
+    for (var attr in obj) {
+      // console.log(attr)
+      newStr += attr
+    }
+
+    console.log(newStr)
+  </script>
+</body>
+</html>

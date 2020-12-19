@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="text">
+
+  <script>
+    // 键盘事件一般不绑定在盒子元素上
+    // 一般键盘事件绑定在 表单元素或者 document 上
+    var inp = document.querySelector('input')
+
+    inp.onkeyup = function (e) {
+      e = e || window.event
+      // 在键盘事件里面有一个键盘编码
+      // 编码叫做 e.keyCode（只是在 FireFox 20 以前的版本不能用）
+      //   FireFox 20 以前的版本使用 e.which
+      // 通常也写成兼容的方式
+      var code = e.keyCode || e.which
+
+      /*
+        左 上 右 下
+        37 38 39 40
+
+        回车 13
+        shift 16
+        ctrl 17
+        alt 18
+
+        空格 32
+      */
+
+      console.log(code)
+    }
+
+  </script>
+</body>
+</html>

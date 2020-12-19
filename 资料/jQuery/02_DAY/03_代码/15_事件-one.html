@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 300px;
+      height: 300px;
+      background-color: cyan;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <p></p>
+  </div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      one 方法
+        + 也是用来绑定事件的
+        + 但是绑定的事件只能执行一次
+        1. 直接绑定一个事件
+          + one(事件类型，事件处理函数)
+          + one(事件类型，复杂数据类型，事件处理函数)
+          + one(事件类型，字符串，事件处理函数)
+          + one(事件类型，委托，传递参数，事件处理函数)
+        2. 批量绑定事件
+          + one(对象)
+            + 对象里面就是事件
+            + 对象里面的每一个事件都只能执行一次
+    */
+
+    // $('div').one('click', 'p', 'Jack', (e) => {
+    //   console.log('我被点击了')
+    //   console.log(e)
+    // })
+
+    $('div').one({
+      click () {
+        console.log('点击')
+      },
+      mouseover () {
+        console.log('移入')
+      }
+    })
+  </script>
+</body>
+</html>

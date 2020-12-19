@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      promise 承诺
+        再 js 里面 es6（ES2015） 的标准里面才有
+        是一个内置的构造函数叫做 Promise
+        语法： new Promise()
+          + 再new Promise 的时候传递一个参数
+          + 这个参数时一个函数
+
+      一个承诺的状态
+        1. pedding 继续
+        2. resolved 成功
+        3. rejected 失败
+
+      promise 的作用就是你需要完成一个异步事情的时候，把这个事情交给我
+        + 我承诺，我会把这个事情给你完成
+        + 给你一个结果
+    */
+
+
+    // p 得到的就是一个对象，我们管这个对象叫做 promise 对象
+    var p = new Promise(function (resolve, reject) {
+      // 这个 function 里面书写的内容就是你需要我承诺你做的事情
+      // 你想让 promise 帮你做什么事情，就写在这个 function 里面
+      // 这个帮你做事的函数接受两个形参
+      //   一个叫做 resolve 表示成功
+      //   一个叫做 reject  表示失败
+      // 这两个形参会在 new Promise 的时候帮你传递
+
+      // 如果你这个事情成功了，那么你 resolve()
+      // 如果你这个事情失败了，那么你 reject()
+
+      // 当你书写 resolve() 的时候，表示这个事情成功了
+      // 当你书写 reject() 的时候，表示这个事情失败了
+
+      setTimeout(() => {
+        console.log('买报纸')
+
+        // 买报纸成功了
+        resolve()
+      }, 2000)
+    })
+
+
+    // p 就是一个 promise 对象
+    // 再 p 这个对象里面有两个方法
+    //   一个方法叫做 then 调用的时候接受一个 function
+    //   一个方法叫做 cacth 调用的时候接受一个 function
+    // console.log(p)
+
+    p.then(function () {
+      // 这个 then 里面的 function 会在你的 Promise 中
+      // 当 resolve() 的时候执行
+      console.log('我执行了')
+    })
+
+  </script>
+</body>
+</html>

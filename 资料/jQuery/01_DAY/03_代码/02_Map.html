@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      Map
+        + 是一个 ES6 新增的数据集合
+        + 长得很像对象的数据集合
+        + 是一个 js 的内置构造函数
+        + 我们也管他叫做 值 = 值 的数据类型
+          + 可以使用复杂数据类型来当作 key 使用
+
+      1. set(成员的 key，成员的 值)
+        + 给这个数据集合设置成员的
+      2. get(获取的成员名称)
+        + 用来获取该数据集合中的成员
+      3. delete(你要删除的成员名称)
+        + 用来删除该数据集合中的成员
+      4. clear()
+        + 用来清除该数据集合中的所有成员
+      5. forEach()
+        + 有一个自己的 forEach 方法
+      6. has()
+        + 判断该数据集合内有没有某一个成员
+      7. size
+        + 是一个属性
+        + 表示该数据集合的长度
+      8. 当你使用 ... 展开的时候，会还原成一个数组
+        + 但是是一个 二维数组
+    */
+
+    const m = new Map()
+    const o1 = { name: 'Jack' }
+
+    m.set('a', 100)
+    m.set(o1, { age: 18 })
+    m.set([1, 2, 3], function () {})
+
+    // m.delete(o1)
+
+    // m.clear()
+
+
+    console.log(m)
+    // console.log(m.has([1, 2, 3]))
+    // console.log(m.size)
+    console.log([...m])
+
+    // console.log(m.get('a'))
+    // console.log(m.get(o1))
+
+
+    // m.forEach(function (item, index, arr) {
+    //   // item 拿到的是所有的 value
+    //   // console.log(item)
+
+    //   // index 拿到的是所有的 key
+    //   // console.log(index)
+
+    //   // arr 原始的 Map 数据集合
+    //   // console.log(arr)
+    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+      对象
+
+        + 对象的 key 是一个什么数据类型
+        + 对象的 key 都是一个字符串数据类型
+        + 如果你使用一个复杂数据类型来当作 key 的时候
+        + 会自动转换成字符串的形式
+
+      任何一个对象转成字符串的时候都叫做
+        + [object Object]
+    */
+
+    // var obj = {
+    //   name: 'Jack',
+    //   age: 18
+    // }
+
+    // for (let attr in obj) {
+    //   console.log(typeof attr)
+    // }
+
+    // var obj = {}
+
+    // var obj2 = {
+    //   name: 'Jack'
+    // }
+
+    // var obj3 = {
+    //   name: 'Rose'
+    // }
+
+    // obj['name'] = 'Tom'
+    // var a = 'age'
+    // obj[a] = 20
+
+    // console.log(obj2.toString())
+    // console.log(obj3.toString())
+
+    // obj[obj2] = 1   // => obj['[object Object]'] = 1
+    // obj[obj3] = 2   // => obj['[object Object]'] = 2
+
+    // console.log(obj)
+
+  </script>
+</body>
+</html>

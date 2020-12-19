@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <button id="btn">打开一个页面</button>
+
+  <button id="clo">关闭页面</button>
+  <script>
+    // 操作页面
+
+    // 1. 打开一个新的页面
+    // window.open(新页面的地址)
+
+    btn.onclick = function () {
+      window.open('https://www.baidu.com')
+    }
+
+    // 2. 关闭当前页面
+    // window.close()
+
+    clo.onclick = function () {
+      window.close()
+    }
+  </script>
+</body>
+</html>

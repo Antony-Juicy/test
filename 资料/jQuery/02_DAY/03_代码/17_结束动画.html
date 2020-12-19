@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button class="animate">动画</button>
+
+  <button class="stop">停止</button>
+
+  <button class="finish">完成</button>
+
+  <div></div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 里面有动画
+      有方法可以在动画没有结束的时候停止
+        + 有两个方法
+          1. stop()
+            + 直接让动画停止，在哪里触发，动画就停在哪里
+          2. finish()
+            + 触发的时候，直接让动画到达目标位置
+    */
+
+    $('.animate').click(() => {
+      $('div').animate({
+        width: 600,
+        height: 400
+      }, 5000)
+    })
+
+    $('.stop').click(() => {
+      $('div').stop()
+    })
+
+    $('.finish').click(() => {
+      $('div').finish()
+    })
+
+  </script>
+</body>
+</html>

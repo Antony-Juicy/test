@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <!--
+    什么是 cookie
+      是一个在 客户端的 存储空间
+      在前后端交互的过程中 只要这个 空间中有内容，就会跟着请求报文带到后端
+        + 自动携带，不需要我们任何操作
+        + 这个空间前端可以操作，后端也可以操作
+
+
+    cookie 的存储形式
+      + 就是一个字符串的形式在存储
+      + key=value; key2=value2; key3=value3; key4=value4
+
+    cookie 的特点
+      1. 有存储大小限制
+        + 50条左右
+        + 2KB 左右
+      2. 他有使用限制
+        + 哪个域名存储的，只能在哪个域名下获取
+      3. 他是按照域名进行存储的
+        + 在浏览器里面哪一个域名下
+      4. 他是有时效性的
+        + 默认时效是会话级别时效（从浏览器打开到浏览器关闭就没有）
+        + 可以手动设置过期时间
+      5. 前端可以操作
+        + 后端可以操作
+
+
+    获取 cookie 的方式
+      前端：
+        document.cookie 就是获取
+        document.cookie = '' 就是设置
+
+      后端：
+        $_COOKIE['cookie的key'] 获取 cookie
+        setcookie(key, value, 过期时间) 设置 cookie
+  -->
+
+</body>
+</html>

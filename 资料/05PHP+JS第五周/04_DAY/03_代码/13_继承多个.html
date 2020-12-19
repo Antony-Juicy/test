@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 父类
+    class Person {
+      constructor (name) {
+        this.name = name
+      }
+
+      sayHi () {
+        console.log('hello world')
+      }
+    }
+
+    // 子类
+    class Student extends Person{
+      constructor (age, name) {
+        super(name)
+        this.age = age
+      }
+    }
+
+    const s = new Student(20, 'Jack')
+    console.log(s)
+
+    // 孙子类
+    class Son extends Student{
+      constructor (gender, age, name) {
+        super(age, name)
+        this.gender = gender
+      }
+    }
+
+    const s2 = new Son('男', 18, 'Rose')
+    console.log(s2)
+
+  </script>
+</body>
+</html>

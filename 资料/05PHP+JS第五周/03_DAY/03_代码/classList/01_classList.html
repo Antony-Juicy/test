@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="a b c d e f g h i j k"></div>
+
+  <button>切换类名</button>
+
+  <script>
+    /*
+      classList
+        + 专门用来操作类名的方法
+        + 每一个元素都由一个 classList 的属性
+        + 值： 是一个伪数组，里面存储者的就是所有的类名
+        + 兼容性 H5 级别
+
+      有自己的方法来操作这个伪数组
+        1. add(你要添加的类名) 用来添加类名的
+        2. remove(你要移出的类名) 用来移出类名的
+        3. replace(你要替换的类名，替换成什么) 用来替换类名的
+        4. toggle(你要切换的类名)
+          你本来有，我就给你变成没有
+          你本来没有，我就给你变成有
+
+    */
+
+    // 获取元素
+    const box = document.querySelector('div')
+    const btn = document.querySelector('button')
+    // console.dir(box)
+
+
+    // 1. 给元素添加一个类名
+    box.classList.add('box')
+
+    // 2. 移出元素的 f 类名
+    box.classList.remove('f')
+
+    // 3. 把元素的 g 类名 替换成 abc
+    box.classList.replace('g', 'abc')
+
+    // 4. 切换元素的类名
+    // box.classList.toggle('a')
+    btn.onclick = function () {
+      box.classList.toggle('a')
+    }
+
+
+
+
+
+    // 1. 添加一个 box 类名
+    // box.className += ' box'
+
+    // // 2. 去掉一个 e 类名
+    // box.className = box.className.replace('e', '')
+
+    // // 3. 判断元素里面有没有某一个类名
+
+  </script>
+</body>
+</html>

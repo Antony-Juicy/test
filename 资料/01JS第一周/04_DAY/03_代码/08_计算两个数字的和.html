@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+    // 1. 求两个数字的和
+    // function fn(a, b) {
+    //   console.log(a + b)
+    // }
+
+    // fn(100, 20)
+
+    // 2. 求三个数字的和
+    // function fn(a, b, c) {
+    //   console.log(a + b + c)
+    // }
+
+    // fn(10, 20, 30)
+
+    // 3. 求 n 个数字的和
+    function fn() {
+      // 在每一个函数体内有一个天生的变量
+      // 叫做 arguments
+      // 是所有传递的实参的集合
+      // arguments 是一个长得很像数组的数据集合，但是不是数组
+      //   我们管这个东西叫做伪数组
+      // 但是他也是按照 索引 来排列
+      //   并且可以按照索引来获取
+      // arguments 里面有一个属性叫做 length，表示这个 arguments 伪数组的长度
+      //   这个长度是一个 number 数据类型
+      // console.log(typeof arguments.length)
+
+      var sum = 0
+
+      for (var i = 0; i < arguments.length; i++) {
+        // 这个 0 1 2 3 4 刚好是这个伪数组的索引
+        // console.log(arguments[i])
+        sum += arguments[i]
+      }
+
+      console.log(sum)
+
+    }
+
+    fn(10, 20, 30, 40, 50)
+    fn(100, 200, 300, 400, 500, 600)
+    fn(11, 21, 31, 41)
+
+
+  </script>
+</body>
+</html>

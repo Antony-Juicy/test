@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    /*
+      出现问题了？ 多个属性的时候，我们需要定义多个 timerID 变量
+
+        1. 有多少个属性定义多少个 timerId
+        2. 用一个对象的方式承载 timerId
+
+        比如你要运动的是一个属性 left
+          我是对象 = {
+            left: 1,   //表示第一个定时器
+          }
+
+        比如你要运动的是两个属性 left 和 top
+          我的对象 = {
+            left: 1,
+            top: 2
+          }
+
+        {
+          left: 1,
+          top: 2,
+          width: 3,
+          height: 4
+        }
+
+      问题又来了？当两个的运动距离不一样的时候，会有一个先到一个后到
+        你运动的总距离不一样，我让你运动的次数一样多
+        每次都运动剩余距离的 5分之一
+
+    */
+
+    const box = document.querySelector('div')
+
+    box.addEventListener('click', function () {
+      move(this, {
+        top: 2000,
+        left: 2000
+      })
+    })
+
+
+    function move(ele, target) {
+      let timerObj = {}
+      for (let attr in target) {
+        let distance = 0
+        timerObj[attr] = setInterval(() => {
+
+          distance += 5
+
+          ele.style[attr] = distance + 'px'
+
+          if (distance === target[attr]) {
+            // 哪一个到达目标关闭 timerObj 中的哪一个定时器
+            console.log(timerObj[attr])
+            clearInterval(timerObj[attr])
+          }
+
+
+        }, 30)
+      }
+
+      console.log(timerObj)
+    }
+
+
+
+
+
+
+  </script>
+</body>
+</html>

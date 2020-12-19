@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      构造函数的第二个问题
+        我们原先直接把方法写在构造函数体内的时候
+        函数体内的 this 是指向实例的，我们可以直接在方法内使用 this 来访问属性
+
+        现在我们把方法放在了 prototype 上
+        这个时候，方法内部的 this 指向哪里了
+
+      构造函数体内的 this 指向 当前实例
+      构造函数的 prototype 上的方法里面的 this 也指向 当前实例
+    */
+
+    function Person(name) {
+      this.name = name
+    }
+
+    Person.prototype.sayHi = function () {
+      // 这里面的 this
+      // 你使用哪个实例调用， this 就指向哪个实例
+      console.log(this.name)
+    }
+
+    const p1 = new Person('Jack')
+    const p2 = new Person('Rose')
+
+    p1.sayHi()
+    p2.sayHi()
+  </script>
+</body>
+</html>

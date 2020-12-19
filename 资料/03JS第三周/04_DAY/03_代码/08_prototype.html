@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      prototype
+        - **每一个函数天生自带一个属性，叫做 prototype，他是一个对象空间**
+        - 构造函数也是函数，构造函数也会有 prototype
+        - 你的函函数定义完毕之后，就会出现 prototype
+
+      是一个对象空间，我们就可以象里面添加一些内容
+    */
+
+
+    function Person() {}
+
+    // 向 Person.prototype 中添加了一个成员
+    Person.prototype.sayHi = function () {}
+    Person.prototype.fn = function () {}
+    Person.prototype.name = '我是 Person 的 prototype'
+
+    console.log(Person.prototype)
+  </script>
+</body>
+</html>

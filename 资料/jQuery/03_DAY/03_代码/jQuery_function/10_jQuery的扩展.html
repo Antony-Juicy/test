@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div></div>
+  <div></div>
+  <div></div>
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 给我们提供了一个扩展到的机制
+        + 一种是扩展给全局
+          + $.扩展的内容()
+          + $.extend()
+        + 一种是扩展给元素数据集合
+          + $('ul > li').扩展的内容()
+          + $.fn.extend()
+
+      $.extend()
+        + 传递的是一个对象
+        + 对象里面的每一项就是你扩展的内容
+        + 使用的时候，$.对象成员名称()
+    */
+
+    // $.extend({
+    //   max: function () {
+    //     // console.log('我被调用了')
+    //     // console.log(arguments)
+    //     // 找到最大值
+    //     return Math.max.apply(null, arguments)
+    //   },
+    //   min: function () {
+    //     // console.log('我是 min 函数')
+    //     return Math.min.apply(null, arguments)
+    //   }
+    // })
+
+
+    // var res = $.max(1, 2, 3, 4, 5, 56 )
+    // console.log(res)
+    // console.log($.min(-10, 99, 22, 33, -100))
+
+
+    /*
+      $.fn.extend()
+        + 接受一个对象
+        + 对象里面的每一个成员都是你扩展的内容
+        + 使用 元素集合.对象成员()
+    */
+
+    $.fn.extend({
+      a: function () {
+        console.log('我执行了')
+        console.log(this)
+
+        // 自己遍历
+        this.each((index, item) => {
+          // 自己给他设置
+          item.style.width = '100px'
+          item.style.height = '200px'
+          item.style.backgroundColor = 'pink'
+        })
+      }
+    })
+
+    $('div').a()
+  </script>
+</body>
+</html>

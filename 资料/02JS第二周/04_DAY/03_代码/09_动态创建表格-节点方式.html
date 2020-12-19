@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+    var arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Rose',
+        age: 20,
+        gender: '女'
+      },
+      {
+        name: 'Tom',
+        age: 22,
+        gender: '男'
+      }
+    ]
+
+    var tBody = document.querySelector('tbody')
+
+    // 循环遍历数组
+    for (var i = 0; i < arr.length; i++) {
+      var tr = document.createElement('tr')
+
+      // 隔行变色
+      if (i % 2 === 0) {
+        tr.style.backgroundColor = 'skyblue'
+      } else {
+        tr.style.backgroundColor = 'pink'
+      }
+
+      for (var attr in arr[i]) {
+        var td = document.createElement('td')
+        td.innerHTML = arr[i][attr]
+        tr.appendChild(td)
+      }
+
+      tBody.appendChild(tr)
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .nightsky {
+      width: 1000px;
+      height: 600px;
+      border: 10px solid pink;
+      margin: 10px auto;
+      background-color: #333;
+      position: relative;
+    }
+
+    .fire {
+      width: 10px;
+      height: 10px;
+      background-color: skyblue;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="nightsky" id="box"></div>
+
+  <script src="./move.js"></script>
+  <script src="./fire.js"></script>
+  <script>
+    const f = new FireCracker('#box')
+    console.log(f)
+
+    /*
+      1. 先给这个大盒子一个点击事件
+        在点击事件里面创建一个 fire 盒子
+        根据坐标的 x 坐标点，给他定位
+      2. 上到位置以后，让这个火花消失
+        直接移出就可以了
+        移出完毕以后还在原位置生成若干个小火花
+      3. 让小火花炸开
+
+    */
+
+  </script>
+</body>
+</html>

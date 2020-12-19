@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      解构赋值
+        + 解析一个解构并给变量赋值
+        + 就是快速的从对象或者数组中拿出对应的数据
+
+      1. 解构对象
+        + 使用 {} 解构对象
+        + 语法： { 变量 } = 对象
+          + 要求，这个变量必须是 对象中的某一个成员（不然你拿到的是 undefined）
+        + 使用的时候可以一次性解析多个
+        + 在解构的时候赋值一个别的名字
+          + 语法： { 对象中的某一个成员名称: 别名 } = 对象
+        + 在解构的时候，可以嵌套对象使用
+      2. 解构数组
+        + 使用 [] 解构数组
+        + 语法： [ 变量 ] = 数组
+        + 使用的时候可以一次性解析多个
+          + 在解构的时候是按照索引对应的
+        + 也可以嵌套使用
+    */
+
+    /*
+      ******************************
+        explanatory start 解构数组
+      ******************************
+
+
+
+      ******************************
+        explanatory end 解构数组
+      ******************************
+    */
+
+    const arr = ['hello', 'world', '你好', '世界', [1, 2]]
+
+    // var a = arr[0]
+    // var b = arr[1]
+    // console.log(a)
+    // console.log(b)
+
+    const [cd, b, c, d, [e, f]] = arr
+    console.log(cd)
+    console.log(b)
+    console.log(e, f)
+
+
+
+
+
+
+
+
+/*
+  ******************************
+    explanatory start 解构对象
+  ******************************
+
+
+
+  ******************************
+    explanatory end 解构对象
+  ******************************
+*/
+
+    // var obj = {
+    //   name: 'Jack',
+    //   age: 18,
+    //   gender: '男'
+    // }
+
+    // var name = obj.name
+    // console.log(name)
+    // const {name, age, gender} = obj // => 等价于 const name = obj.name
+    // console.log(name)
+    // console.log(age)
+    // console.log(gender)
+
+    // var name = obj.name
+    // var a = obj.name
+
+    // const { name: a, age, gender: g } = obj // => 等价于 const a = obj.name
+    // console.log(a)
+    // console.log(g)
+    // console.log(age)
+
+    // const obj = {
+    //   name: '我是 obj 对象',
+    //   data: {
+    //     name: '我是 obj.data 对象',
+    //     age: 18,
+    //     list: {
+    //       name: '我是 obj.data.list 对象',
+    //       age: 20
+    //     }
+    //   }
+    // }
+
+    // 向获取 18 这个值
+    // var a = obj.data.age
+    // const { data: { age: a, list: { age: b } } } = obj
+    // => const { age: a, list: { age: b } } = obj.data
+    // => const a = obj.data.age
+    // => const { age: b } = obj.data.list
+    // => const b = obj.data.list.age
+
+    // console.log(a)
+    // console.log(b)
+
+  </script>
+</body>
+</html>

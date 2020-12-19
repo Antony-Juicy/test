@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>我是一个盒子</div>
+
+  <script>
+
+    // 事件对象
+    //   是浏览器提供给我们的
+    //   用来描述当前这个事件被触发的时候是一些信息
+    /*
+      事件对象 window.event
+        用来在事件里面获取事件信息的一个对象
+
+      以前
+        window.event 是 IE 专用的
+        在标准浏览器是不适用 window.event 的
+        直接在事件处理函数中接受一个形参 event
+          会在触发事件的时候浏览器自动帮我们传递
+
+      现在所有浏览器都可以使用
+        但是我们一直保持一个传统，在获取事件对象的时候写成兼容方式
+
+
+    */
+
+    var div = document.querySelector('div')
+
+    // 事件处理函数的形参位置
+    div.onclick = function (event) {
+      // event 就是一个形参
+      //   会在这个事件触发的时候，浏览器帮忙传递实参
+      // console.log(event)
+
+      // 获取事件对象的兼容写法
+      //   在这里从新给形参赋值
+
+      // 在函数内部的形参变量 event
+      //   如果浏览器给我传递了 event
+      //   那么我就使用，
+      //   如果没有传递，那么我就使用 window.event
+      event = event || window.event
+      console.log(event)
+    }
+
+
+  </script>
+</body>
+</html>

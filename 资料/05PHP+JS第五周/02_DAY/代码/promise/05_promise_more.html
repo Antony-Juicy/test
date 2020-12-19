@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="../utils.js"></script>
+  <script>
+    /*
+      只要你在 一个 promise 对象的 then 里面return 了一个 promise 对象
+      那么可以继续 .then
+    */
+
+
+    // pAjax 会返回一个 promise 对象
+    pAjax({
+      url: './data1.php',
+      dataType: true
+    })
+    .then(function (res) {
+      // 你去根据 res 实现你的业务逻辑
+      return pAjax({
+        url: './data2.php',
+        dataType: true,
+        data: res
+      })
+    })
+    .then(res => {
+      // 你去更具 res 实现你的业务逻辑
+      return pAjax({
+        url: './data3.php',
+        dataType: true,
+        data: res
+      })
+    })
+    .then(res => {
+      console.log(res)
+    })
+
+
+    // const p1 = new Promise(function (resolve, reject) {
+    //   ajax({
+    //     url: './data1.php',
+    //     dataType: true,
+    //     success (res) {
+    //       resolve(res)
+    //     }
+    //   })
+    // })
+
+    // new Promise(function (resolve, reject) {
+    //   ajax({
+    //     url: './data1.php',
+    //     dataType: true,
+    //     success (res) {
+    //       resolve(res)
+    //     }
+    //   })
+    // })
+    // .then(function (res) {
+    //   const p2 = new Promise(function (resolve, reject) {
+    //     ajax({
+    //       url: './data2.php',
+    //       dataType: true,
+    //       data: res,
+    //       success (res) {
+    //         resolve(res)
+    //       }
+    //     })
+    //   })
+    //   return p2
+    // })
+    // .then(function (res) {
+    //   return new Promise(function (resolve, reject) {
+    //     ajax({
+    //       url: './data3.php',
+    //       dataType: true,
+    //       data: res,
+    //       success (res) {
+    //         resolve(res)
+    //       }
+    //     })
+    //   })
+    // })
+    // .then(function (res) {
+    //   console.log(res)
+    // })
+
+
+
+
+
+    // const p1 = new Promise(function (resolve, reject) {
+    //   ajax({
+    //     url: './data1.php',
+    //     dataType: true,
+    //     success (res) {
+
+    //       // 再 promise 对象里面呢
+    //       resolve(res)
+    //     }
+    //   })
+    // })
+
+    // p1.then(function (res) {
+    //   // console.log(res)
+
+    //   const p2 = new Promise(function (resolve, reject) {
+    //     ajax({
+    //       url: './data2.php',
+    //       dataType: true,
+    //       data: res,
+    //       success (res) {
+
+    //         // 再 promise 对象里面呢
+    //         resolve(res)
+    //       }
+    //     })
+    //   })
+
+    //   p2.then(function (res) {
+    //     // console.log(res)
+
+    //     const p3 = new Promise(function (resolve, reject) {
+    //       ajax({
+    //         url: './data3.php',
+    //         dataType: true,
+    //         data: res,
+    //         success (res) {
+
+    //           // 再 promise 对象里面呢
+    //           resolve(res)
+    //         }
+    //       })
+    //     })
+
+    //     p3.then(function (res) {
+    //       console.log(res)
+    //     })
+    //   })
+
+    // })
+
+
+  </script>
+</body>
+</html>

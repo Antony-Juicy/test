@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 把当前时间转换成中文
+
+    // 2019/8/27 14:50:12
+
+    // 二零一九年八月二十七号 下午 两点五十分十二秒 星期二
+
+    /*
+      1. 把数字格式化了
+        + 格式化年
+        + 格式化剩余数字
+      2. 格式化时间
+    */
+
+    var arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
+
+    function formatYear(n) {
+      // 把 n 转成 二零一九 返回
+      var a = parseInt(n / 1000)
+      var b = parseInt(n % 1000 / 100)
+      var c = parseInt(n % 100 / 10)
+      var d = n % 10
+
+      // 拆出来的四位数字刚好和数组的索引对应
+      // console.log(a, b, c, d)
+
+      return arr[a] + arr[b] + arr[c] + arr[d] + '年'
+    }
+
+    function formatNumber(n) {
+      // n 就是这个一位或者两位的数字
+
+      /*
+        一位数
+
+        两位数
+          十几  11 12 13
+          几十  20 30 40
+          几十几  22 33 44
+      */
+
+      if (n <= 10) {
+        // 几
+        return arr[n]
+      } else if (n < 20) {
+        // 十几
+        return '十' + arr[n - 10]
+      } else if (n >= 20 && n % 10 === 0) {
+        // 几十
+        return arr[n / 10] + '十'
+      } else {
+        // 几十几
+        var a = parseInt(n / 10)
+        var b = n % 10
+
+        return arr[a] + '十' + arr[b]
+      }
+    }
+
+    function formatTime(time) {
+      // 接受一个时间对象
+      var str = ''
+
+      // 1. 获取时间对象中的信息
+      var year = time.getFullYear()
+      var month = time.getMonth() + 1
+      var date = time.getDate()
+      var hours = time.getHours()
+      var minutes = time.getMinutes()
+      var seconds = time.getSeconds()
+      var day = time.getDay()
+
+      // 组装年份
+      str += formatYear(year)
+      // 组装月份
+      str += formatNumber(month) + '月'
+      // 组装日期
+      str += formatNumber(date) + '日 '
+      // 组装上下午
+      if (hours > 12) {
+        str += '下午 '
+      } else {
+        str += '上午 '
+      }
+      // 组装小时
+      if (hours === 12) {
+        str += formatNumber(hours) + '点'
+      } else {
+        str += formatNumber(hours % 12) + '点'
+      }
+      // 组装分钟
+      str += formatNumber(minutes) + '分'
+      // 组装秒钟
+      str += formatNumber(seconds) + '秒 星期'
+      // 组装周几
+      if (day === 0) {
+        str += '日'
+      } else {
+        str += formatNumber(day)
+      }
+
+      // 返回一组中国字
+      return str
+    }
+
+    var time = new Date('2019-8-25')
+    var res = formatTime(time)
+    console.log(res)
+
+  </script>
+</body>
+</html>

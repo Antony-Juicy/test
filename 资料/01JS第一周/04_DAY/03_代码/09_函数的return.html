@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+    // 这样的函数在执行完毕以后是没有结果的
+    // function fn() {
+    //   // 表示的这个函数的行为
+    //   // 也就是这个函数帮我做的事情
+    //   console.log('hello world')
+    // }
+
+    // fn()
+
+    // 需要函数给我一个结果的时候
+    // 我可以使用一个叫做 return 的关键字
+    // 这个关键字的作用就是给该函数创造一个结果
+    //   函数没有 return 的时候，那么返回值是 undefined
+    //   函数有 return，但是 return 后面没有东西，那么函数的返回值就是 undefined
+    //   函数有 return，并且 return 后面又内容，那么函数的返回值就是 return 后面的内容
+
+    // 使用函数在控制台打印出 两个 数字的和
+    // function fn(a, b) {
+    //   console.log(a + b)
+    // }
+    // fn(10, 20)
+
+    // 使用一个函数计算出两个数字的和
+    // function fn(a, b) {
+    //   var sum = a + b
+
+    //   // 将来这个 sum 会当作函数执行完毕的结果给到函数外部
+    //   // 我们也管这个东西叫做函数的返回值
+    //   return sum
+    // }
+
+    // var res = fn(10, 20)
+
+    // console.log(res)
+
+    // var res = Number('100')
+
+    // 当一个函数执行的时候，如果没有 return 关键字
+    // function fn() {
+    //   console.log('hello world')
+    // }
+
+    // // 现在 res 是在接受 fn 函数执行完毕的返回值
+    // // res 接受的是 undefined
+    // var res = fn()
+
+    // console.log(res)
+
+
+    // function fn() {
+    //   console.log('hello world')
+
+    //   return
+    // }
+
+    // // 现在 res 是在接受 fn 函数执行完毕的返回值
+    // // res 接受的是 undefined
+    // var res = fn()
+
+    // console.log(res)
+
+    function fn() {
+      console.log('hello world')
+
+      return '你好 世界'
+    }
+
+    // 现在 res 是在接受 fn 函数执行完毕的返回值
+    // ruturn 后面写的是什么，res 接受到的内容就是什么
+    var res = fn()
+
+    console.log(res)
+
+
+  </script>
+</body>
+</html>

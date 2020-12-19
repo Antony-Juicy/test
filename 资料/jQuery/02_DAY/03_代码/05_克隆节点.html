@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="box">
+    <div class="content">
+      hello world
+      <button>按钮</button>
+    </div>
+    <hr>
+  </div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      操作节点
+        创建节点
+        插入节点
+        替换节点
+        删除节点
+        克隆节点
+    */
+
+    /*
+      克隆节点
+        + clone()
+        + 元素.clone()
+        + 可以选填两个参数
+          + 第一个参数： 要不要复制一份元素身上事件过去
+            + 默认值就是 false
+            + 可以选择写一个 true
+          + 第二个参数： 要不要复制子元素身上的事件
+            + 默认值是跟随第一个参数
+            + 如果我项自己设置为 true，那么必须第一个参数也是 true
+    */
+
+    // const div = $('.content').clone()
+    // $('.box').append(div)
+    // $('.content').clone().appendTo($('.box'))
+
+
+    // $('.content').click(() => {
+    //   console.log('我被点击了')
+    // })
+    // $('.content').clone().appendTo($('.box'))
+
+
+
+    $('button').click(function () {
+      console.log('button')
+    })
+
+
+    $('.content')
+      .click(() => {
+        // console.log('我被点击了')
+      })
+      .clone(true, true)
+      .appendTo($('.box'))
+  </script>
+</body>
+</html>

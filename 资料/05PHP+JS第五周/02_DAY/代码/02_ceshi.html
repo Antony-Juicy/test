@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script src="./utils.js"></script>
+  <script>
+
+    // ajax({
+    //   url: './ajax.php',
+    //   type: 'POST',
+    //   // async: false,
+    //   dataType: true,
+    //   data: {
+    //     a: 100,
+    //     b: 200
+    //   },
+    //   // 在传递一个函数进去
+    //   success: function () {
+    //     console.log('我执行了')
+    //   }
+    // })
+
+    // send('a=100&b=200')
+
+    // console.log(Object.prototype.toString.call({}))
+    // console.log(Object.prototype.toString.call([]))
+    // console.log(Object.prototype.toString.call(1233))
+    // console.log(Object.prototype.toString.call(''))
+
+
+    // ajax({
+    //   url: './get.php',
+    //   success: function (res) {
+    //     // console.log('我执行了')
+    //     console.log(res)
+    //   }
+    // })
+
+    // ajax({
+    //   url: './get_json.php',
+    //   dataType: true
+    // })
+
+    // ajax({
+    //   url: './get_params.php',
+    //   dataType: true,
+    //   data: 'a=100&b=200'
+    // })
+
+    // ajax({
+    //   url: './post.php',
+    //   type: 'post'
+    // })
+
+    // ajax({
+    //   url: './post_json.php',
+    //   type: 'post',
+    //   dataType: true
+    // })
+
+    ajax({
+      url: './post_params.php',
+      type: 'POST',
+      dataType: true,
+      data: {
+        a: 200,
+        b: 500
+      },
+      success: function (res) {
+        console.log(res)
+        console.log(res.params1)
+      }
+    })
+  </script>
+</body>
+</html>

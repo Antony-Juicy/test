@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function Person(name) {
+      this.name = name
+    }
+
+    Person.prototype.sayHi = function () {
+      console.log('hello world')
+    }
+
+    // 子类使用 class 关键字来定义
+    class Student extends Person{
+      constructor (age, name) {
+        super(name)
+        this.age = age
+      }
+
+      fn () {
+        console.log('你好 世界')
+      }
+    }
+
+    const s = new Student(20, 'Tom')
+    console.log(s)
+  </script>
+</body>
+</html>

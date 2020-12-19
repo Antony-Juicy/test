@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="box">
+    <span>我是 div 里面本身的元素</span>
+    <span>我是 div 里面本身的元素</span>
+    <span>我是 div 里面本身的元素</span>
+    <span>我是 div 里面本身的元素</span>
+    <span>我是 div 里面本身的元素</span>
+    <span>我是 div 里面本身的元素</span>
+  </div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      操作节点
+        创建节点
+        插入节点
+        替换节点
+        删除节点
+        克隆节点
+    */
+
+    // 1. 创建节点
+    //   再 jQuery 里面，创建节点就使用 $()
+    //   传递一个 html 结构的字符串
+
+    // 创建了一个 p 元素节点
+    const p = $('<p>hello world</p>')
+
+    /*
+      替换节点
+        1. replaceWith()
+          + 被替换节点.replaceWith(要替换节点)
+          + 使用要替换的节点，把被替换节点换掉
+          + 因为有隐式迭代的存在，所以会把前面数据集合中的每一个节点都替换掉
+        2. replaceAll()
+          + 要替换的节点.replaceAll(被替换节点)
+          + 把所有被替换节点的数据集合内的元素都替换掉
+    */
+
+    // $('span').replaceWith(p)
+    // p.replaceAll($('span'))
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body, div {
+      width: 100%;
+      height: 100%;
+    }
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url('./loading.jpg') no-repeat center;
+      background-color: rgba(0, 0, 0, .4);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button>发送请求</button>
+
+  <div></div>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    // 先定义全局函数
+    $(window).ajaxSend(() => {
+      $('div').show()
+    })
+
+    $(window).ajaxComplete(() => {
+      $('div').hide()
+    })
+
+    $('button').click(() => {
+      $.ajax({
+        url: '../server/get.php',
+        data: 'a=100&b=200',
+        success (res) {
+          console.log(res)
+        }
+      })
+    })
+
+  </script>
+</body>
+</html>

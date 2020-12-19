@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      观察者模式（别名： 发布订阅模式）
+        + addEventListener()
+
+      例子： 我要买书
+        + 去书店买书
+        + 没有我要的书
+        + 我能做的事情就是一次一次的来，直到由了这个书就买走
+      观察者
+        + 我去书店买书
+        + 没有我要的书
+        + 我把电话留给店员，由了书以后你给我打电话
+        + 我就来买书
+        + 如果中间我在别的书店买到书了，我就告诉店员一下，你不用在通知我了
+
+      订阅：
+        box.addEventListener('click', a)
+        box.addEventListener('click', b)
+      取消订阅：
+        box.removeEventListener('click', a)
+
+      观察者模式
+        + 自定义事件
+        + 模仿 addEventListener 的形式，给一个对象来添加事件
+
+      有一个 构造函数
+        有属性有方法
+        属性： message: {}，用来记录你订阅的事件
+        方法： on: 用来向 message 盒子里面添加你订阅的事件
+        方法： off: 用来把 message 盒子里面的某一个你订阅的事件取消
+        方法:  emit: 用来把 message 里面的某一个行为出发了
+    */
+
+  </script>
+</body>
+</html>

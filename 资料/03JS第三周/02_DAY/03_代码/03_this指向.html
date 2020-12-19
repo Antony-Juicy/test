@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>我是一个 div 标签</div>
+
+  <script>
+    /*
+      this 指向（熟读并背诵全文）
+        1. 全局调用 函数名()  this => window
+        2. 对象调用 对象.函数名()  this => 点前面是谁就是谁
+        3. 定时器处理函数  this => window
+        4. 事件处理函数  this => 事件源（谁身上的事件）
+        5. 自执行函数  this => window
+
+      强行改变一个函数的 this 指向（熟读并背诵全文）
+        - 不管你原先指向哪里
+        - 我让你指向谁，你就指向谁
+
+      1. call()
+        语法： 函数名.call(你要改变的函数的 this 指向， 第二个参数开始，依次是给函数传递的参数)
+        会直接把函数调用了
+        第一个参数如果不写或者写一个 null，表示 window
+      2. apply()
+        语法： 函数名.apply(你要改变的函数的 this 指向，第二个参数是一个数组，数组里面每一项依次是给函数传递参数)
+        会直接把函数调用了
+      3. bind()
+        语法： 函数名.bind(你要改变的函数的 this 指向)
+        不会立即执行函数
+        返回值： 就是一个函数（只不过是一个被改变好了 this 指向的函数）
+        他对函数的参数传递有两个方式
+          1. 调用返回的函数的时候传递
+          2. 直接从第二个参数开始依次传递
+    */
+
+    var div = document.querySelector('div')
+
+    var obj = {
+      name: '我是 obj 对象',
+      fun: function () {
+        console.log(this)
+      }
+    }
+
+    function fn(a, b, c) {
+      console.log(this)
+      // console.log(a, b, c)
+    }
+
+    // fn(1, 2, 3)
+
+    // 表示 fn 函数在执行的时候，内部的 this 会指向 obj
+    // fn.call(obj, 10, 20, 30)
+
+    // 表示 fn 函数的执行的时候，内部的 this 会指向 div
+    // fn.call(div, 100, 200, 300)
+
+    // obj.fun()
+    // obj.fun.call()
+    // obj.fun.call(div)
+
+
+    // apply
+    // fn(1, 2, 3)
+    // fn.apply(obj, [10, 20, 30])
+    // fn.apply(div, [100, 200, 300])
+
+    // var arr = [1, 99, 200, 33, 45, -19, 127]
+    // var res = Math.min.apply(null, arr)
+    // console.log(res)
+
+
+
+    // bind
+    // fn(1, 2, 3)
+
+    // 把 fn 函数的 this 指向改变以后，把新的函数的地址给到 res
+    // var res = fn.bind(obj, 100, 200, 300)
+    // res()
+
+    // var res = fn.bind(div)
+    // res(10, 20, 30)
+
+    // 事件的时候要是想改变 this 指向要使用 bind 方法
+    // div.onclick = fn.bind(window)
+  </script>
+</body>
+</html>

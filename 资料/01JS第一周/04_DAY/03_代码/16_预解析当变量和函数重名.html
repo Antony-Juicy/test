@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // console.log(num)
+    // fn()
+
+    // var num = 100
+    // function fn() {
+    //   console.log('hello world')
+    // }
+
+    // console.log(num)
+    // fn()
+
+    /*
+      var num
+      function fn() {}
+      console.log(num)
+      fn()
+      num = 100
+      console.log(num)
+      fn()
+    */
+
+    /*
+      预解析
+        告诉浏览器由一个变量 fn 可以使用，并且这个 fn 的值是一个函数地址
+        告诉浏览器由一个变量 fn 可以使用
+
+      代码执行
+        在代码执行的一开始，fn 是一个函数地址
+        fn = 100，这个时候 fn 存储的内容就是 100 这个值，不在是函数地址了
+        fn() 我拿一个数字当作函数来执行，报错
+
+
+    */
+
+    // fn()
+    // function fn() {
+    //   console.log('我是 fn 函数')
+    // }
+    // var fn = 100
+    // fn()
+    /*
+      function fn() {
+        console.log('我是 fn 函数')
+      }
+      var fn
+      fn()
+      fn = 100
+      fn()
+    */
+
+    /*
+      预解析
+        告诉浏览器有一个 fn 变量可以使用
+        告诉浏览器由一个 fn 变量可以使用，并且这个变量的值是一个函数地址
+
+      代码执行
+        在代码开始执行的时候，fn 是一个函数地址
+        fn() 可以正常运行
+        fn = 100，这个时候是把 fn 变量的值换成了 100
+        fn()
+    */
+    fn()
+    var fn = 100
+    function fn() {
+      console.log('我是 fn 函数')
+    }
+    fn()
+
+    /*
+      var fn
+      function fn() {}
+      fn()
+      fn = 100
+      fn()
+
+    */
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 里面由一个方法叫做 ajax
+        + 专门用来发送所有请求
+        + $.ajax(options)
+        + 所有的配置信息只有 url 必填
+
+      $.ajax({
+        url: '', 请求地址
+        type: ''， 请求方式 默认是 get    （这个成员名称可以叫做 type 也可以叫做 method）
+        async: '', 是否异步 默认是 true
+        data: '', 携带的参数，可以是字符串也可以是对象
+        success: function () {}, 成功的回调
+        dataType: '', 期望返回的数据类型 json 的时候会执行 JSON.parse()
+        error: function () {}, 失败的回调（由 jQuery 判定失败就是失败）
+        cache: boolean, 是否缓存
+        timeout: 时间, 超时时间（超过多少时间没用响应就算失败）
+        context: 对象，改变回调函数里面的 this 指向
+      })
+    */
+
+    const obj = {
+      name: 'Jack'
+    }
+
+    // $.ajax({
+    //   url: '../server/get.php',
+    //   method: 'GET',
+    //   async: true,
+    //   data: 'a=100&b=200',
+    //   success: function (res) {
+    //     console.log(res)
+    //     console.log(this)
+    //   },
+    //   error: function (xhr, info, message) {
+    //     console.log('本次请求失败了')
+    //     console.log(xhr)
+    //     console.log(info)
+    //     console.log(message)
+    //   },
+    //   cache: false,
+    //   timeout: 3000,
+    //   context: obj
+    // })
+
+    // console.log('script')
+
+
+    $.ajax({
+      url: '../server/post_json.php',
+      method: 'POST',
+      dataType: 'json',
+      data: {
+        a: 200,
+        b: 300
+      },
+      success (res) {
+        console.log(res)
+      }
+    })
+
+
+
+
+
+
+
+
+    // 我们自己封装的
+    // ajax({
+    //   url: '',
+    //   async: '',
+    //   data: '',
+    //   dataType: '',
+    //   success: '',
+    //   type: ''
+    // })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      promise 承诺
+        再 js 里面 es6（ES2015） 的标准里面才有
+        是一个内置的构造函数叫做 Promise
+        语法： new Promise()
+          + 再new Promise 的时候传递一个参数
+          + 这个参数时一个函数
+
+      一个承诺的状态
+        1. pedding 继续
+        2. resolved 成功
+        3. rejected 失败
+
+      promise 的作用就是你需要完成一个异步事情的时候，把这个事情交给我
+        + 我承诺，我会把这个事情给你完成
+        + 给你一个结果
+    */
+
+
+    // p 得到的就是一个对象，我们管这个对象叫做 promise 对象
+    var p = new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        console.log('买报纸')
+
+        // 买报纸成功了
+        // 传递一个实参
+        // resolve(123)
+        // reject('失败了')
+      }, 2000)
+    })
+
+    p.then(function (res) {
+      // 这个 then 里面的 function 会在你的 Promise 中
+      // 当 resolve() 的时候执行
+      console.log('我执行了')
+      console.log(res)
+    })
+
+    p.catch(function (error) {
+      // 这个 catch 里面的 function 会在你的 promise 中
+      // 当 reject() 的时候执行
+      console.log('我也执行了')
+      console.log(error)
+    })
+
+  </script>
+</body>
+</html>

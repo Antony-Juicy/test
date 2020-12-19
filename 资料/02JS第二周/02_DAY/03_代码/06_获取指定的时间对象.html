@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 获取指定时间对象
+    // 在 new Date() 的时候传递参数就可以了
+
+    // 1. 传递数字，至少传递两个
+    //    第一个数字表示年份，第二个数字表示月份
+    //    表示月份的时候，0 表示 1 月，11 表示 12 月
+    //    剩下的参数十你没有传递就是默认值
+    // var time = new Date(2018, 0)
+    // console.log(time)
+
+    // 2. 传递数字，传递三个数字
+    //    第三个参数表示 日  1 表示 1 号，31 表示 31 号
+    // var time = new Date(2018, 0, 1)
+    // console.log(time)
+
+    // 3. 传递数字，传递四个数字
+    //    第四个参数表示小时，二十四小时制度的
+    // var time = new Date(2018, 0, 1, 23)
+    // console.log(time)
+
+    // 4. 传递五个数字
+    //    第五个参数表示分钟，0 ~ 59
+    // var time = new Date(2018, 0, 1, 22, 33)
+    // console.log(time)
+
+    // 5. 传递六个数字
+    //    第六个参数表示的十秒 0 ~ 59
+    // var time = new Date(2018, 0, 1, 22, 33, 45)
+    // console.log(time)
+
+    // 6. 传递一个字符串
+    //    写字符串的时候 1 表示一月 12 就表示 12月
+    var time = new Date('2018-01-03 22:22:22')
+    console.log(time)
+
+  </script>
+</body>
+</html>

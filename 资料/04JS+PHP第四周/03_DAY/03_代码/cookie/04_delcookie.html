@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">按钮</button>
+
+  <script src="./utile.js"></script>
+  <script>
+    /*
+      删除 cookie
+        就是把过期时间设置成现在的时间以前之前的就好了
+    */
+
+    setCookie('a', '100')
+    setCookie('b', '200')
+    setCookie('c', '300')
+
+    console.log(getCookie('a'))
+
+    const btn = document.querySelector('.btn')
+
+    btn.onclick = function () {
+      // 我以点击就删除 a 这个 cookie
+      delCookie('a')
+    }
+  </script>
+</body>
+</html>

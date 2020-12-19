@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <script>
+
+    const lis = document.querySelectorAll('li')
+
+    // for (var i = 0; i < lis.length; i++) {
+    //   lis[i].setAttribute('index', i)
+    //   lis[i].onclick = function () {
+    //     console.log(this.getAttribute('index'))
+    //   }
+    // }
+
+    // for (let i = 0; i < lis.length; i++) {
+    //   lis[i].onclick = function () {
+    //     console.log(i)
+    //   }
+    // }
+
+    // for (var i = 0; i < lis.length; i++) {
+    //   lis[i].onclick = (function outer(index) {
+    //     return function inner() {
+    //       console.log(index)
+    //     }
+    //   })(i)
+    // }
+
+    /*
+      i === 0
+        有一个函数的执行空间出现了 xxff01 (outer)
+        在 xxff01 这个空间里面 index 变量是 0
+        在 xxff01 这个空间里面 return 了一个函数定义空间 xxff11（inner）
+        lis[0].onclick 接受的是 xxff11 这个函数定义空间
+      i === 1
+        有一个函数的执行空间出现了 xxff02 (outer)
+        在 xxff02 这个空间里面 index 变量是 1
+        在 xxff02 这个空间里面 return 里一个函数定义空间 xxff22（inner）
+        lis[1].onclick 接受的是 xxff22 这个函数定义空间
+      i === 2
+        有一个函数的执行空间出现了 xxff03 (outer)
+        在 xxff03 这个空间李米娜 index 变量是 2
+        在 xxff03 这个空间里面 return 了一个函数定义空间 xxff33 (inner)
+        lis[2].onclick 接受的是 xxff33 这个函数定义空间
+      i === 3 循环结束
+      点击 lis[0]
+        执行的是谁 xxff11 这个函数
+        在 xxff11 这个函数里面访问了一个 index 变量
+        自己没有去到上一级查找，上一级是谁 xxff01
+        打印出来的就是 0
+      点击 lis[1]
+        执行的是谁 xxff22 这个函数
+        在 xxff22 这个函数里面访问了一个 index 变量
+        自己没有去上一级查找，上一级是 xxff02
+        打印出来的就是 1
+      点击 lis[2]
+        执行的是谁 xxff33 这个函数
+        在 xxff33 这个函数里面访问了一个 index 变量
+        自己没有就去上一级查找，上一级是 xxff03
+        打印出来的就是 2
+    */
+
+
+  </script>
+</body>
+</html>

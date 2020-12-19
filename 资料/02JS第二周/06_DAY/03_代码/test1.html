@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+
+  </div>
+
+
+  <script>
+    var box = document.querySelector('div')
+
+    var window_width = document.documentElement.clientWidth
+    var window_height = document.documentElement.clientHeight
+
+    var box_width = box.offsetWidth
+    var box_height = box.offsetHeight
+
+    function handler(e) {
+      e = e || window.event
+
+      var x = e.clientX - 100
+      var y = e.clientY - 100
+
+      // 直接在这里加上一个数值就可以了
+      if (x <= 0 + 30) {
+        x = 0
+      }
+
+      if (y <= 0 + 30) {
+        y = 0
+      }
+
+      if (x >= window_width - box_width - 30) {
+        x = window_width - box_width
+      }
+
+      if (y >= window_height - box_height - 30) {
+        y = window_height - box_height
+      }
+
+      this.style.left = x + 'px'
+      this.style.top = y + 'px'
+    }
+
+    box.addEventListener('mousedown', function () {
+      box.addEventListener('mousemove', handler)
+    })
+    box.addEventListener('mouseup', function () {
+      box.removeEventListener('mousemove', handler)
+    })
+  </script>
+</body>
+</html>

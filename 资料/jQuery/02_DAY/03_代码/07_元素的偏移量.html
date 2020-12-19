@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      margin: 30px;
+      overflow: hidden;
+      position: relative;
+
+    }
+
+    ul {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+      margin: 20px;
+      overflow: hidden;
+
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      /* margin: 10px; */
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <ul>
+      <p></p>
+    </ul>
+  </div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      元素偏移量
+        1. offset()
+          + 是一个读写的属性
+          + 读取的时候，读出来的是一个对象
+          + offset 的读取
+            + 相对于页面左上角的尺寸
+            + 不管 margin 还是 position 都会计算在内
+          + offset 的设置
+            + offset({ left: 值, top: 值 })
+            + 是一个绝对设置
+              + 不管你现在的值是什么样
+              + 都绝对给你放到距离页面左侧或者上面固定的位置
+
+        2. position()
+          + 是一个只读的属性
+          + 读取到的就是元素的定位偏移量
+            + 不管自己定位与否，如果有定位父级
+              + 根据定位父级来计算我的定位偏移量
+            + 我自己没有定位，我的父元素的父元素有定位
+              + 计算的是我和父元素的父元素的定位偏移量
+            + 我自己有定位的情况
+              + 你拿到的就是自己的 left 值和 top 值
+              + 如果你写的是 right 或者 bottom 那么会给你计算出一个 left 或者 top 给你看
+
+      诀窍：
+        如果你自己元素没有定位
+          + 就使用 offset()
+          + 获取两个元素之间的距离
+          + 直接获取两个元素 offset 相减
+        如果你自己元素有定位
+          + 就使用 position()
+    */
+
+    // console.log($('p').offset())
+    // $('p').offset({
+    //   left: 70
+    // })
+
+    // console.log($('p').position())
+</script>
+</body>
+</html>

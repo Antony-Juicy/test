@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="./utile.js"></script>
+  <script>
+    /*
+      获取先要设置一些
+
+        直接使用 document.cookie 就能获取
+    */
+
+    setCookie('a', '100')
+    setCookie('b', '200')
+    setCookie('c', '300')
+
+
+    // key
+    // function getCookie(key) {
+
+    //   var value = ''
+
+    //   // 获取所有 cookie
+    //   var tmpArr = document.cookie.split('; ')
+
+    //   // 直接循环 tmpArr
+    //   tmpArr.forEach(item => {
+    //     var tmp = item.split('=')
+    //     // console.log(tmp)
+    //     // 如果这个数组里面的 [0] 和你传递进来的 key 一样
+    //     // 我把这个数组里面的 [1] 给你就行了
+    //     if (tmp[0] === key) {
+    //       value = tmp[1]
+    //     }
+    //   })
+
+
+    //   return value
+
+    // }
+
+    // const res = getCookie('a')
+
+    // console.log(res)
+
+
+
+
+    // console.log(document.cookie)
+
+    // const str = document.cookie
+    // const arr = str.split('; ')
+
+    // arr.forEach(item => {
+
+    //   // 把每一项切开
+    //   console.log(item.split('='))
+    // })
+
+    // console.log(arr)
+
+  </script>
+</body>
+</html>

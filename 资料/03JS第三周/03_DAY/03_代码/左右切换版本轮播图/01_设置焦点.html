@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <!--
+    布局
+  -->
+  <div class="banner">
+    <ul class="img_box">
+      <li style="background-color: red;">1</li>
+      <li style="background-color: orange;">2</li>
+      <li style="background-color: green;">3</li>
+      <li style="background-color: skyblue;">4</li>
+      <li style="background-color: hotpink;">5</li>
+    </ul>
+
+    <ol class="point_box"></ol>
+
+    <div class="leftRight">
+      <span>&lt;</span>
+      <span>&gt;</span>
+    </div>
+  </div>
+
+
+
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      分析
+        1. 焦点要不要直接写好
+          + 焦点按钮最好是用 js 代码生成
+          + 焦点按钮的盒子也要动态设置
+        2. 要复制元素
+          + 把本来的第一张复制一个放在最后
+          + 把本来的最后一张复制一个放在最前
+          + 重新设置一下 ul 的宽度
+        3. 让轮播图动起来
+    */
+
+    // 0. 获取元素
+    // 获取可视区域盒子
+    const banner_box = document.querySelector('.banner')
+    // 获取图片盒子
+    const img_box = banner_box.querySelector('ul')
+    // 获取焦点盒子
+    const point_box = banner_box.querySelector('ol')
+    // 获取左右切换的盒子
+    const leftRight_box = banner_box.querySelector('.leftRight')
+
+    // 1. 设置焦点
+    setPoint()
+
+
+    // 设置焦点的函数
+    function setPoint() {
+      // 根据 img_box 的子元素的数量来设置焦点的数量
+      // 获取图片盒子子元素的数量
+      const pointNumber = img_box.children.length
+
+      // 有多少个就生成多少个焦点 li
+      const frg = document.createDocumentFragment()
+      for (let i = 0; i < pointNumber; i++) {
+        const li = document.createElement('li')
+        // 判断一下 第一个 有一个 active
+        if (i === 0) {
+          li.className = 'active'
+        }
+        frg.appendChild(li)
+      }
+
+      // 设置一下 point_box 的宽度
+      point_box.style.width = pointNumber * 20 * 2 + 'px'
+
+      // 一次性把 frg 丢到 point_box 盒子里面
+      point_box.appendChild(frg)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .lrc {
+      width: 300px;
+      height: 300px;
+      background-color: #fff;
+      border: 2px solid #333;
+      margin: 30px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    ul {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 150px;
+      transition: top .3s linear;
+    }
+
+    li {
+      width: 100%;
+      height: 20px;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    li.active {
+      color: hotpink;
+      transition: color .3s linear;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="lrc">
+    <ul>
+      <li class="active">布拉格广场</li>
+    </ul>
+  </div>
+  <audio src="./布拉格广场.mp3" controls></audio>
+
+
+  <script src="./lrc.js"></script>
+  <script>
+    // 1. 先把字符串切割成一个数组
+    // 2. 把每一项的空格去掉
+    var tmpArr = lrcStr.split('\n').map(function (item) {
+      return item.trim()
+    })
+
+    // 3. 书写正则，去比配字符串
+    var lrcReg = /^\[(\d{2}:\d{2})\.\d{2}\](.+)$/
+
+    // 4. 准备一个数组放时间，准备一个数组放歌词
+
+    // 时间数组，随着播放去匹配对应的时间
+    var timeArr = []
+    // 歌词数组，渲染页面上的 li
+    var lrcArr = []
+
+    tmpArr.forEach(function (item) {
+      var res = lrcReg.exec(item)
+      if (res) {
+        timeArr.push(res[1])
+        lrcArr.push(res[2])
+      }
+    })
+
+    // 5. 使用歌词数组去渲染页面
+    var ul = document.querySelector('ul')
+    var str = ''
+
+    // 循环遍历歌词数组
+    lrcArr.forEach(function (item, index) {
+      // 如果 index === 0 的时候添加一个类名
+      if (index === 0) {
+        str += '<li class="active">'
+      } else {
+        str += '<li>'
+      }
+      str += item
+      str += '</li>'
+    })
+
+    ul.innerHTML = str
+
+    // 6. 给 audio 元素添加一个 timeupdate 事件
+    var audio = document.querySelector('audio')
+
+    // 获取一下所有的 li
+    var lis = document.querySelectorAll('li')
+    audio.addEventListener('timeupdate', function () {
+      // 获取歌曲的当前时间
+      // console.log(this.currentTime)
+      // 89.016499
+      // 格式化一下时间
+      // 00:00
+      var minute = parseInt(this.currentTime / 60)
+      var second = parseInt(this.currentTime % 60)
+
+      // 对时间数字做一下转换
+      if (minute === 0) {
+        minute = '00'
+      } else if (minute < 10) {
+        minute = '0' + minute
+      }
+
+      if (second === 0) {
+        second = '00'
+      } else if (second < 10) {
+        second = '0' + second
+      }
+
+      var time = minute + ':' + second
+
+      // 使用这个时间去和 timeArr 里面的每一个内容配套
+      // 我们目前配套的东西有多少个
+      /*
+        timeArr 里面的索引是和 lrcArr 的索引配套
+        timeArr 里面的索引和 li 的索引也是配套的
+
+        如果当前的时间和 timeArr[10] 正好一样了
+        让第 10 个 li 在刚好中间的位置
+
+        随着时间让 150 - 10 * 20
+      */
+
+      // 循环遍历 timeArr，看看当前时间和哪一个时间配套
+      timeArr.forEach(function (item, index) {
+        if (time === item) {
+          // index 就是配套的那个 索引
+          ul.style.top = 150 - index * 20 + 'px'
+
+
+          // 切换每一个 li 的 active 类名
+          // 给灭一个 li 的类名都干掉
+          // 只给自己加，自己是谁
+          lis.forEach(function (item) {
+            item.className = ''
+          })
+
+          lis[index].className = 'active'
+
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

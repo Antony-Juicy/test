@@ -1,0 +1,47 @@
+.box {
+  height: 80px;
+}
+
+.box > .row {
+  height: 100%;
+}
+
+.title {
+  width: 100%;
+  height: 100%;
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hotpink;
+  font-size: 60px;
+}
+
+.left_box {
+  width: 500px;
+  height: 500px;
+}
+
+.left_box > a, .left_box > a > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.right_box {
+  width: auto;
+}
+
+h4 {
+  margin: 30px 0!important;
+  font-size: 30px;
+}
+
+.btns {
+  margin-bottom: 20px;
+}
+
+.price > i, .price > span {
+  font-size: 100px;
+  color: red;
+}

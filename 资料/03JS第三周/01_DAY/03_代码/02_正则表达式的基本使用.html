@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      正则表达式就是用来检测字符串是不是满足要求的
+
+      1. test() 用来检测字符串
+        语法： 正则表达式.test(字符串)
+        返回值： 如果字符串满足我写的规则，那么返回 true，否则返回 false
+    */
+
+    // 需要包含字符 abcd
+    var reg = /abcd/
+    var str = 'sfdasfsgefsa bcdasfjifgerjgnen'
+    // 用刚才的正则取检测 str 这个字符串
+    var res = reg.test(str)
+    console.log(res)
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 1. 其他数据类型转换成字符串
+
+    // 方法1： String(你要转换的数据类型)
+    //    结果以返回值的形式接受
+    // var n1 = 100
+    // var res1 = String(n1)
+    // console.log(res1)
+
+    // var n2 = true
+    // var res2 = String(n2)
+    // console.log(res2)
+
+    // var n3
+    // var res3 = String(n3)
+    // console.log(res3)
+
+    // 方法2： 你要转换的数据.toString()
+    //   结果以返回值的形式接受
+    //   toString 这个方法在使用的时候有一个特殊的作用
+    //     可以把一个数字转换进制输出
+    //     你要转换的数据.toString(你要转换的进制数)
+    //     进制数可以填写多少 2 - 36 都可以
+    // var n1 = 100
+    // var res1 = n1.toString()
+    // console.log(res1)
+
+    // var n2 = true
+    // var res2 = n2.toString()
+    // console.log(res2)
+
+    // var n3 = 1000000000
+    // var res3 = n3.toString(36)
+    // console.log(res3)
+
+    // 方法3： 进行 + 的运算
+    //   只要 + 有一边是 字符串，就会进行字符串拼接
+    //   结果就是一个字符串
+    // var n1 = 100
+    // var res1 = n1 + '123'
+    // console.log(res1)
+
+    console.log(1 + 2 + 3 + 4)
+    console.log(1 + 2 + 3 + '4')
+    console.log('1' + 2 + 3 + 4)
+    console.log('1' + 2 + 3 * 4)
+    console.log((1 + '2') + (3 + 4))
+  </script>
+</body>
+</html>

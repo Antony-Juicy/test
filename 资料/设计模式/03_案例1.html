@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div.alert {
+      width: 300px;
+      height: 150px;
+      border: 1px solid #333;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button>弹出来一下</button>
+
+  <div>
+    在来一次
+  </div>
+
+  <script>
+    /*
+      alert()
+      做弹出层的时候
+        + 创建一个 div
+        + 把 div 插入页面
+        + 把文字写入 div 里面
+        + 让 div 展示出来
+      我们把这个弹出层的功能做成单例模式
+    */
+
+    const Alert = (function () {
+
+      // 核心构造函数
+      function Abc() {
+        this.title = ''
+        this.ele = document.createElement('div')
+        this.ele.className = 'alert'
+        this.btn = document.createElement('button')
+        this.btn.innerText = '关闭'
+        document.body.appendChild(this.ele)
+      }
+
+      Abc.prototype.init = function (text) {
+        this.title = text
+        this.ele.innerText = this.title
+        this.ele.appendChild(this.btn)
+        this.ele.style.display = 'block'
+        this.btn.addEventListener('click', () => {
+          this.ele.style.display = 'none'
+        })
+      }
+
+      // 核心代码
+      let instance
+
+      return function a(text) {
+        if (!instance) {
+          instance = new Abc()
+        }
+
+        // 让实例调用一下 init 方法
+        instance.init(text)
+
+        return instance
+      }
+    })()
+
+
+    const btn = document.querySelector('button')
+
+    btn.onclick = function () {
+      new Alert('hello world')
+    }
+
+    const box = document.querySelector('div')
+    box.onclick = function () {
+      new Alert('你好 世界')
+    }
+
+
+
+  </script>
+</body>
+</html>

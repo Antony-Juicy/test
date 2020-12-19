@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 640px;
+      height: 640px;
+      border: 10px solid pink;
+      border-radius: 10px;
+      margin: 10px auto;
+      position: relative;
+    }
+
+    li {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      border-radius: 10px;
+
+      color: #fff;
+      font-size: 100px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li style="top: 10px; left: 10px;">1</li>
+    <li style="top: 10px; left: 220px;">2</li>
+    <li style="top: 10px; left: 430px;">3</li>
+    <li style="top: 220px; left: 10px;">4</li>
+    <li style="top: 220px; left: 220px;">5</li>
+    <li style="top: 220px; left: 430px;">6</li>
+    <li style="top: 430px; left: 10px;">7</li>
+    <li style="top: 430px; left: 220px;">8</li>
+    <li style="top: 430px; left: 430px;">9</li>
+  </ul>
+
+  <script>
+    var arr = ['yellow', 'pink', 'red', 'orange', 'green', 'skyblue', 'purple', 'blue', 'hotpink']
+
+    var ul = document.querySelector('ul')
+    var lis = document.querySelectorAll('li')
+
+    /*
+      1. 绑定事件
+        + mousedown
+        + mousemove
+        + mouseup
+        + mouseout
+        + 给每一个 li 都得绑定
+        + 事件绑定顺序
+          + 先绑定一个 mousedown 事件
+            1. 绑定 mousemove
+            2. 绑定 mouseup
+            3. 绑定 mouseout
+          + 再 mouseout 事件
+            1. 取消 mousemove
+            2. 取消 mouseout
+            3. 取消 mouseup
+          + 再 mouseup 事件
+            1. 取消 mousemove
+            2. 取消 mouseout
+            3. 取消 mouseup
+        + 取消选中状态
+      2. 先让元素动起来
+        + 再 move 函数里面进行操作
+        + 计算坐标点
+          + 再 mousedowd 的时候记录一些东西
+            + 最开始的 left 和 top
+            + 记录我点击的点
+          + 再 mousemove 的时候
+            + 随时获取光标距离屏幕左侧的最标点
+      3. 脱手回归原位
+        + 再 out 函数里面书写
+    */
+
+    var ul_width = ul.clientWidth,
+        ul_height = ul.clientHeight,
+        startLeft, startTop,
+        startX, startY,
+        moveX, moveY
+
+
+    function move(e) {
+      e = e || widnow.event
+
+      // 记录移动到的位置
+      moveX = e.clientX - startX + startLeft
+      moveY = e.clientY - startY + startTop
+
+      // 边界值判断
+      if (moveX <= 0) {
+        moveX = 0
+      }
+
+      if (moveY <= 0) {
+        moveY = 0
+      }
+
+      // 右边的边界值判断
+      if (moveX >= ul_width - this.offsetWidth) {
+        moveX = ul_width - this.offsetWidth
+      }
+
+      // 下边的边界值判断
+      if (moveY >= ul_height - this.offsetHeight) {
+        moveY = ul_height - this.offsetHeight
+      }
+
+      // 元素赋值
+      this.style.zIndex = 10
+      this.style.left = moveX + 'px'
+      this.style.top = moveY + 'px'
+    }
+
+    function out() {
+      this.removeEventListener('mouseup', up)
+      this.removeEventListener('mouseout', out)
+      this.removeEventListener('mousemove', move)
+
+      // 脱手以后直接回归原位就行了
+      // 只要你添加了 transition 就应该再下一次再点下去的把 transition 取消掉
+      this.style.transition = 'all .3s linear'
+      this.style.left = startLeft + 'px'
+      this.style.top = startTop + 'px'
+      this.style.zIndex = 1
+    }
+
+    function up() {
+      this.removeEventListener('mouseup', up)
+      this.removeEventListener('mouseout', out)
+      this.removeEventListener('mousemove', move)
+
+      this.style.zIndex = 1
+    }
+
+    // 给 li 绑定事件
+    lis.forEach(function (item) {
+      item.addEventListener('mousedown', function (e) {
+        e = e || widnow.event
+        startX = e.clientX
+        startY = e.clientY
+
+        // 初始的左边的像素
+        startLeft = this.offsetLeft
+        startTop = this.offsetTop
+
+        // 取消 transition
+        this.style.transition = 'none'
+
+        this.addEventListener('mousemove', move)
+        this.addEventListener('mouseout', out)
+        this.addEventListener('mouseup', up)
+      })
+    })
+
+
+
+
+    // 取消选中状态
+    document.addEventListener('selectstart', function (e) {
+      e = e || window.event
+      if (e.preventDefault) {
+        e.preventDefault()
+      } else {
+        e.returnValue = false
+      }
+    })
+
+    // 添加背景颜色
+    arr.forEach(function (item, index) {
+      lis[index].style.backgroundColor = item
+    })
+
+  </script>
+</body>
+</html>

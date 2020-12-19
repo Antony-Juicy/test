@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="box">
+    <span>我是 div 里面原始 span 标签</span>
+    <span>我是 div 里面原始 span 标签</span>
+    <span>我是 div 里面原始 span 标签</span>
+    <span>我是 div 里面原始 span 标签</span>
+    <span>我是 div 里面原始 span 标签</span>
+    <span>我是 div 里面原始 span 标签</span>
+  </div>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      操作节点
+        创建节点
+        插入节点
+        替换节点
+        删除节点
+        克隆节点
+    */
+
+    // 1. 创建节点
+    //   再 jQuery 里面，创建节点就使用 $()
+    //   传递一个 html 结构的字符串
+
+    // 创建了一个 p 元素节点
+    const p = $('<p>hello world</p>')
+
+    /*
+      删除节点
+        1. remove()
+          + 元素.remove()
+          + 把自己从页面里面移除
+        2. empty()
+          + 元素.empty()
+          + 把自己变成一个空标签
+    */
+
+    // $('span').remove()
+    // $('.box').empty()
+
+    // $('ul > li').eq(4).remove()
+
+  </script>
+</body>
+</html>

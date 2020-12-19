@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box1 {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      margin: 30px auto;
+    }
+
+    .box2 {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .box1, .box2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box1">
+    <div class="box2">
+      <div class="box3"></div>
+    </div>
+  </div>
+
+  <script>
+    var box1 = document.getElementsByTagName('div')[0]
+    var box2 = document.getElementsByTagName('div')[1]
+    var box3 = document.getElementsByTagName('div')[2]
+
+    box1.addEventListener('click', function () { console.log('我被点击了， 我是 box1') })
+    document.body.addEventListener('click', function () { console.log('我被点击了， 我是 body') })
+    window.addEventListener('click', function () { console.log('我被点击了， 我是 window') })
+    box2.addEventListener('click', function () { console.log('我被点击了， 我是 box2') })
+    document.documentElement.addEventListener('click', function () { console.log('我被点击了， 我是 html') })
+    box3.addEventListener('click', function () { console.log('我被点击了， 我是 box3') })
+    document.addEventListener('click', function () { console.log('我被点击了， 我是 document') })
+
+
+    /*
+      box3 是 orange
+      box2 是 skyblue
+      box1 是 pink
+
+      当我点击在 box3 身上的时候
+        确实是点击在了 box2 身上
+        确实是点击在了 box1 身上
+
+      当你点击在一个元素身上的时候
+        会从你点击的元素开始
+        按照 html 的结构逐级向上的所有父级元素的同类型事件，都会触发
+        会从点击元素开始，一直按照结构父级向上找直到 window
+
+      这个行为叫做事件的传播
+    */
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      1. 写九行，每行一个 *
+      2. 第一行出一个 *
+         第二行出两个 *
+
+
+    */
+
+    // 再页面中写一个 *
+    // document.write('*')
+
+    // for (var i = 1; i <= 9; i++) {
+
+    //   // 当前是第几行
+    //   // i 就表示着当前的行数
+    //   // i === 1 表示第一行
+    //   // i === 9 表示第九行
+    //   for (var j = 1; j <= i; j++) {
+    //     // i === 1 的时候 j === 1
+    //     // i === 2 的时候 j === 1 2
+    //     // i === 3 的时候 j === 1 2 3
+    //     document.write('*')
+    //   }
+
+    //   document.write('<br>')
+    // }
+
+
+    // 2. 第一行是 9 个
+    //    第九行是 1 个
+
+    // for (var i = 1; i <= 9; i++) {
+
+    //   // 第一行 9 个
+    //   // 第二行 8 个
+    //   // 第九行 1 个
+    //   for (var j = i; j <= 9; j++) {
+    //     // i === 1 的时候 j === 1 2 3 4 5 6 7 8 9
+    //     // i === 2 的时候 j === 2 3 4 5 6 7 8 9
+    //     // i === 3 的时候 j === 3 4 5 6 7 8 9
+    //     document.write('*')
+    //   }
+
+    //   document.write('<br>')
+    // }
+
+    // 3. 等腰三角形
+    /*
+             *
+            * *
+           * * *
+          * * * *
+         * * * * *
+        * * * * * *
+       * * * * * * *
+      * * * * * * * *
+     * * * * * * * * *
+
+    第一行 9 个空格 + *
+    第二行 8 个空格 + * *
+    第三行 7 个空格 + * * *
+    */
+
+    // for (var i = 1; i <= 9; i++) {
+
+    //   // 准备空格
+    //   var str = ''
+    //   for (var j = i; j <= 9; j++) {
+    //     // i === 1   j === 1 2 3 4 5 6 7 8 9
+    //     str += '&nbsp;'
+    //   }
+    //   document.write(str)
+
+    //   // 出现星
+    //   for (var k = 1; k <= i; k++) {
+    //     // i === 1   k === 1
+    //     // i === 2   k === 1 2
+    //     document.write('*&nbsp;')
+    //   }
+
+    //   document.write('<br>')
+    // }
+
+    // 4. 等腰三角形
+    /*
+     * * * * * * * * *
+      * * * * * * * *
+    */
+
+    for (var i = 1; i <= 9; i++) {
+
+      // 先准备空格
+      var str = ''
+      for (var j = 1; j <= i; j++) {
+        str += '&nbsp;'
+      }
+      document.write(str)
+
+      // 准备星星
+      for (var k = i; k <= 9; k++) {
+        document.write('*&nbsp;')
+      }
+
+      document.write('<br>')
+
+    }
+
+
+  </script>
+</body>
+</html>

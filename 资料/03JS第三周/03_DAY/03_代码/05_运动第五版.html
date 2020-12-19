@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    /*
+      问题又来了？当两个的运动距离不一样的时候，会有一个先到一个后到
+        你运动的总距离不一样，我让你运动的次数一样多
+        每次都运动剩余距离的 5分之一
+
+      用目标位置 - 当前位置 = 剩余距离
+    */
+
+    const box = document.querySelector('div')
+
+    box.addEventListener('click', function () {
+      move(this, {
+        left: 300,
+        top: 400
+      })
+
+      // // 获取 box 的非行内样式
+      // const current = parseInt(getComputedStyle(this)['left'])
+      // console.log(200 - current)
+    })
+
+
+    function move(ele, target) {
+      let timerObj = {}
+      for (let attr in target) {
+        timerObj[attr] = setInterval(() => {
+          // 获取一个元素的当前的坐标
+          //   比如是 left 我就要获取元素当前的 left 值
+          let current = parseInt(getComputedStyle(ele)[attr])
+
+          // distance 是你本次运动的距离
+          let distance = (target[attr] - current) / 5
+
+          // 因为运动的距离有小数了，所以要取整
+          // 因为浏览器最小描述一个像素点
+          //   大于 0 的时候向上取整
+          //   小于 0 的时候向下取整
+          distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+
+          // 你当前是再 left 10 的位置
+          // distance 是 10 px
+          // 你应该来到 left 20 的位置
+          console.log(current)
+
+          if (current === target[attr]) {
+            // 运动该结束了
+            clearInterval(timerObj[attr])
+          } else {
+            // 没到达目标位置呢
+            ele.style[attr] = current + distance + 'px'
+          }
+        }, 30)
+      }
+    }
+
+
+
+
+
+
+  </script>
+</body>
+</html>

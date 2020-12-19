@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      动态创建 script 标签的方式来发送一个 jsonp 请求
+
+
+    */
+
+    // 1. 创建一个 script 标签
+    const script = document.createElement('script')
+    script.className = 'jsonp'
+    script.src = 'http://127.0.0.1:80/jsonp/jsonp.php?callback=fn'
+
+    // 先准备号一个函数
+    function fn(res) {
+      console.log(res)
+
+      // 已经拿到数据了，该进行页面渲染了
+      // 拿到数据以后，script 标签就没有用
+      document.body.removeChild(script)
+    }
+
+    document.body.appendChild(script)
+
+
+  </script>
+</body>
+</html>

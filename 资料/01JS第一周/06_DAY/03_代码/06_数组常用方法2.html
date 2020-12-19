@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // var arr = ['hello', 'world', '你好', '世界']
+
+    // 5. concat() 对数组进行拼接
+    //    语法： 数组.concat(你要拼接的内容)，理论上可以无限传递参数
+    //    不改变原始数组
+    //    返回值是拼接过后的数组
+    // var res = arr.concat(['新来的1', '新来的2'], ['新来的3', '新来的4'], ['新来的5', '新来的6'])
+    // console.log(arr)
+    // console.log(res)
+
+    // 6. splice() 对数组进行截取
+    //    语法： 数组.splice(开始的索引， 截取多少个)
+    //    直接改变原始数组
+    //    返回值： 以数组的形式返回截取出来的内容（不管截取多少个内容，都是以数组的形式返回）
+    // var res = arr.splice(1, 0)
+    // console.log(arr)
+    // console.log(res)
+
+    // splice 使用方式2
+    // 当第二个参数不传递的时候，就是从哪个索引开始截取的到数组的末尾
+    // var res = arr.splice(1)
+    // console.log(arr)
+    // console.log(res)
+
+    // splice 使用方式3
+    // 送第三个参数开始，都是替换掉截取的位置
+    // var res = arr.splice(1, 2, '新来的', '新来的2', '新来的3')
+    // console.log(arr)
+    // console.log(res)
+
+    // 有一个数组
+    //   按照顺序排列好的
+    // 从索引 2 的位置删除 0 个，用新的替换 从索引 2 开始替换
+    // 从索引 3 的位置删除 0 个，用新的替换 从索引 3 开始替换
+    // 从哪个索引位置开始删除，就从哪个索引位置开始替换
+    // var arr = [1, 2, 3, 5, 6, 7]
+    // var num = 4
+    // arr.splice(2, 0, 4)
+    // console.log(arr)
+
+    // 7. reverse() 反转数组
+    //    语法： 数组.reverse()
+    //    直接改变原始数组
+    //    返回值： 反转后的数组
+    // var res = arr.reverse()
+    // console.log(arr)
+    // console.log(res)
+
+    // 8. sort() 数组排序
+    //   第一种使用方式，排序方式是按照一位一位来看的
+    //   语法： 数组.sort()
+    //   直接改变原始数组
+    //   返回值： 排序好的数组
+    // var arr = [1, 3, 7, 9, 101, 5, 4, 6, 2, 8, 10, 20, 30, 22, 33, 16]
+    // var res = arr.sort()
+    // console.log(arr)
+    // console.log(res)
+
+    //  第二种使用方式，按照数字大小来排列
+    //  语法： 数组.sort(function (a, b) { return a - b })  升序排列
+    //  语法： 数组.sort(function (a, b) { return b - a })  降序排列
+    //  直接改变原始数组
+    //  返回值： 被排序好的数组
+    // var res = arr.sort(function (a, b) {
+    //   return a - b
+    // })
+    // console.log(arr)
+    // console.log(res)
+
+    // 9. join() 把数组链接成一个字符串
+    //    语法： 数组.join(以什么字符链接) 参数可以不写，不写是以 , 链接
+    //    不改变原始数组
+    //    返回值： 就是用指定字符链接好的字符串
+    // var arr = [1, 2, 3, 4]
+    // var res = arr.join('@-@')
+    // console.log(arr)
+    // console.log(res)
+
+    // 10. slice() 截取数组的
+    //    语法： 数组.slice(开始的索引，结束的索引) 包前不包后
+    //    不改变原始数组
+    //    返回值： 以数组的形式返回截取的内容
+    // var arr = ['h', 'e', 'l', 'y', 'o', 'w', 'x']
+    // var res = arr.slice(1, 5)
+    // console.log(arr)
+    // console.log(res)
+
+
+    // 第二个参数不写是开始索引截取到末尾
+    // var arr = ['h', 'e', 'l', 'y', 'o', 'w', 'x']
+    // var res = arr.slice(1)
+    // console.log(arr)
+    // console.log(res)
+
+    // （了解）
+    //   传递负数的函数，把这个数字和数组的length相加得到的结果
+    // var arr = ['h', 'e', 'l', 'y', 'o', 'w', 'x']
+    // var res = arr.slice(1, 6)  // slice(1, 6)
+    // console.log(arr)
+    // console.log(res)
+
+  </script>
+</body>
+</html>

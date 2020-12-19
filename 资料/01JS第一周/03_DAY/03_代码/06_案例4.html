@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      三次自幂数
+        从 100 ~ 999
+        每一个位的 三次幂 的 和 这个数字相等
+
+        123
+        1 * 1 * 1 + 2 * 2 * 2 + 3 * 3 * 3
+      判断一个数字是不是三次自幂数
+    */
+
+    // var num = 153
+
+    // var a = parseInt(num / 100)
+    // var b = parseInt(num % 100 / 10)
+    // var c = num % 10
+
+    // if (a * a * a + b * b * b + c * c * c === num) {
+    //   console.log(num + '是自幂数')
+    // }
+
+    // 找到所有三次自幂数
+    for (var n = 100; n < 1000; n++) {
+      var num = n
+
+      var a = parseInt(num / 100)
+      var b = parseInt(num % 100 / 10)
+      var c = num % 10
+
+      if (a * a * a + b * b * b + c * c * c === num) {
+        console.log(num + '是自幂数')
+      }
+    }
+
+  </script>
+</body>
+</html>

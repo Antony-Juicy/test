@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>我是 b 页面</h1>
+
+  <button id="btn">历史记录回退</button>
+
+  <script>
+
+
+    btn.onclick = function () {
+      // history.back()
+
+      // 需要接受参数
+      //   可以是一个正整数，可以是一个负整数
+      //   正整数表示前进
+      //   负整数表示后退
+      history.go(-1)
+    }
+
+  </script>
+</body>
+</html>

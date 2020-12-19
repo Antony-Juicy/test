@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol, li {
+      list-style: none;
+    }
+
+    div {
+      width: 600px;
+      height: 400px;
+      border: 10px solid #333;
+      margin: 30px auto;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    ul {
+      height: 60px;
+
+      display: flex;
+    }
+
+    ul > li {
+      flex: 1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: pink;
+      color: #fff;
+      font-size: 40px;
+    }
+
+    ul > li.active {
+      background-color: orange;
+    }
+
+    ol {
+      flex: 1;
+      position: relative;
+    }
+
+    ol > li {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 100px;
+      color: #fff;
+      background-color: purple;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      display: none;
+    }
+
+    ol > li.active {
+      display: flex;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div>
+    <ul>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ol>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ol>
+  </div>
+
+  <script>
+    // 选项卡 / tab切换
+
+    /*
+      ul 每一个 li 都是没有 orange 背景颜色的
+        li.active 才有 orange 背景颜色
+      ol 每一个 li 都是隐藏的
+        li.active 才是显示的
+
+      默认情况下
+        ul 下 第一个 li 有 active
+        ol 下 第一个 li 有 active
+
+      当我点击 ul 下的第一个 li 的时候
+        应该只有 ul 下的第一个有 active， ol 下的第一个有 active
+      当我点击 ul 下的第二个 li 的时候
+        应该只有 ul 下的第二个有 active， ol 下的第二个有 active
+    */
+
+    /*
+      1. 获取元素
+        ul > li 要点击
+        ol > li 要操作他们的类名
+      2. 循环绑定事件
+        ul > li 都要点击事件
+      3. 先让选项切换好
+        把每一个 li 的类名都变成 ''
+        只单独给自己加类名
+      4. 让下面 ol 里面的每一个 li 和我配套
+        把每一个 li 的类名都变成 ''
+        让和 ul 下面配套的哪一个 ol 下的 li 给一个 active
+    */
+
+    var btns = document.querySelectorAll('ul > li')
+    var tabs = document.querySelectorAll('ol > li')
+
+    btns.forEach(function (item) { // 这个循环时为了给 li 绑定事件
+      // item 就是每一个 ul 下的 li
+      item.addEventListener('click', function () {
+        // console.log('我被点击了')
+        // 给所有的 li 都取消 active
+        btns.forEach(function (item, index) { // 这个循环是为了取消每一个 li 的类名
+          item.className = ''
+          // console.log(index)
+          // 使用 tabs[index]
+          // 得到的就是 ol 下面的每一个 li
+          tabs[index].className = ''
+        })
+
+        // tabs.forEach(function (item) {
+        //   item.className = ''
+        // })
+
+        // 只单独给自己添加类名
+        //  this 就是自己
+        this.className = 'active'
+      })
+    })
+  </script>
+</body>
+</html>

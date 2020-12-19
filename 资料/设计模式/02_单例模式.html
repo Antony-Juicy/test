@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /*
+      单例模式
+    */
+
+    // function Person() {}
+
+    // let instance
+
+    // function singleton() {
+    //   // 这个东西是一个自调用函数
+    //   // 当我的 singleton 函数一调用的时候
+    //   // 会自动执行
+    //   // 会自动返回一个对象
+    //   return (function a() {
+    //     if (!instance) {
+    //       instance = new Person()
+    //     }
+
+    //     return instance
+    //   })()
+    // }
+
+    // singleton 这个函数一调用，会得到一个返回值
+    // 这个返回值就是 singleton 函数内部的 自执行函数 a 执行后的结果
+    // 第一次执行的时候， instance 没有内容的 是 undefined，会进入 if 条件
+    //   instance 赋值未一个 Person 的实例对象
+    //   p1 得到的就是一个 Person 的实例对象
+    // const p1 = singleton()
+
+    // // 第二次执行的时候， instance 是由内容的，有的就是之前 Person 的那个实例
+    // //   instance 就是之前 Person 给他的那个实例
+    // //   p2 得到的就是之前那次 Person 的实例
+    // const p2 = singleton()
+
+    // console.log(p1 === p2)
+
+    // 使用单例模式创造一个构造函数
+
+    // Person 得到的是 自执行函数里面返回的 a 函数
+    var Person = (function () {
+
+      // 真实构造函数
+      function Abc(name) {
+        this.name = name
+        this.age = 18
+      }
+
+      Abc.prototype.sayHi = function () {
+        console.log('hello world')
+      }
+
+      let instance
+
+      return function a(name) {
+        if (!instance) {
+          instance = new Abc(name)
+        }
+
+        return instance
+      }
+    })()
+
+    // p1 得到的是 new 自执行函数里面的 a 函数
+    const p1 = new Person('Jack') // 传给了自执行函数里面的 a 函数
+    const p2 = new Person('Rose')
+    console.log(p1 === p2)
+  </script>
+</body>
+</html>

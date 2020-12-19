@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      在事件对象里面有三个东西
+        altKey
+        ctrlKey
+        shiftKey
+      表示在你按下某一个按钮的时候，是否有同时按下了 shift ctrl 和 alt 键
+    */
+
+    document.onkeydown = function (e) {
+      e = e || window.event
+      var code = e.keyCode || e.which
+
+      // 判断组合按键的时候，多判断一个 ctrlKey 或者 shiftKey 或者 altKey
+
+      if (e.altKey && code === 65) {
+        // 总是使用 code 不是很方便
+        // 处理的网站不需要太多的兼容问题，我可以直接是用 key
+        console.log('您按下的是 alt + a')
+      }
+
+      console.log(e)
+    }
+
+  </script>
+</body>
+</html>

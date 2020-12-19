@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      font-size: 30px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    X轴坐标点：0 <br>
+    Y轴坐标点：0
+  </div>
+
+  <script>
+
+    // 肯定是一个 move 事件
+    var box = document.querySelector('div')
+
+    // 整个页面都在生效
+    // 事件绑定给 document
+    document.onmousemove = function (e) {
+      e = e || window.event
+
+      // 那组坐标点都一样
+      var x = e.pageX
+      var y = e.pageY
+
+      console.log(x, y)
+
+      box.innerHTML = 'X轴坐标点：' + x + ' <br> Y轴坐标点：' + y
+    }
+  </script>
+</body>
+</html>

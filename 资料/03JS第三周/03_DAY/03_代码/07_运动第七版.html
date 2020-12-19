@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      opacity: 1;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    /*
+      问题： 不能再运动结束做点事情
+
+      需求就是，再运动结束的时候，颜色变成 蓝色
+        以函数的形式传递一个参数
+    */
+
+    const box = document.querySelector('div')
+
+    box.addEventListener('click', function () {
+      move(this, {
+        left: 300,
+        top: 300,
+        width: 300,
+        height: 300
+      }, function () {
+        // 这个函数会在运动结束的时候被调用
+        // box.style.backgroundColor = 'skyblue'
+        console.log('运动结束')
+      })
+    })
+
+
+    function move(ele, target, cb) {
+      // 我接受的 cb 是一个函数地址
+      // cb 接受的是第三个实参
+      // 第三个实参是一个函数地址
+      // 只要我在 move 函数内部写 cb() 的时候，调用的是你传递的第三个实参
+      let timerObj = {}
+      for (let attr in target) {
+        timerObj[attr] = setInterval(() => {
+          let current
+          if (attr === 'opacity') {
+            current = getComputedStyle(ele)[attr] * 100
+          } else {
+            current = parseInt(getComputedStyle(ele)[attr])
+          }
+          let distance = (target[attr] - current) / 5
+          distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+          if (current === target[attr]) {
+            // 关闭定时器以后，表示运动结束了
+            // 只能表示某一个属性的运动结束了
+            clearInterval(timerObj[attr])
+
+            // 你关闭一个定时器，就代表你 timerObj 里面的哪个属性没有用了
+            // 你没用了我就给你删除了
+            delete timerObj[attr]
+            const res = getObjLength(timerObj)
+
+            // 当 res === 0 的时候，就表示 timerObj 对象中没有成员了
+            // 当 timerObj 这个对象里面没有成员的时候
+            // 表示所有定时器都关闭了
+            // 所有运动都结束了
+            if (res === 0) {
+              cb()
+            }
+
+
+            // 应该再这里执行
+            // cb()
+          } else {
+            if (attr === 'opacity') {
+              ele.style[attr] = (current + distance) / 100
+            } else {
+              ele.style[attr] = current + distance + 'px'
+            }
+          }
+        }, 30)
+      }
+    }
+
+
+
+
+    function getObjLength(obj) {
+      let n = 0
+      for (let attr in obj) {
+        n++
+      }
+      return n
+    }
+
+
+
+
+
+
+  </script>
+</body>
+</html>

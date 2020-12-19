@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p {
+      width: 30px;
+      height: 30px;
+      background-color: pink;
+      margin: 30px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <!-- <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p> -->
+  </div>
+
+  <script>
+    // 循环绑定事件
+    // 以循环的方式给多个元素同时绑定一个事件
+
+    var ps = document.querySelectorAll('p')
+
+    for (var i = 0; i < ps.length; i++) {
+      // ps[i] 就是这个集合中的每一个
+      // 就是每一个 p 元素
+
+      // 给每一个 p 标签都绑定一个事件
+      ps[i].onclick = function () {
+        // console.log('我被点击了')
+        // 循环绑定事件在事件处理函数里面不能使用循环变量
+        // 在这里不能使用 i
+        // console.log(i)
+
+        // 有一个东西可以给我们使用
+        // this 关键字
+        // 在事件处理函数里面，this 指向事件源
+        console.log(this)
+      }
+
+    }
+
+    /*
+      i === 0
+        ps[0].onclick = function () { console.log(i) }
+      i === 1
+        ps[1].onclick = function () { cosnole.log(i) }
+      i === 2
+        ps[2].onclick = function () { console.log(i) }
+      i === 3
+        循环结束
+
+      当你点击 ps[0] 这个元素的时候
+        执行 function () { console.log(i) } // 3
+        解析当前的 i 变量打印一下
+      当你点击 ps[1] 这个元素的时候
+        执行 function () { console.log(i) } // 3
+        解析当前的 i 变量打印一下
+      当你点击 ps[2] 这个元素的时候
+        执行 function () { console.log(i) } // 3
+        解析当前的 i 变量打印一下
+
+      当你点击 ps[0] 这个元素的时候
+        执行的是 ps[0] 身上的 click 事件
+        这个事件处理函数里面的 this 指向 ps[0]
+      当你点击 ps[1] 这个元素的时候
+        执行的是 ps[1] 身上的 click 事件
+        这个事件处理函数里面的 this 指向 ps[1]
+      当你点击 ps[2] 这个元素的时候
+        执行的是 ps[2] 身上的 click 事件
+        这个事件处理函数里面的 this 执行 ps[2]
+    */
+  </script>
+</body>
+</html>

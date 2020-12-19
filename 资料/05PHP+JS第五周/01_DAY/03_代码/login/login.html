@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <form>
+    用户名： <input id="username" type="text"> <br>
+    密码： <input type="text" id="pwd"> <br>
+    <button>提交</button>
+  </form>
+
+  <script>
+
+    /*
+      做一个登录的状态
+
+        什么时候获取用户名和密码
+        点击按钮的时候，
+        发送请求也是在点击按钮的时候
+    */
+
+    const btn = document.querySelector('button')
+    const userName = document.querySelector('#username')
+    const pwd = document.querySelector('#pwd')
+
+    btn.addEventListener('click', e => {
+      e = e || window.event
+      e.preventDefault()
+
+      // 获取用户名和密码
+      const username = userName.value
+      const password = pwd.value
+
+      // console.log(username, password)
+
+      // 发送给后端
+      const xhr = new XMLHttpRequest()
+
+      // GET 请求的参数直接拼接地址后面
+      // ajax 里面， get 请求直接在地址后面拼接一个问号 ?
+      // 在 问号 ？ 后面写参数，key=value&key=value
+
+      xhr.open('GET', './login.php?username=' + username + '&password=' + password)
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
+          console.log(xhr.responseText)
+        }
+      }
+
+      xhr.send()
+
+    })
+
+  </script>
+</body>
+</html>

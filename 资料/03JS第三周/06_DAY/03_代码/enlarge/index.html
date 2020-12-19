@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    img {
+      width: 100%;
+      height: 10pp;
+      display: block;
+    }
+
+    .box {
+      width: 450px;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #333;
+      margin: 30px;
+      position: relative;
+    }
+
+    .box > .show {
+      width: 100%;
+      height: 450px;
+      position: relative;
+    }
+
+    .box > .show > .mask {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      opacity: .4;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      cursor: none;
+
+      /* display: none; */
+    }
+
+    .box > .list {
+      height: 100px;
+      padding: 15px 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-top: 1px solid #333;
+    }
+
+    .box > .list > p {
+      width: 54px;
+      height: 54px;
+      margin-right: 20px;
+    }
+
+    .box > .list > p.active {
+      border: 1px solid #ff6700;
+    }
+
+    .box > .enlarge {
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      top: 0;
+      left: 110%;
+      background: url(./imgs/1.big.jpg) no-repeat;
+      background-size: 800px 800px;
+    }
+
+    /* body {
+      height: 2000px;
+    } */
+  </style>
+</head>
+<body>
+  <div class="box" id="box">
+    <!-- 显示的图片 -->
+    <div class="show">
+      <img src="./imgs/1.jpg" alt="">
+      <!-- 遮罩层的小盒子 -->
+      <div class="mask"></div>
+    </div>
+    <!-- 列表图片 -->
+    <ul class="list">
+      <p class="active">
+        <img data-src="./imgs/1.big.jpg" data-show-src="./imgs/1.jpg" src="./imgs/1.small.jpg" alt="">
+      </p>
+      <p>
+        <img data-src="./imgs/2.big.jpg" data-show-src="./imgs/2.jpg" src="./imgs/2.small.jpg" alt="">
+      </p>
+    </ul>
+    <!-- 放大镜图片 -->
+    <div class="enlarge"></div>
+  </div>
+
+  <script src="./enlarge.js"></script>
+  <script>
+    const e = new Enlarge('#box')
+    console.log(e)
+
+    /*
+      业务逻辑
+        1. 遮罩层盒子和放大镜盒子都是隐藏的
+          光标移入的时候显示，移出的时候隐藏
+          移入和移出谁  show 这个盒子
+          移入 show 盒子的时候 mask 盒子显示 enlarge 盒子显示
+          移出 show 盒子的时候 mask 盒子隐藏 enlarge 盒子隐藏
+        2. 当光标移动的时候让遮罩层盒子跟着走
+          光标在谁里面移动的时候，让遮罩层走。
+          show 盒子里面走的时候
+          只要给 show 盒子绑定一个 mousemove 事件就好了
+          获取光标的坐标点 决定使用 pageX 和 pageY
+          因为大盒子不是贴边的，还要减去 大盒子到左边和到上边的距离
+          不能出界
+            不能超出 show 盒子
+            右下角
+              移动距离 >= show 盒子宽度 - mask 盒子宽度 极限
+        3. 两对东西成比例的出现
+            遮罩层盒子      放大镜盒子
+            ----------  =  ---------
+            show 盒子       背景图尺寸
+
+            放大镜盒子 * show 盒子 = 遮罩层盒子 * 背景图尺寸
+
+            放大镜盒子 = 遮罩层盒子 * 背景图尺寸 / show 盒子
+        4. 在 show 盒子的 move 事件里面
+           让 enlarge 盒子的背景图跟着动
+
+           遮罩层移动的距离     遮罩层的尺寸
+           ---------------  = -------------
+           背景图移动的距离    放大镜盒子尺寸
+
+          背景图移动的距离 * 遮罩层的尺寸 = 放大镜盒子尺寸 * 遮罩层移动的距离
+
+          背景图移动的距离 = 放大镜盒子尺寸 * 遮罩层移动的距离 / 遮罩层的尺寸
+        5. 点击切换图片
+          + 和选项卡是一个道理
+          先给 list 下面的两个盒子一个点击事件
+    */
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+    /*
+      模板字符串
+        es5 定义字符串使用 双引号"" 或者 单引号''
+        es6 定义字符串使用 反引号(tab 上面，1 左面) ``
+
+      三个符号定义出来的都是字符串
+
+      模板字符串和以前的字符串的区别
+        1. 模板字符串可以换行书写
+        2. 模板字符串可以直接在字符串里面拼接变量
+          + 需要把变量放在一个 ${变量} 里面
+
+
+    */
+
+    // false
+    // const str = 'hello
+    // world'
+
+    // const str = `
+    //   hello world
+    // `
+
+    // console.log(str)
+
+
+    // var num = 200
+    // var str = '<li>' + num + '</li>'
+    // console.log(str)
+
+
+    // const num = 200
+    // const str = `
+    //   <li>
+    //     ${num}
+    //   </li>
+    // `
+    // console.log(str)
+
+
+    const arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Rode',
+        age: 20,
+        gender: '女'
+      },
+      {
+        name: 'Tom',
+        age: 22,
+        gender: '男'
+      }
+    ]
+
+    const tbody = document.querySelector('tbody')
+    let str = ''
+    arr.forEach(item => {
+      str += `
+        <tr>
+          <td>${ item.name }</td>
+          <td>${ item.age }</td>
+          <td>${ item.gender }</td>
+        </tr>
+      `
+    })
+    tbody.innerHTML = str
+  </script>
+</body>
+</html>

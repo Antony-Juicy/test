@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* div {
+      height: 100px;
+      background-color: red;
+    } */
+  </style>
+</head>
+<body>
+
+  <!-- <div style="width: 100px;"></div> -->
+
+  <div>hello world</div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      操作元素的样式
+        1. css()
+          + 专门用来操作元素样式的方法
+          + 根据传递不同的参数决定做什么
+          + 传递一个参数是获取
+            + 可以获取行内样式，也可以获取非行内样式
+          + 传递两个参数就是设置
+            + 第一个参数是 key
+            + 第二个参数是 value
+          + 传递一个对象可以进行批量设置
+            + 传递一个对象
+            + 对象里面的 key 就是要设置的 css 样式
+            + 对象里面的 value 就是要设置的 css 样式的值
+        再设置的时候，单位默认使用 px
+          + 其实是根据你的属性决定是否添加单位
+          + 如果添加默认就是 px
+          + 我们一般不使用 css 这个方法设置 position
+    */
+
+    // console.log($('div').css('width'))
+    // console.log($('div').css('height'))
+
+    // $('div').css('font-size', '20px')
+
+    // $('div').css({
+    //   width: 100,
+    //   height: 200,
+    //   zIndex: 1,
+    //   opacity: 0.5,
+    //   backgroundColor: 'pink',
+    //   color: '#fff'
+    // })
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      观察者模式
+        + 一个属性三个方法
+    */
+
+    class Observer {
+      constructor () {
+        // 一个属性直接写在构造函数体内
+        this.message = {}
+      }
+
+      // on
+      on (type, fn) {
+        // 向 message 盒子里面添加一些内容
+        // type 就是我要注册的事件类型
+        // fn 就是我要注册的对应的事件处理函数
+        // this.message.abc.push(fn)
+
+        // type === 'abc'
+        // fn === 一个函数
+        // 在 message 里面有没有一个叫做 'abc' 的成员
+        //   如果没有，我要在 message 里面添加一个 'abc' 的成员，并且赋值未一个数组
+        if (!this.message[type]) {
+          // 进入 if 条件，证明 this.message[type] 是一个 undefined
+          // 我就要给你赋值未一个 数组
+          this.message[type] = []
+          // 把你的事件处理函数放到这个数组里面
+          this.message[type].push(fn)
+        } else {
+          // 证明你本身是一个数组
+          // 直接把事件处理函数 push 进去就可以了
+          this.message[type].push(fn)
+        }
+      }
+
+      // off
+      off (type, fn) {
+        // 就是把 message 里面对应数组的哪个内容给删除了
+
+        // 先判断一下你的 message 里面有没有这个数组
+        if (!this.message[type]) {
+          // 能进入 if 条件，证明 this.message[type] 是一个 undefined
+          // 下面的代码就不需要执行了
+          return
+        }
+
+        // 我的代码能来到这里。证明 this.message[type] 是一个数组
+        // 我就要遍历这个数组，找到一个和传递进来的函数地址一样的哪个函数把他删除了
+        for (let i = 0; i < this.message[type].length; i++) {
+          // item 就是这个数组中的每一个函数
+          const item = this.message[type][i]
+          // 如果 item 的地址和 fn 地址一样，就删除了
+          if (item === fn) {
+            this.message[type].splice(i, 1)
+            i--
+          }
+        }
+      }
+
+      // emit
+      emit (type, ...arg) {
+        // 把事件触发一下
+        // 找到message 里面对应名字的哪个成员
+        // 如果这个成员没有，什么也不做，因为你没有订阅过
+        if (!this.message[type]) {
+          // 你没有订阅过这个事件
+          return
+        }
+
+        // 自己组装一个事件对象
+        const event = {
+          type: type,
+          data: arg
+        }
+
+        // 这个位置的 this 是当前这个实例 指向 o
+        // 有一个方法叫做 call 用来强行改变 this 指向的
+
+        // 能来到这里，证明 this.message[type] 是一个数组
+        // 并且里面有事件处理函数
+        // 就要遍历这个数组，让里面的每一个函数执行以下
+        for (let i = 0; i < this.message[type].length; i++) {
+          const item = this.message[type][i]
+          item.call(this, event)
+        }
+      }
+    }
+
+    const o = new Observer()
+    console.log(o)
+
+    function handlerA(e) {
+      console.log('我是第一个事件处理函数')
+      console.log(e)
+      console.log(this)
+    }
+
+    function handlerB() {
+      console.log('我是第二个事件处理函数')
+    }
+
+    function handlerC(e) {
+      console.log('我是第三个事件处理函数')
+      console.log(e)
+      console.log(this)
+    }
+
+    // 订阅事件
+    o.on('a', handlerA)
+
+    o.on('b', handlerC)
+
+    // 取消订阅
+    // o.off('a', handlerA)
+
+    // 发布
+    o.emit('a', 100, 200, 300)
+    console.log('=============================')
+    o.emit('b', 10, 20, 30)
+
+
+  </script>
+</body>
+</html>

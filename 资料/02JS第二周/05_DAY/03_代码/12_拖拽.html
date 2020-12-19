@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div></div>
+
+  <script>
+    /*
+      1. 获取元素
+        获取 div
+      2. 准备事件
+        要一个 按下事件 mousedown
+        要一个 移动事件 mousemove
+        要一个 抬起事件 mouseup
+        移动事件要在 按下以后注册
+        移动事件要在 抬起以后取消
+      3. 移动的业务逻辑
+        随着移动随是获取坐标点
+          offsetX 不能用，因为是根据元素来的位置
+          clientX 和 pageX 都可以使用
+        获取到坐标点以后，给 left 和 top 赋值
+      4. 边界值判断
+        先判断左上
+          左上就是 0 0
+        判断右下
+          先获取屏幕宽度
+
+    */
+
+    var box = document.querySelector('div')
+
+    // 屏幕宽度和高度
+    var window_width = document.documentElement.clientWidth
+    var window_height = document.documentElement.clientHeight
+
+    // 获取盒子的宽度
+    var box_width = box.offsetWidth
+    var box_height = box.offsetHeight
+
+    function moveHandler(e) {
+      e = e || window.event
+      // 下我们的移动的业务逻辑
+      var x = e.clientX - 100
+      var y = e.clientY - 100
+
+      // console.log(x, y)
+
+      // 判断坐上
+      if (x <= 0) {
+        x = 0
+      }
+
+      if (y <= 0) {
+        y = 0
+      }
+
+      // 判断右边出界
+      if (x >= window_width - box_width) {
+        // console.log('出界')
+        x = window_width - box_width
+      }
+
+      // 判断下边出界
+      if (y >= window_height - box_height) {
+        // console.log('出界')
+        y = window_height - box_height
+      }
+
+
+      // 这里的 this 是谁
+      // 从新给 left 和 top 这两个属性赋值
+      this.style.left = x + 'px'
+      this.style.top = y + 'px'
+    }
+
+    box.addEventListener('mousedown', function () {
+      // console.log('按下')
+      box.addEventListener('mousemove', moveHandler)
+    })
+
+    box.addEventListener('mouseup', function () {
+      // console.log('抬起')
+      box.removeEventListener('mousemove', moveHandler)
+    })
+  </script>
+</body>
+</html>

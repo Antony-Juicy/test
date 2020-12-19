@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      exec 和小括号的关系
+        如果正则中有小括号，会把小括号的内容单独拿出来
+        按照从左到右的顺序看小括号开始 (
+        按照顺序从索引1开始向后排列
+
+    */
+
+    var reg = /((\d+)([a-zA-Z]{3}))/g
+    var str = '1abc234abc456abc'
+    var res = reg.exec(str)
+    var res2 = reg.exec(str)
+
+    console.log(res)
+    console.log(res2)
+
+
+  </script>
+</body>
+</html>

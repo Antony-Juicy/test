@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 编写一个函数，输入n为偶数时，
+    // 调用函数求1/2+1/4+...+1/n,
+    // 当输入n为奇数时，调用函数求/1+1/3+...+1/n
+
+    // 1. 一个函数能求所有偶数分支1 的和
+    // 2. 一个函数能求所有奇数分支1 的和
+    // 3. 判断是偶数还是奇数，使用哪一个函数得到结果
+
+    function even(n) {
+
+      var sum = 0
+
+      for (var i = 2; i <= n; i += 2) {
+        // console.log(1 / i)
+        // sum 叠加
+        sum += 1 / i
+      }
+
+      // 循环结束的时候，sum 就是所有 偶数分支1 的和
+      // console.log(sum)
+
+      // 把这个和当作结果返回出去就行
+      return sum
+
+    }
+
+    function odd(n) {
+
+      var sum = 0
+
+      // 所有的奇数分支1 的和
+      for (var i = 1; i <= n; i += 2) {
+        // console.log(1 / i)
+        sum += 1 / i
+      }
+
+      // 这里救就能得到所有 奇数分支1 的和
+      // console.log(sum)
+      return sum
+    }
+
+    function fn(n) {
+
+      // 提前准备一个变量接受结果
+      var res
+
+      // 判断你传入的是 偶数 还是 奇数
+      if (n % 2 === 0) {
+        // 偶数
+        res = even(n)
+      } else {
+        // 奇数
+        res = odd(n)
+      }
+
+      console.log(res)
+    }
+
+    fn(9)
+
+  </script>
+</body>
+</html>

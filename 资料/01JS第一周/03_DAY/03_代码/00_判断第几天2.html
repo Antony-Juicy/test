@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // 利用给一个数组
+    var arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    var year = 2015
+    var month = 3
+    var day = 1
+    var date = day
+
+    /*
+      如果是 1 月
+      如果是 2 月 + arr[0]
+      如果是 3 月 + arr[0] + arr[1]
+    */
+
+    // 1. 先判断是不是闰年
+    //    如果是闰年，我让数组中的 arr[1] = 29
+    if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+      arr[1] = 29
+    }
+
+    // 2. 去数组里面叠加数字
+    while (month > 1) {
+      // 第一次进入循环 month = 6 要的是 5 月 数组中的第 4 个
+      // 第二次进入循环 month = 5 要的是 4 月 数组中的第 3 个
+      // last  进入循环 month = 2 要的是 1 月 数组中的第 0 个
+      console.log(month)
+      date += arr[month - 2]
+      month--
+    }
+
+    console.log(date)
+
+    /*
+      date = 0
+      1. month = 6 进入循环
+         date = date + arr[4]
+         date = date + 31 五月份的天数
+      2. month = 5 进入循环
+         date = date + arr[3]
+         date = date + 30 四月份的天数
+      3. month = 4 进入循环
+         date = date + arr[2]
+         date = date + 31 三月份的天数
+      4. month = 3 进入循环
+         date = date + arr[1]
+         date = date + 28 || 29 二月份的天数
+      5. month = 2 进入循环
+         date = date + arr[0]
+         date = date + 31 一月份的天数
+      6. month = 1 不进入循环
+         循环结束
+
+
+
+    */
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script src="./guoxiang.js"></script>
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      多库并存
+        + jQuery 向外暴露了两个接口
+          + jQuery
+          + $
+        + jQuery 有一个方法，是用来交出控制权的
+          + noConflict()
+            + 直接写的时候，jQuery 就不会在向外暴露 $ 这个变量了
+          + noConfilct(true)
+            + 传递参数时一个 true 的时候，会把 jQuery 的控制权也交出去
+          + noConfilct(true)
+            + 返回值： 是一个新的控制权变量
+            + 你用什么接受返回值
+            + 什么东西就是 jQuery 向外暴露的变量
+    */
+
+    // jQuery.noConflict()
+    // jQuery.noConflict(true)
+    var aa = jQuery.noConflict(true)
+
+    console.log($)
+    console.log(jQuery)
+
+    console.log(aa)
+    // aa('div').click(() => {})
+  </script>
+</body>
+</html>

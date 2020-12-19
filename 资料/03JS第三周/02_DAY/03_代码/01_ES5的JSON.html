@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      ES5 是在我们的发张过程中的一个阶段
+        + 是一个 js 代码的语法版本
+
+      1. 严格模式
+      2. 数组常用方法
+      3. 字符串的常用方法
+
+      4. JSON
+        + JSON 是一个字符串
+        + 对不同的字符串有不同名字
+          + '100100' 数字字符串
+          + 'abcdefg中文' 普通字符串
+          + '<div></div>' html结构字符串
+        + json 就是一种特殊格式的字符串
+          + 这个格式被严格要求（只要有一点不满足，就不是 json 格式的字符串）
+        + 作用
+          + **是把 “数组” 和 “对象” 转换成一个可识别的字符串**
+        + JSON 的 两个方法
+          1. JSON.stringify()
+            + 把一个 js 的对象或者数组，转换成 json 格式的字符串
+            + 语法： JSON.stringify(要转换的对象或者数组)
+            + 返回值： 是一个字符串，只不过是 json 格式的字符串
+          2. JSON.parse()
+            + 把一个 json 格式的字符串转换成 js 的对象或者数组
+            + 语法： JSON.parse(json格式字符串)
+            + 返回值： 一个对象或者数组
+        + json 的数据格式
+          1. 必须是字符串
+          2. 内部的对象中，key 和 value 都必须包裹在双引号内部
+            + 只有当 value 是 null 或者 数字 或者 布尔 或者 undefined 的时候除外
+          3. 如果是最后一条数据，不要加逗号
+        + 有专门承载 json 字符串的文件
+          + .json 后缀
+        + 一个对象一旦去 JSON 里面转了一圈以后，就是两个地址了
+        + json 格式的字符串，虽然看起来像是一个对象，但是不能当作对象操作
+          + 就是一个字符串
+    */
+
+    var obj = {
+      name: 'Jack',
+      age: 18,
+      gender: '男',
+    }
+
+    var arr = [
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      },
+      {
+        name: 'Jack',
+        age: 18,
+        gender: '男'
+      }
+    ]
+
+    var jsonObj = JSON.stringify(obj)
+    var jsonArr = JSON.stringify(arr)
+
+    var newObj = JSON.parse(jsonObj)
+    var newArr = JSON.parse(jsonArr)
+
+    console.log(obj.name)
+    console.log(jsonObj)
+
+    // console.log(newObj == obj)
+    // console.log(newArr)
+
+
+
+  </script>
+</body>
+</html>

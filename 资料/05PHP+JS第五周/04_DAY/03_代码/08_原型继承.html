@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      1. 原型继承
+        + 先要准备一个父类
+
+
+    */
+
+    // 父类
+    function Person(name) {
+      this.name = name
+    }
+
+    Person.prototype.sayHi = function () {
+      console.log('hello world')
+    }
+
+    // 子类
+    function Student(age) {
+      this.age = age
+    }
+
+    // Student.prototype.fn = function () {
+    //   console.log('我是一个学生')
+    // }
+
+    // Student.prototype = {
+    //   fn: function () {
+    //     console.log('我是一个学生')
+    //   },
+    //   fn2: function () {
+    //     console.log('你好')
+    //   }
+    // }
+
+    // 使用 Person 构造函数来实例化一个对象的时候
+    // 可以使用 name 属性和 sayHi 方法
+    /*
+      p === {
+        name: 'Jack',
+        __proto__: Person.prototype {
+          sayHi: function () {},
+          __proto__: Object.prototype
+        }
+      }
+    */
+    // const p = new Person('Jack')
+
+
+    // 使用 Student 构造函数实例化一个对象的时候
+    // 可以使用 age 属性和 fn 的方法
+    /*
+      s === {
+        age: 20,
+        __proto__: Student.prototype {
+          fn: function () {},
+          __proto__: Object.prototype
+        }
+      }
+    */
+    // const s = new Student(20)
+    // console.log(s)
+
+    // 当我的 s 能够使用 name 属性和 sayHi 方法的时候
+    // Student 这个构造函数继承自 Person 构造函数
+
+    // 实现继承
+    // var p = new Person('Jack')
+    Student.prototype = new Person('Jack')
+
+    const s = new Student(20)
+    console.log(s)
+    /*
+      s === {
+        age: 20,
+        __proto__: Student.prototype === p {
+          name: 'Jack',
+          __proto__: Person.prototype {
+            sayHi: function () {},
+            __proto__: Object.prototype
+          }
+        }
+      }
+
+      当你访问 s 的属性的时候
+        自己没有就去 __proto__ 上找
+        还没有就在取 __proto__ 上找
+        一直到 Object.prototype
+    */
+
+    // 当我使用 s.age 的时我自己身上的 age 属性
+    console.log(s.age)
+
+    // 当我使用 s.name 的时候，自己身上没有，去 __proto__ 上找
+    console.log(s.name)
+
+    // 当我使用 s.sayHi 的时候，自己身上没有，去 __proto__ 上找 还没有，在去 __proto__ 上找
+    // 找到了 Person.prototype
+    s.sayHi()
+  </script>
+</body>
+</html>

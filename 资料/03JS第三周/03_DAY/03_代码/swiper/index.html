@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/swiper.min.css">
+  <style>
+    .banner {
+      width: 600px;
+      height: 400px;
+    }
+
+  </style>
+</head>
+<body>
+  <!--
+    插件
+      是为了实现网页中某一类功能的封装好的函数
+      是别人写的，放在了网上
+      我们就是下载调用函数
+
+    swiper 专门用来实现滑动效果
+      - https://www.swiper.com.cn/
+
+    使用方法
+      - https://www.swiper.com.cn/usage/index.html
+
+    配置方式
+      - https://www.swiper.com.cn/api/index.html
+
+  -->
+
+
+  <div class="swiper-container banner">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-color: red;">Slide 1</div>
+      <div class="swiper-slide" style="background-color: orange;">Slide 2</div>
+      <div class="swiper-slide" style="background-color: green;">Slide 3</div>
+      <div class="swiper-slide" style="background-color: skyblue;">Slide 4</div>
+      <div class="swiper-slide" style="background-color: hotpink;">Slide 5</div>
+    </div>
+
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+
+  <script src="./js/swiper.min.js"></script>
+  <script>
+    var mySwiper = new Swiper ('.swiper-container', {
+      // direction: 'vertical', // 垂直切换选项
+      loop: true, // 循环模式选项
+      autoplay:true,
+      effect : 'flip',
+
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    })
+
+  </script>
+</body>
+</html>

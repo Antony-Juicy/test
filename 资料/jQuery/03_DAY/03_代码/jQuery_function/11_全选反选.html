@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <label for="all">
+    全选
+    <input type="checkbox" id="all">
+  </label>
+  <button id="toggle">反选</button>
+  <button id="no">全不选</button>
+  <div>
+    <input type="checkbox"> 选项1 <br>
+    <input type="checkbox"> 选项2 <br>
+    <input type="checkbox"> 选项3 <br>
+    <input type="checkbox"> 选项4 <br>
+    <input type="checkbox"> 选项5 <br>
+  </div>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    $.fn.extend({
+      selectAll: function () {
+        // console.log(this)
+
+        // 默认你全部都是选中的
+        var flag = true
+
+        this.each(function (index, item) {
+          // 遍历我的数据集合
+          // 只要有一个不是选中状态，那么我就让我的 flag 是 false
+          if (item.checked === false) {
+            flag = false
+          }
+        })
+
+        // 遍历结束以后
+        // 如果我的 flag 是 true，证明所有的 input 都是 checked 状态
+        // 如果我的 flag 是 false，证明至少有一个 input 是未选中状态
+        return flag
+      },
+      toggleSelect: function () {
+        // console.log(this)
+
+        // 遍历整个 this
+        // 里面的每一个都是让他们的选中状态反转
+        this.each(function (index, item) {
+          // console.log(item.checked)
+
+          // 让每一个 checked = !每一个的checked
+          item.checked = !item.checked
+        })
+      },
+      selectNo: function () {
+        // console.log(this)
+        // 不用管你的状态时什么，只要直接变成 false
+        this.each(function (index, item) {
+          item.checked = false
+        })
+      }
+    })
+  </script>
+
+  <script>
+    // 1. 点击全选的时候，让所有的 input 都变成选中状态
+
+    $('#all').change(function () {
+      // console.log('改变了')
+      // console.log(this.checked)
+
+      // 我是什么，就让我 div 里面的所有 input 的 checked 属性是什么
+      $('div > input').prop('checked', this.checked)
+    })
+
+    // 2. 下面每一个选项改变的时候都要判断一下是不是全都选中了
+    // $('div > input').change(function () {
+      // 判断是不是所有的 div 下面的 input 都是选中状态
+      // console.log($('div > input'))
+      // $('div > input').every(function (item, index) {
+      //   console.log(item)
+      // })
+      // new Array().every.call($('div > input'), function (item) {
+      //   console.log(item)
+      //   console.log('我执行了')
+      // })
+
+      // 就把这个事情扩展成插件
+      // 这个方法刚好能给我返回一个 true 或者 false 的值
+      // $('div > input').selectAll()
+    // })
+
+    $('div > input').change(() => {
+      $('#all').prop('checked', $('div > input').selectAll())
+    })
+
+    // 3. 执行反选操作
+    $('#toggle').click(function () {
+      $('div > input').toggleSelect()
+      $('#all').prop('checked', $('div > input').selectAll())
+    })
+
+    // 4. 全不选
+    $('#no').click(function () {
+      // 让每一个 div 下面的 input 都是 false
+      $('div > input').selectNo()
+      $('#all').prop('checked', $('div > input').selectAll())
+    })
+
+  </script>
+
+</body>
+</html>

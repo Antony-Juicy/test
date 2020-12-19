@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      展开运算符就是把对象或者数组里面的东西直接打开
+        + 一般多用在数组里面
+        + ... 就叫做展开运算符
+
+      作用
+        1. 进行数组拼接
+        2. 进行函数的参数传递
+
+      展开对象
+        1. 一般是合并对象使用
+    */
+
+  // const arr1 = [6, 7, 8, 9, 10]
+  // const arr2 = [11, 12, 13, 14, 15]
+  // const arr = [1, 2, 3, 4, 5, ...arr1, ...arr2]
+  // console.log(arr)
+
+  // const res = Math.max(...arr2)
+  // console.log(res)
+
+  const obj1 = {
+    name: 'Jack',
+    age: 18
+  }
+
+  const obj2 = {
+    // 使用展开运算符来获取你的属性
+    ...obj1,
+    gender: '男'
+  }
+
+  console.log(obj1, obj2)
+
+  </script>
+</body>
+</html>

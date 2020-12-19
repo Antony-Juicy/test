@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+
+    // return 的第二个作用就是终端函数
+    // 只要写在 return 后面行的内容，那么都不会执行
+    // 在函数里面遇到 return 关键字的时候，那么后面的代码就不会再执行了
+
+    function fn() {
+      console.log(1)
+      console.log(2)
+      console.log(3)
+
+      return
+
+      console.log(4)
+      console.log(5)
+    }
+    fn()
+
+  </script>
+</body>
+</html>

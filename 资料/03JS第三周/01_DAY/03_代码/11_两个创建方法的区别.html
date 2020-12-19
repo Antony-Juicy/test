@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+
+    /*
+      1. 字面量直接写
+        + 不能进行字符串拼接
+      2. 内置构造函数的方式
+        + 第一个参数是写在正则内部的符号
+          + 当你需要写一些正则的元字符的时候
+          + 需要写成 \\d
+        + 第二个参数是标识符
+          + 可以把多个标识符写在一个字符串里面
+        + 可以进行字符串拼接
+    */
+
+    // var reg1 = /abcd/ig
+    // console.log(reg1)
+
+    // 表示我想正则中 填充的内容是一个换行
+    // var reg2 = new RegExp('\n', 'ig')
+    // console.log(reg2)
+
+    // 表示你向正则中填充了一个 \n  => var reg = /\n/
+    // var reg2 = new RegExp('\\d{2}', 'ig')
+    // console.log(reg2)
+
+    var s = 'bc'
+
+    var reg = '/a' + s + 'd/'
+    console.log(reg)
+
+    var reg2 = new RegExp('a' + s + 'd')
+    console.log(reg2.test('abcd'))
+  </script>
+</body>
+</html>

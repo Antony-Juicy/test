@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    // 随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+
+    // 我们专门有一个方法叫做 Math.random()
+    //   这个方法是专门用来生成一个随机数字的
+    //   生成的随机数字是一个从 0 ~ 1 的数字
+    //   但是有可能出现 0，但是绝对不可能出现 1
+
+    console.log(Math.random())
+    // 用 Math.random() * 100000
+    // 0 ~ 0.999999
+    // 0 ~ 99999.9999999999999999
+
+    var n = parseInt(Math.random() * 100000)
+    console.log(n)
+
+    var a = parseInt(n / 10000)
+    var b = parseInt(n % 10000 / 1000)
+    var c = parseInt(n % 1000 / 100)
+    var d = parseInt(n % 100 / 10 )
+    var e = n % 10
+
+    console.log(a, b, c, d, e)
+
+  </script>
+</body>
+</html>

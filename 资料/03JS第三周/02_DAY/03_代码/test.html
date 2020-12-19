@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    span {
+      color: red;
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  用户名： <input class="username" type="text"><span>您输入的用户名不符合规则，请重新输入！^_^</span><br>
+  密码： <input class="pwd" type="text"><span>您输入的密码不符合规则，请重新输入！-_-</span><br>
+  <button disabled>登录</button>
+
+
+
+  <script>
+    // 1. 获取元素
+    var username = document.querySelector('.username')
+    var pwd = document.querySelector('.pwd')
+    var spans = document.querySelectorAll('span')
+    var btn = document.querySelector('button')
+
+    // 2. 准备两个正则
+    var usernameReg = /^[a-z0-9]\w{5,11}$/i
+    var pwdReg = /^.{6,16}$/
+
+    // 5. 准备两个变量
+    //    分别记录两个输入框的正确与否
+    var usernameFlag = false
+    var pwdFlag = false
+
+    // 3. 准备两个函数
+    function usernameHandler() {
+      if (usernameReg.test(this.value)) {
+        // 对一个
+        spans[0].style.display = 'none'
+        usernameFlag = true
+      } else {
+        spans[0].style.display = 'inline'
+        usernameFlag = false
+      }
+
+      // 对两个变量进行判断
+      if (usernameFlag && pwdFlag) {
+        btn.removeAttribute('disabled')
+      } else {
+        btn.setAttribute('disabled', 'disabled')
+      }
+    }
+
+    function pwdHandler() {
+      if (pwdReg.test(this.value)) {
+        // 对一个
+        spans[1].style.display = 'none'
+        pwdFlag = true
+      } else {
+        spans[1].style.display = 'inline'
+        pwdFlag = false
+      }
+
+      if (usernameFlag && pwdFlag) {
+        btn.removeAttribute('disabled')
+      } else {
+        btn.setAttribute('disabled', 'disabled')
+      }
+    }
+
+    // 4. 把事件判定
+    username.addEventListener('input', usernameHandler)
+    username.addEventListener('blur', usernameHandler)
+    pwd.addEventListener('input', pwdHandler)
+    pwd.addEventListener('blur', pwdHandler)
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      类 class
+        在 ES5 以前，我们是没有 类 这个概念的
+        从 ES6 开始，我们有了 类 这个概念
+
+      类 class 就是 ES6 书写构造函数的语法
+        + class 是个关键字
+        + 是用来定义 类 的
+
+      和 ES5 定义的区别
+        1. 使用 class 关键字，不再使用 function 关键字
+        2. ES5 定义的构造函数可以被当作普通函数执行
+          + class 定义的类不能当作普通函数执行，必须和 new 连用
+        3. 首字母大写
+          + 出现在将来我们的继承上
+          + 我们在写的时候就千万不要首字母小写了
+        4. 定义类的时候，不需要写 ()
+          + ES5 的时候函数名后面有一个 ()
+          + ES6 的 class 的 类名 后面没有 ()
+        5. class 关键字的构造函数体由 constructor 组成
+          + 直接在 类的 {} 里面写一个 constructor 函数
+          + 这个函数就表示原先的构造函数体
+        6. 原型上的方法
+          + 函数名.prototype.方法名 = function () {}
+          + 类里面，直接在 类的 {} 里面直接写就可以了
+        7. 在 类 里面可以直接写一些成员
+          + 就直接在 类 的 {} 里面书写就行
+    */
+
+    // ES5
+    // function person(name) {
+    //   this.name = name
+    // }
+
+    // person.prototype.sayHi = function () {
+    //   console.log('hello')
+    // }
+
+    // const p1 = new person('Jack')
+    // console.log(p1)
+
+    // ES6
+    // class Person1 {
+    //   // 我就是 ES5 的构造函数体的哪个函数
+    //   constructor (name) {
+    //     this.name = name
+    //   }
+
+    //   // 我是一个属性
+    //   // age = 20
+
+    //   // 我就是原型上的方法
+    //   sayHi () {
+    //     console.log('我是 Person1 这个类的原型上的方法')
+    //   }
+    // }
+
+    // const p2 = new Person1('Rose')
+    // console.log(p2)
+
+    // ES6 定义的一个类
+    class Person {
+      constructor (name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      sayHi () {
+        console.log('hello ' + this.name + ' , 我今年 ' + this.age + ' 岁了')
+      }
+    }
+
+    const p = new Person('Jack', 18)
+    p.sayHi()
+
+  </script>
+</body>
+</html>

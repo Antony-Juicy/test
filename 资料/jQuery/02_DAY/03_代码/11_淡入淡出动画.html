@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 300px;
+      height: 300px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button class="show">显示</button>
+  <button class="hide">隐藏</button>
+  <button class="toggle">切换</button>
+  <button class="to">指定</button>
+
+  <div></div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      淡入淡出
+        1. fadeIn()
+          + 渐渐的显示
+        2. fadeOut()
+          + 渐渐的隐藏
+        3. fadeToggle()
+          + 切换
+
+        三个方法接受的参数是一样的
+          第一个参数： 时间 ms
+          第二个参数： 运动曲线
+          第三个参数： 运动结束后的回调
+
+        4. fadeTo()
+          + 去到一个指定的透明度
+          + 第一个参数： 时间
+          + 第二个参数： 你指定的透明度
+          + 第三个参数： 运动曲线
+          + 第四个参数： 运动结束后的回调函数
+    */
+
+    $('.show').click(() => {
+      $('div').fadeIn(2000, 'linear')
+    })
+
+    $('.hide').click(() => {
+      $('div').fadeOut(2000, 'linear')
+    })
+
+    $('.toggle').click(() => {
+      $('div').fadeToggle(2000, 'linear')
+    })
+
+    $('.to').click(() => {
+      $('div').fadeTo(500, 0.2, 'linear', () => {})
+    })
+
+  </script>
+</body>
+</html>

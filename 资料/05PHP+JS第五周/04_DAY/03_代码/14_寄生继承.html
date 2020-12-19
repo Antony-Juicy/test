@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      寄生继承
+        + 一种继承方式
+
+      构造函数体内不要写 return
+        return 一个基本数据类型的时候 写了白写
+        return 一个复杂数据类型，构造函数白写
+    */
+
+    function Person(name) {
+      this.name = name
+    }
+
+    Person.prototype.sayHi = function () {
+      console.log('hello world')
+    }
+
+    // 准备一个子类
+    function Student(name) {
+      this.age = 20
+
+      // return 出去了一个 Person 的实例化对象
+      return new Person(name)
+    }
+
+    Student.prototype.fn = function () {
+      console.log('你好 世界')
+    }
+
+    // 看似在 new Student
+    // 但是其实 Student 的构造函数已经没有意义了
+    // 实际上你得到的就是一个 Person 的实例
+    const s = new Student('Jack')
+
+    // 优点： 继承以后，最短的原型链机制
+    // 缺点： 完全没有自己的属性或者方法
+
+    console.log(s)
+
+  </script>
+</body>
+</html>

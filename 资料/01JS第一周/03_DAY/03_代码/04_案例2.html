@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 1000 ~ 2000 年之间所有的闰年
+    // document.write(你要写什么东西)
+
+    // 循环来做
+    for (var i = 1000; i <= 2000; i++) {
+      // i 就是每一个数字
+      if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
+        // console.log(i)
+        document.write(i + '是闰年<br>')
+      }
+    }
+
+  </script>
+</body>
+</html>

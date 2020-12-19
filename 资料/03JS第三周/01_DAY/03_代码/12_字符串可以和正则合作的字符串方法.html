@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      字符串和正则合作的方法
+
+
+      1. search()
+        语法： 字符串.search(正则)
+        返回值：
+          如果找到，返回的是字符片段开始的索引
+          如果没有，就是返回 -1
+      2. match()
+        语法： 字符串.match(正则)
+        返回值：
+          当正则没有全局标识符 g 的时候，和 exec 方法一样
+          当正则有全局标识符 g 的时候，返回值是捕获到的每一个内容（以一个数组的形式返回）
+      3. replace()
+        语法： 字符串.replace(正则)
+        返回值： 替换好的字符串
+          没有全局标识符 g 的时候是只替换一个
+          有全局标识符 g 的时候，会全部替换
+    */
+
+    // var reg = /\d{3}/
+    // var str = 'abcd123abcd123'
+    // var res = str.search(reg)
+    // console.log(res)
+
+
+    // var reg = /\d{3}/
+    // var str = 'asdasdas234asdad456sdasd789asdsa'
+    // var res = str.match(reg)
+    // console.log(res)
+
+    // var reg2 = /\d{3}/g
+    // var str2 = 'asdasdas234asdad456sdasd789asdsa'
+    // var res2 = str2.match(reg2)
+    // console.log(res2)
+
+    var str = 'asdasdasdadHHasdasdHHasdasdHHasdadsasdHHasdasdasd'
+    var reg = /HH/g
+    var res = str.replace(reg, '**')
+    console.log(res)
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>hello world</div>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 给元素绑定事件
+        1. on()
+          + 标准的给元素绑定事件
+          + on('事件类型', 事件处理函数)
+          + on('事件类型', 进行事件委托, 事件处理函数)
+            + this 就是你准确点击的那个元素
+        2. one()
+          + 给元素绑定一个只能执行一次的事件
+          + one('事件类型', 事件处理函数)
+          + one('事件类型', '进行事件委托', 事件处理函数)
+            + 但是所有元素一共只能触发一次
+        3. 常用事件
+          + 有直接的方法可以使用
+          + click()
+          + mouseenter()
+          + mousedown()
+
+      jQuery 里面有一个特殊的事件叫做 hover
+        + 包含一个移入一个移出
+        + hover(移入时候执行的函数，移出的时候执行的函数)
+
+      jQuery 里面取消事件使用
+        off 方法
+        + off()
+
+      jQuery 里面可以不用行为，依靠代码触发事件
+        + trigger(你要触发的事件)
+    */
+
+    // $('div').on('click', e => {
+    //   // e 直接使用
+    //   console.log('我被点击了')
+    // })
+
+    // $('ul').on('click', 'li', function (e) {
+    //   console.log(this)
+    // })
+
+    // var ul = document.querySelector('ul')
+
+    // ul.addEventListener('click', function (e) {
+    //   if (e.target.tagName === 'LI') {
+    //     console.log(this)
+    //   }
+    // })
+
+
+    // $('div').one('click', function () {
+    //   console.log('我执行了')
+    // })
+
+    // $('ul').one('click', 'li', function () {
+    //   console.log(this)
+    // })
+
+    // $('div').click(function () {
+    //   console.log('我执行了')
+    // })
+
+    // $('div').hover(function () {
+    //   // 这个函数移入的时候触发
+    //   console.log('移入')
+    // }, function () {
+    //   // 这个函数移出的时候触发
+    //   console.log('移出')
+    // })
+
+    // function handler() {
+    //   console.log('我执行了')
+    // }
+
+    // $('div').on('click', handler)
+    // $('div').off('click', handler)
+
+
+    $('div').click(function () {
+      console.log('我执行了')
+    })
+
+    // 触发一下元素的 click 行为
+    $('div').trigger('click')
+  </script>
+</body>
+</html>

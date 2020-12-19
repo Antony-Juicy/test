@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>发送 ajax 请求</button>
+
+  <script>
+    /*
+      http 状态码表示本次请求是否成功或者失败
+
+      ajax 状态码是用来描述本次 ajax 请求的过程
+        xhr.readyState
+
+      0 => 表示实例化成功
+      1 => 表示配置请求地址和请求方式成功
+      2 => 请求已经发送出去了
+      3 => 响应已经回到浏览器，正在解析
+      4 => 响应已经解析完毕，可以在客户端正常使用了
+
+      当你想使用结果的时候，
+        需要 readyState === 4
+        需要 http 的状态码是 200 ~ 299
+
+      在 ajax 对象里面有一个叫做 status 的东西是 http 请求的状态码
+
+      想要获取结果有两个办法
+        1. 就是把 ajax 变成同步的（不推荐）
+        2. 就是在一个事件里面进行接受
+          + onreadystatechange
+          + 当 ajax 状态码发生改变的时候触发
+    */
+
+    // const btn = document.querySelector('button')
+
+    // btn.onclick = function () {
+
+    //   const xhr = new XMLHttpRequest()
+
+    //   xhr.open('GET', './ceshi.php')
+
+    //   xhr.onreadystatechange = function () {
+    //     console.log(xhr)
+    //   }
+
+    //   xhr.send()
+
+    // }
+
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('GET', './ceshi.php')
+
+    // 加一个事件监听
+    xhr.onreadystatechange = function () {
+      // 这个函数会在 ajax 的状态码发生改变的时候触发
+      // console.log('我执行了')
+      // console.log(xhr.readyState)
+
+      // 在这个事件处理函数里面就能拿到 readyState === 4
+      // 就表示我可以获取结果了
+      // 如果本次请求失败了，ajax 的状态码依旧会变成 4
+      // 还要判断本次请求成功了，http 状态码可以判断请求的成功或者失败
+
+      console.log(xhr)
+    }
+
+
+    xhr.send()
+
+
+
+
+
+
+    // const xhr = new XMLHttpRequest()   // sync
+
+    // xhr.open('GET', './ceshi.php', false)  // sync
+
+    // xhr.send() // sync
+
+    // console.log(xhr.readyState)  // sync
+
+  </script>
+</body>
+</html>

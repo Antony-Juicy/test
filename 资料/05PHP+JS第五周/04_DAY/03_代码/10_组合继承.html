@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      组合继承
+        + 组合的是什么
+        + 就是把 原型继承 和 借用构造函数继承 两个方式合在一起
+    */
+
+    // 先准备一个父类
+    function Person(name) {
+      this.name = name
+    }
+
+    Person.prototype.sayHi = function () {
+      console.log('hello world')
+    }
+
+    // 准备一个子类
+    function Student(age, name) {
+      this.age = age
+      Person.call(this, name)
+    }
+
+    Student.prototype = new Person()
+
+    const s = new Student(20, 'Jack')
+    console.log(s)
+
+    /*
+      s === {
+        age: 20,
+        name: 'Jack',
+        __proto__: Student.prototype === new Person() {
+          name: 'Jack',
+          __proto__: Person.prototype {
+            sayHi: function () {},
+            __proto__: Object.prototype
+          }
+        }
+      }
+
+      当 s.name 的时候，访问的自己身上的属性，不用去 __proto__ 上查找
+      当 s.sayHi() 的时候，访问的就是 __proto__.__proto__ 上的方法
+
+      属性和方法都继承下来了
+        我的 原型继承就能够继承 属性和方法
+        call 继承没什么用
+        组合继承更没用
+
+      1. 传递参数的关系
+      2. 原型链的访问机制
+    */
+
+    console.log(s.age)
+    console.log(s.name)
+    s.sayHi()
+  </script>
+</body>
+</html>

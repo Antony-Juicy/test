@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      正则的元字符
+        + 就是用来描述内容的一些符号
+
+      1. `.`(点)
+        + 非换行的任意字符
+      2. `\`(斜线)
+        + 转译
+        + 把有意义的变成没有意义的
+        + 把没有意义的变成有意义的
+      3. \s
+        + 空格
+      4. \S
+        + 非空格
+      5. \d
+        + 数字
+      6. \D
+        + 非数字
+      7. \w
+        + 数字字母下划线
+      8. \W
+        + 非数字字母下划线
+    */
+
+    // 表示字符串里面包含着非换行的其他字符都可以
+    // var reg = /./
+    // var str = 'a\n'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串里面需要包含着一个 . 字符
+    // var reg = /\./
+    // var str = 'ab.cd'
+    // var res = reg.test(str)
+    // console.log(res)
+
+
+    // 表示字符串中需要包含一个 空格
+    // var reg = /\s/
+    // var str = 'abcd s'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要包含一个非空格
+    // var reg = /\S/
+    // var str = '   a   '
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要包含一个数字
+    // var reg = /\d/
+    // var str = 'abcd  sferg'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要包含一个非数字
+    // var reg = /\D/
+    // var str = '123asdj'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要包含一个 字母也行数字也行下划线也行
+    // var reg = /\w/
+    // var str = '@#￥%……&'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要出现一个 非数字字母下划线 的内容
+    var reg = /\W/
+    var str = 'fegsasd……1231231___'
+    var res = reg.test(str)
+    console.log(res)
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+    var str = 'asdasdasdHHasdasHHdasdasdHHasdasdsadasHHasdasdasd'
+
+    // // 只能替换一次
+    // var res = str.replace('HH', '**')
+
+    // // 把 res 的值重新赋值给 str
+    // str = res
+
+    // res = str.replace('HH', '**')
+
+    // str = res
+
+    // console.log(str)
+
+    // 以循环的方式来进行替换
+    // 使用 while 循环
+    while (str.indexOf('HH') !== -1) {
+      // 能进入循环证明字符串中有 'HH' 这个字符片段
+      str = str.replace('HH', '**')
+    }
+
+    console.log(str)
+
+    // 随着循环执行
+    /*
+      第一次的时候 true  str = asdasdasd**asdasdasdasdHHasdasdsadasHHasdasdasd
+      第二次的时候 true  str = asdasdasd**asdasdasdasd**asdasdsadasHHasdasdasd
+      第三次的时候 true  str = asdasdasd**asdasdasdasd**asdasdsadas**asdasdasd
+      第四次的时候 false 结束循环
+    */
+
+  </script>
+</body>
+</html>

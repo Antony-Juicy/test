@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    label.error {
+      color: red
+    }
+
+    input.error, textarea.error {
+      border: 1px solid red;
+    }
+
+  </style>
+</head>
+<body>
+
+    <form class="cmxform" id="commentForm" method="get" action="">
+      <fieldset>
+        <legend>输入您的名字，邮箱，URL，备注。</legend>
+        <p>
+          <label for="cname">Name (必需, 最小两个字母)</label>
+          <input id="cname" name="username" type="text">
+        </p>
+        <p>
+          <label for="cemail">E-Mail (必需)</label>
+          <input id="cemail" type="email" name="email" >
+        </p>
+        <p>
+          <label for="curl">URL (可选)</label>
+          <input id="curl" type="url" name="url">
+        </p>
+        <p>
+          <label for="ccomment">备注 (必需)</label>
+          <textarea id="ccomment" name="comment"></textarea>
+        </p>
+        <p>
+          <input class="submit" type="submit" value="提交">
+        </p>
+      </fieldset>
+    </form>
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script src="../validation/jquery.validate.min.js"></script>
+  <script src="../validation/localization/messages_zh.min.js"></script>
+  <script>
+    /*
+      专门用来做表单验证
+        1。 引入文件
+        2. 按照格式书写内容
+          + 只要有 form 标签，里面包裹了 input 就可以了
+
+      https://www.runoob.com/jquery/jquery-plugin-validate.html
+    */
+
+    $('#commentForm').validate({
+      // 你对该表单设置的一系列规则
+      rules: { // 这个对象里面的每一个成员就是一个规则
+        username: "required",
+        // 对应的这个表单，可以写多个规则
+        email: {
+          email: true,
+          required: true
+        },
+        comment: {
+          minlength: 8,
+          maxlength: 15,
+          required: true
+        }
+      },
+      // messages 时你可以自定义一个提示文字
+      messages: { // 这里的内容只要和 rules 配套就可以了
+        username: '您好，这个必须填写！^_^',
+        email: {
+          email: '请您填写一个合法的邮箱',
+          required: '您还没有填写邮箱'
+        }
+      },
+      // 这个函数会在表单验证通过以后执行
+      submitHandler: function (form) {
+        console.log('我通过了')
+        // 发送 ajax 请求，把用户名 密码 之类的信息带到后端
+        // console.log(form)
+
+        // jQuery 提供了一个快速获取 form 表单内不数据的方法
+        var userInfo = $(form).serialize()
+        console.log(userInfo)
+      }
+    })
+
+
+  </script>
+</body>
+</html>

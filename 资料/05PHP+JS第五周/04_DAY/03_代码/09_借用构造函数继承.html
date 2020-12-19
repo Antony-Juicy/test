@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      2. 借用构造函数继承
+        + call 继承
+        + 借用继承
+    */
+
+    // 准备一个父类
+
+    function Person(name) {
+      this.name = name
+    }
+
+    Person.prototype.sayHi = function () {
+      console.log('hello world')
+    }
+
+    // Person 是一个构造函数
+    // 需要和 new 连用
+    // 之所以能够向对象中添加成员
+    // 因为和 new 连用的时候，函数体内的 this 指向当前实例
+    // const p = new Person('Jack')
+
+    // Person 构造函数也是一个函数
+    // 是一个函数就可以直接调用
+    // 就相当于把 name 属性添加在 window 上
+    // Person('Jack') // this => window
+
+    // var obj = {}
+    // Person.call(obj, 'Jack')
+    // console.log(obj)
+
+
+    // 准备一个子类
+    function Student(age, name) {
+      this.age = age
+
+      // 此时，这里的 this 指向 s
+      // 让 Person 函数执行的时候，函数体内的 this 指向了 Student 的实例
+      Person.call(this, name)
+    }
+
+    // s 是 Student 的一个实例
+    // Student 这个函数体内的 this 指向谁 s
+    const s = new Student(20, 'Jack')
+    console.log(s)
+    /*
+      只能继承父类写在构造函数体内的属性
+        父类原型上的内容不能继承
+      我继承来的属性直接出现在自己身上
+    */
+
+
+
+
+
+
+
+
+
+
+
+    /*
+      this 指向
+        全局调用 函数名() this => window
+        对象调用 对象.函数名() this => 点前面时谁就是谁
+        定时器处理函数 this => window
+        事件处理函数 this => 事件源（谁身上的事件）
+        自调用函数 this => window
+        构造函数 this => 当前实例
+        箭头函数 this => 上下文
+
+      强行改变 this 指向
+        call(要改变的 this 指向，参数1， 参数2， ...)
+        apply(要改变的 this 指向，[参数1， 参数2， ...])
+        bind(要改变的 this 指向， 参数)
+          + 在返回的新函数调用的时候传递参数
+    */
+  </script>
+</body>
+</html>

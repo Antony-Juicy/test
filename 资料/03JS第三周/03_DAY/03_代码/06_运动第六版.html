@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      opacity: 1;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    /*
+      问题： 不能运动 opacity
+    */
+
+    const box = document.querySelector('div')
+
+    box.addEventListener('click', function () {
+      move(this, {
+        left: 300,
+        opacity: 0
+      })
+    })
+
+
+    function move(ele, target) {
+      let timerObj = {}
+      for (let attr in target) {
+        timerObj[attr] = setInterval(() => {
+          // 对 opacity 单独进行判断
+          let current
+
+          if (attr === 'opacity') {
+            // 获取的时候给你扩大 100 倍
+            current = getComputedStyle(ele)[attr] * 100
+          } else {
+            current = parseInt(getComputedStyle(ele)[attr])
+          }
+
+          let distance = (target[attr] - current) / 5
+          distance = distance > 0 ? Math.ceil(distance) : Math.floor(distance)
+
+          if (current === target[attr]) {
+            clearInterval(timerObj[attr])
+          } else {
+            // 赋值的时候也要考虑一下 opacity
+            if (attr === 'opacity') {
+              ele.style[attr] = (current + distance) / 100
+            } else {
+              ele.style[attr] = current + distance + 'px'
+            }
+          }
+        }, 30)
+      }
+    }
+
+
+
+
+
+
+  </script>
+</body>
+</html>

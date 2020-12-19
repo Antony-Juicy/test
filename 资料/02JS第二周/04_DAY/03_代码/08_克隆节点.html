@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    我是一个提前准备好的 div
+    <span>我是一个span标签</span>
+  </div>
+
+  <script>
+    var box = document.querySelector('.box')
+
+    // 1. cloneNode()
+    //    语法： 元素.cloneNode() 有一个参数选填
+    //    返回值： 被克隆好的节点(默认是不克隆子节点的)
+    //    参数：表示是否克隆子节点（默认值是 false）
+    // var cloneBox = box.cloneNode()
+    // console.log(cloneBox)
+
+    // 带有参数
+    var cloneBox = box.cloneNode(true)
+    console.log(cloneBox)
+
+
+    /*
+      总结一下节点操作
+        1. 创建节点
+          + createElement
+          + createTextNode
+        2. 插入节点
+          + appendChild
+          + insertBefore(要插入的元素,谁的前面)
+        3. 替换节点
+          + replaceChild(新节点，旧节点)
+        4. 删除节点
+          + removeChild
+        5. 克隆节点
+          + cloneNode
+            + 参数为 false 或者不填，不克隆子节点
+            + 参数为 true，克隆子节点
+    */
+  </script>
+</body>
+</html>

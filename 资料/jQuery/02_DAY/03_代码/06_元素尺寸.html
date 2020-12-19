@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      border: 20px solid #333;
+      margin: 30px;
+
+      box-sizing: border-box;
+    }
+
+    p {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <p></p>
+  </div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      元素尺寸
+        + width() || height()
+          + 内容
+        + innerWidth() || innerHeight()
+          + 内容 + padding
+        + outerWidth() || outerHeight()
+          + 内容 + padding + border
+        + outerWidth(true) || outerHeight(true)
+          + 内容 + padding + border + margin
+
+      1. width() || height()
+        + 获取元素的内容区域的宽和高
+        + 不管盒子模型是什么，我只获取内容的区域
+        + 不管子元素是否溢出，我只获取我自己内容的区域
+
+      2. innerWidth() || innerHeight()
+        + 获取元素的 内容区域 + padding 的宽和高
+        + 不考虑盒子模型，只是我自己的 内容 + padding 区域
+        + 不管子元素是否溢出，只是我自己的 内容 + padding 区域
+
+      3. outerWidth() || outerHeight()
+        + 获取元素的 内容区域 + padding + border 的宽和高
+        + 不考虑盒子模型，只是我自己的 内容 + padding + border 区域
+        + 不管子元素是否溢出，只是我自己的 内容 + padding + border 区域
+
+      4. outerWidth(true) || outerHeight(true)
+        + 获取元素的 内容区域 + padding + border + margin 的宽和高
+        + 不考虑盒子模型，只是我自己的 内容 + padding + border + margin 区域
+        + 不管子元素是否溢出，只是我自己的 内容 + padding + border + margin 区域
+    */
+
+    // console.log($('div').width())
+    // console.log($('div').height())
+
+    // console.log($('div').innerWidth())
+
+    // console.log($('div').outerWidth())
+
+    console.log($('div').outerWidth(true))
+    console.log($('div').outerHeight(true))
+
+  </script>
+</body>
+</html>

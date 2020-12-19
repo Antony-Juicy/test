@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      ajax 请求有三个必要条件
+        1. 实例化
+        2. 配置参数
+        3. 发送请求
+      接受结果
+        需要在一个 readystatechange 事件里面来接受
+        有两个条件要满足
+          1. xhr.readyState === 4
+          2. xhr.status === 200 ~ 299
+    */
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('get', './ceshi.php')
+
+    xhr.onreadystatechange = function () {
+
+
+      // 进行条件判断
+      if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
+        // 表示本次请求成功了
+        // ajax 状态也成功了
+        // 可以获取结果了
+        // 获取响应体内容，使用
+        //   xhr.responseText
+        console.log(xhr.responseText)
+
+        if (xhr.responseText === '成功') {
+          console.log('跳转页面')
+        } else {
+          console.log('提示用户错误')
+        }
+
+      }
+    }
+
+    xhr.send()
+
+  </script>
+</body>
+</html>

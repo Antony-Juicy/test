@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      原型和原型链
+
+      原型
+        我们管构造函数的 prototype 叫做这个构造函数的原型对象
+        我们管对象的 __proto__ 叫做这个对象的原型属性
+        我们所有的原型指的都是实例对象的 __proto__
+
+      原型链
+        从最基础对象出发
+        按照 __proto__ 的指引 一直能找到 Object.prototype
+        被 __proto__ 串联起来的对象链状解构，就是原型链
+
+      对象的访问机制
+        当自己有的时候，直接使用自己的
+        当自己没有的时候，会去自己的原型上查找
+        当自己的原型也没有的时候，回去原型的原型上查找
+        一直找到 Object.prototype 上都没有，那么会返回 undefined
+
+      **每一个对象都有一个 __proto__ 属性，指向所属构造函数的 prototype**
+      构造函数的 prototype 也是一个对象，他的 __proto__ 是谁
+      应该是 构造函数.prototype 的所属构造函数的 prototype
+      一个构造函数的 prototype 是属于哪一个构造函数的
+
+      **当一个对象没有准确的构造函数来实例化的时候，那么他所属的构造函数就是 Object**
+
+      // 数组是属于 Array
+      const arr = []
+      // 字符串是属于 String
+      const str = ''
+      // 正则式属于 RegExp
+      const reg = /^abcd$/
+
+      每一个函数的 prototype 所属的构造函数都是 Object（这是默认的情况）
+        + Object 是我们 js 的顶级对象（顶级构造函数）
+        + 不在有 __proto__
+        + 他的 __proto__ === null
+    */
+
+    function Person() {
+
+    }
+
+    Person.prototype.fn = function () {}
+
+    const p1 = new Person()
+    // p1 式 Person 的一个实例
+    // p1 是属于 Person 的
+    // p1 再访问属性的时候，自己没有，就会去 Person.prototype 上找
+    // 如果 Person.prototype 上还没有，就去 Person.prototype.__proto__ 上找
+
+    console.log(Person.prototype.__proto__)
+
+    console.log(Object.prototype)
+
+
+    /*
+      从 p1 开始出发
+        现在 p1 自己身上
+        p1.__proto__ === Person.prototype
+        p1.__proto__.__proto__ === Person.prototype.__proto__ === Object.prototype
+    */
+  </script>
+</body>
+</html>

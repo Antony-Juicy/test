@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <!-- <script src="https://cdn.bootcss.com/Swiper/4.5.1/js/swiper.js"></script> -->
+  <!-- <script src="./main.txt"></script>
+  <script src="./main.css"></script> -->
+
+  <!-- 这个 jsonp.php 会给我返回一个 console.log(xxx) 的文本 -->
+  <!-- <script src="http://127.0.0.1:80/jsonp/jsonp.php"></script> -->
+
+
+
+  <script>
+    function fun234567890(res) {
+      console.log('我执行了')
+      console.log(res)
+    }
+  </script>
+  <!--
+    现在请求到的是一个字符串 fn()
+    回来以后，script 标签会把 fn() 当作 js 代码来执行
+  -->
+  <script src="http://127.0.0.1:80/jsonp/jsonp.php?callback=fun234567890"></script>
+  <script>
+    /*
+      jsonp 不是新的方法
+        + 而是一个技术手段
+
+      script 标签的 src 属性可以引入一个 js 文件
+        + src 只是用来引入一个外部资源
+        + script 标签会把引入的资源当作 js 代码来解析
+
+      script 的 src 属性不收同源策略的影响
+        + 利用 script 的 src 属性绕开同源策略的影响
+
+      script 的 src 属性只是为了引入一个文件而已
+        + 使用 script 标签的 src 去请求一个别人家的 服务器
+        + jsonp 请求的返回值一定是一个字符串
+          + 请求回来以后，script 标签会把这个字符串当作 js 代码来执行
+        + 返回一个 函数调用
+          + 如果我在这个请求发送出去之前，定义一个函数
+
+      jsonp 一般至少携带一个参数
+        + 这个参数是为了告诉后端我的函数名叫什么
+    */
+
+  </script>
+</body>
+</html>

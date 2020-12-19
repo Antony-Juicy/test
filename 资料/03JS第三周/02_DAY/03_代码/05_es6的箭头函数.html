@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      es6 的箭头函数
+        - 是一种对 **函数表达式** 的简写（也就是我们所说的赋值式函数）
+        - 对 **声明式函数** 没有作用
+
+      函数表达式
+        自执行函数里面 (function () {})()
+        赋值式函数 let fn = function () {}
+        对象中的方法 obj = { fun: function () {} }
+        定时器处理函数 setTimeout(function () {})
+        es5 的哪些数组方法 forEach(function () {})
+        事件处理函数 addEventListener('click', function () {})
+      我们的函数表达式一般都是 匿名函数
+        + 匿名函数都可以使用箭头函数来简写
+
+      箭头函数的语法
+        + 没有了 function 关键字
+        + () => {}
+
+      箭头函数的特性（熟读）
+        1. 箭头函数没有 this
+          + 箭头函数的 this 就是上下文（context）
+          + 就是箭头函数外部作用域的 this
+          + 只有箭头函数特殊，this 看定义
+            + 你箭头函数写在哪一行，你就去你写箭头函数的上一行打印一下 this
+            + 上一行 this 是谁，箭头函数里面的 this 就是谁
+        2. 箭头函数不受 call / apply / bind 的影响
+          + 箭头函数的 this 在定义的时候就已经决定好了
+          + 决定好以后，任何方法不能更改
+        3. 箭头函数内部没有 arguments
+          + 箭头函数内部没有这个天生的变量
+        4. 箭头函数传递参数的时候
+          + 如果只有一个形参，可以不写小括号
+          + 如果没有形参或者两个及以上形参，必须写小括号
+        5. 箭头函数的函数体
+          + 如果只有一句话，可以不写大括号
+          + 否则就必须写
+          + **当你省略 {} 的时候，函数会自动 return**
+    */
+
+    const fn = a => a + 100
+
+    const res = fn(200)
+    console.log(res)
+
+
+    // const fn = a => console.log(a + 100)
+
+    // fn(100)
+
+
+    // const fn = a => {
+    //   console.log(a)
+    // }
+
+    // fn(100)
+
+
+
+    // const fn = () => {
+    //   console.log(arguments)
+    // }
+
+    // fn(1, 2, 3, 4, 5)
+
+    // const obj = {
+    //   name: '我是 obj 对象'
+    // }
+
+    // const fn = () => {
+    //   console.log(this)
+    // }
+
+    // fn.call(obj)
+
+
+
+
+
+
+
+
+
+    // const obj = {
+    //   fun: () => {
+    //     // 这个函数的上一级作用域就是 window
+    //     // 所以或者箭头函数的 this 就是 window 这个作用域里面的 this
+    //     console.log(this)
+    //   },
+    //   fn: function () {
+    //     console.log(this)
+
+    //     const f = () => {
+    //       // 现在式箭头函数，我自己没有 this
+    //       // 我的 this 式我上一级作用域里面的 this
+    //       // 上一级作用域是 obj.fn 函数
+    //       // 那么我的 this 就是 obj.fn 这个函数里面的 this
+    //       console.log(this)
+    //     }
+    //     f()
+    //   }
+    // }
+
+    // obj.fun()
+    // obj.fn()
+
+
+
+
+
+
+
+
+    // let fn = () => {
+    //   console.log('我是 fn 函数')
+    // }
+
+    // fn()
+
+    // const obj = {
+    //   fun: () => { console.log('我是 obj 的 fun 函数') }
+    // }
+
+    // obj.fun()
+
+    // setInterval(() => {
+    //   console.log('我是一个定时器函数')
+    // }, 1000)
+
+    // forEach(() => {
+
+    // })
+  </script>
+</body>
+</html>

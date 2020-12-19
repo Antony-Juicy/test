@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      1. 能被 4 整除 不能被 100 整除 闰年
+      2. 能被 400 整除 闰年
+
+      1. 数字 % 4 === 0
+      2. 数字 % 100 !== 0
+      3. 数字 % 400 === 0
+
+      if (1 && 2 || 3) {
+
+      }
+
+      1999 平年
+      2000 闰年
+      2004 闰年
+      2100 平年
+    */
+
+    var year = prompt('请输入一个年份')
+
+    if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+      alert('闰年')
+    } else {
+      alert('平年')
+    }
+
+  </script>
+</body>
+</html>

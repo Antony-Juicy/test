@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      预解析（预解释）
+        - javascript 是一个解释性语言
+        - 就是在代码执行之前，对代码进行通读，把一些东西提前解析出来
+
+      预
+        + 是在代码执行之前进行解释
+        + 当代码开始执行的时候，表示预解析结束了
+
+      解析（一共解析两个东西）
+        1. 声明式函数 function fn() {}
+        2. var 关键字
+
+      做什么
+        1. 会把 var 声名的变量提前（在代码执行之前，浏览器就已经知道了内存中有一个变量可以使用了，只不过没有值）
+        2. 把声明式函数提前
+          + 会把函数名当作变量提前
+          + 并且告诉浏览器这个变量的值是一个函数地址
+    */
+
+    fn() // 这个是第一行代码
+
+    // 在所有的代码开始执行之前，浏览器就已经知道了有一个叫做 fn 的变量可以使用
+    // 并且还知道了 fn 这个变量存储的是一个函数的地址
+    function fn() {}
+
+    fn()
+
+    /*
+      function fn() {}
+      fn()
+      fn()
+    */
+
+
+
+
+    // console.log(num) // 这个时候浏览器已经知道 num 可以使用，只不过没有赋值
+    // // 在所有的代码执行之前，浏览器就已经知道了有一个 num 变量可以使用
+    // // 只不过这个变量时没有赋值的
+    // var num = 100
+
+    // console.log(num)
+
+    /*
+      var num
+      console.log(num)
+      num = 100
+      console.log(num)
+    */
+
+
+    // fn() // 在这里的时候，fn 这个变量确实是由了，但是 fn 还是一个 undefined
+    // var fn = function () {}
+
+  </script>
+</body>
+</html>

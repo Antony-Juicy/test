@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 300px;
+      height: 300px;
+      background-color: skyblue;
+      position: absolute;
+      top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button>动画</button>
+
+  <div></div>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      动画的方式
+        + animate()
+        + 专门用来制作动画的
+
+        + 第一个参数： 对象
+          + 你要设置的动画属性
+          + 可以同时设置多个属性
+        + 第二个参数： 时间 ms
+        + 第三个参数： 运动曲线
+        + 第四个参数： 运动结束后的回调函数
+    */
+
+    $('button').click(() => {
+      // 给 div 设置一个动画
+      $('div').animate({
+        width: 1000,
+        height: 600,
+        opacity: 0.5,
+        left: 100
+      }, 2000, 'linear', () => {
+        console.log('运动结束')
+      })
+    })
+
+  </script>
+</body>
+</html>

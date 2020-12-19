@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="../utils.js"></script>
+  <script>
+    /*
+      async 是一个 es7 的语法
+        + 可以把 async 理解为一个关键字
+        + 是来修饰一个函数的
+        + async function fn() {}
+        + **和 await 关键字联合使用**
+          + 你可以写了 async 不写 await
+          + 但是你写了 await 必须写 async
+
+      在一个被 async 修饰的函数里面
+        + 可以使用一个叫做 await 的关键字
+        + 他后面需要等待一个 promise 对象
+        + 等到这个 promise 对象的 resolve() 的时候
+        + 再继续向下执行代码
+        + 就是让 await 后面行的代码等到 promise 执行完毕后再执行
+        + **你本身应该再 then 里面接受的结果可以直接再 await 前面定义一个变量接受**
+
+      async/await 本质
+        就是把异步代码写的看起来像同步代码
+
+    */
+
+    fn()
+    async function fn() {
+      const res1 = await pAjax({
+        url: './data1.php',
+        dataType: true
+      })
+
+      const res2 = await pAjax({
+        url: './data2.php',
+        dataType: true,
+        data: res1
+      })
+
+      const res3 = await pAjax({
+        url: './data3.php',
+        dataType: true,
+        data: res2
+      })
+
+      console.log(res3)
+    }
+
+
+
+
+
+
+
+    // fn()
+    // async function fn() {
+    //   // 他会把这个 fn 函数变成一个 异步函数
+
+    //   // res1 就是你本该再 then 里面接受的内容
+    //   const res1 = await pAjax({
+    //     url: './data1.php',
+    //     dataType: true
+    //   })
+    //   // .then(res => {
+    //   //   // res 接受的是请求的结果
+    //   //   console.log(res)
+    //   // })
+
+    //   console.log(res1)
+    //   console.log(123)
+
+    // }
+
+
+  </script>
+</body>
+</html>

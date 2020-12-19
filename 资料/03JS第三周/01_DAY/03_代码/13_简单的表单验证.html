@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    span {
+      color: red;
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  用户名： <input type="text"> <span>您输入的用户名不正确，请重新输入！^_^</span>
+
+
+  <script>
+    // 1. 获取元素
+    var inp = document.querySelector('input')
+    var span = document.querySelector('span')
+
+    // 正则要求
+    //   不能以 _ 开头 6 - 12 位
+    //   只能由数字字母下划线组成
+    var reg = /^[0-9a-zA-Z]\w{5,11}$/
+
+    // 2. 考虑事件
+    //    随着用户的输入就要进行随是验证 input
+    //    失去焦点也要进行验证 blur
+    //    两个事件做的事情是一样的
+    function handler() {
+      // 判断你输入的内容是不是符合正则要求
+      if (reg.test(this.value)) {
+        // 如果是 true，表示符合要求
+        span.style.display = 'none'
+      } else {
+        // 表示不符合要求
+        span.style.display = 'inline'
+      }
+
+    }
+    inp.addEventListener('input', handler)
+    inp.addEventListener('blur', handler)
+  </script>
+</body>
+</html>

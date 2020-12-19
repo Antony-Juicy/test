@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      因为前后端分离式的开发，才逐渐火起来的一个技术
+        叫 cors
+        + 是后端再自己的代码中添加一些内容就可以了
+          + 表示我告诉浏览器我允许别人请求我的资源
+
+    */
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('get', 'http://127.0.0.1:80/cors/cors.php')
+
+    xhr.onload = function () {
+      console.log(xhr.responseText)
+    }
+
+    xhr.send()
+
+  </script>
+</body>
+</html>

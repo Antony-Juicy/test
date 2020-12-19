@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+  <style>
+    .container {
+      height: 100px;
+      background-color: pink;
+    }
+
+    .row {
+      height: 60px;
+      background-color: red;
+    }
+
+    .box1, .box2, .box3, .box4 {
+      height: 50px;
+      background-color: skyblue;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <!--
+    container
+      有一个指定宽度的样式
+      margin: 0 auto;
+      padding: 0 15px;
+      我们在写 container 的时候一般都会在里面放一个 row
+    row
+      块级元素，默认宽度 100%
+      margin: 0 -15px;
+    col-xx-xx
+      把父元素的宽度当作一个基础
+      一份就是 12分之1
+
+      lg 在屏幕宽度大于 1200 的时候生效
+      md 在屏幕宽度在 992 ~ 1200 之间生效
+      sm 在屏幕宽度在 768 ~ 992 之间生效
+      xs 在屏幕宽度小于 768 的时候生效
+
+    hidden-xx
+      在各种屏幕里面隐藏
+
+    响应式开发
+      + 做企业官网
+      + 比较小的网站
+  -->
+
+  <div class="container">
+
+    <div class="row">
+      <div class="box1 col-lg-3 col-md-4 col-sm-6 col-xs-12">1</div>
+      <div class="box2 col-lg-3 col-md-4 col-sm-6 col-xs-12 hidden-xs">2</div>
+      <div class="box3 col-lg-3 col-md-4 col-sm-6 col-xs-12 hidden-sm hidden-xs">3</div>
+      <div class="box4 col-lg-3 col-md-4 col-sm-6 col-xs-12 hidden-md hidden-sm hidden-xs">4</div>
+    </div>
+
+  </div>
+
+
+
+</body>
+</html>

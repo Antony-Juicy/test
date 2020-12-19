@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script src="./utile.js"></script>
+  <script>
+    /*
+      设置 cookie
+
+      直接写 document.cookie = 'key=value' 就是设置一条 cookie
+        + 一次只能设置一条 cookie
+        + 默认的过期时间是 session
+        + 如果像设置他的过期时间，直接在本条cookie后面添加一个 expires
+          + 过期时间的值需要是一个时间对象
+          + 如果传递的是当前时间，就是会话级别
+          + 如果你传递的是一个将来的时间，会在将来某一个时间点的时候过期
+
+
+    */
+
+    // const time = new Date()
+    // // 想让他在十秒后过期，我们要把我们获取到的时间向前倒退 8 个小时 在加上 10 秒
+
+    // // console.log(time.getTime() - 1000 * 60 * 60 * 8)
+    // time.setTime(time.getTime() - 1000 * 60 * 60 * 8 + 1000 * 1)
+    // // console.log(time)
+
+    // document.cookie = 'a=100;expires=' + time
+
+
+    /*
+      需要传递哪些参数
+        key
+        value
+        expires 选填按秒计算就可以
+
+    */
+    // function setCookie(key, value, expires) {
+    //   var time = new Date()
+    //   time.setTime(time.getTime() - 1000 * 60 * 60 * 8 + 1000 * expires)
+    //   var str = `${key}=${value};expires=${ expires ? time : '' }`
+    //   // console.log(str)
+    //   document.cookie = str
+    // }
+
+    setCookie('a', '200', 10)
+
+
+
+  </script>
+</body>
+</html>

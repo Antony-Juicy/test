@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // function fn() {
+    //   var num = 100
+
+    //   var obj = {
+    //     getNum: function () {
+    //       return num
+    //     },
+    //     setNum: function (n) {
+    //       num += n
+    //     }
+    //   }
+
+    //   return obj
+    // }
+
+    // var res = fn()
+    // console.log(res.getNum())
+    // res.setNum(10)
+    // console.log(res.getNum())
+
+
+    function fn() {
+      var num = 100
+
+      return {
+        get getNum () {
+          return num
+        },
+        set setNum (n) {
+          num += n
+        }
+      }
+    }
+
+    var res = fn()
+    console.log(res.getNum)
+    res.setNum = 10
+    console.log(res.getNum)
+    console.log(res)
+
+
+    // var obj = {
+    //   name: 'Jack'
+    // }
+    // console.log(obj)
+
+  </script>
+</body>
+</html>

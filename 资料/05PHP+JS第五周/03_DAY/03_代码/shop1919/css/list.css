@@ -1,0 +1,37 @@
+.box {
+  height: 80px;
+}
+
+.box > .row {
+  height: 100%;
+}
+
+.title {
+  width: 100%;
+  height: 100%;
+  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hotpink;
+  font-size: 60px;
+}
+
+.price > i, .price > span {
+  font-size: 30px;
+  color: red;
+}
+
+.pagi {
+  height: 80px;
+  margin: 30px auto;
+  border: 1px solid #333;
+}
+
+.list_box h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

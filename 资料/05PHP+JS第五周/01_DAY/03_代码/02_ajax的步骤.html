@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      ajax 的步骤
+        + 就是我和后端通讯的一个流程
+
+      js 内置了一个构造函数
+        + XMLHttpRequest()  标准浏览器
+        + ActiveXObject('Microsoft.XMLHTTP') IE 低版本浏览器
+
+      使用这个构造函数来帮我们创造一个实例化对象
+        + 然后使用这个实例化对象的方法来完成一个 ajax 请求
+
+
+      ajax 必要的步骤
+        1. 创建一个实例化对象
+        2. 配置你的请求方式和请求地址
+          + GET 和 POST
+          + 你请求哪一个路径标识符
+          + xhr.open(请求方式，请求 url，true)
+            + 第三个参数是选填
+            + 表示是否异步
+              + true 表示 是异步
+              + false 表示 非异步
+        3. 把请求发送出去
+          + xhr.send()
+            + 参数是请求体
+            + 如果是 get 请求，那么就空着或者写个 null
+            + 如果是 post 请求，那么就直接写请求体
+
+      ajax 一个不是必要的条件但是一般都会写
+        1. 接受结果
+    */
+
+    // 创建一个 ajax 对象
+    const xhr = new XMLHttpRequest()
+
+    // 这个 xhr 对象就可以帮助我们发送 ajax 请求
+    // 进行请求配置
+    xhr.open('GET', './ceshi.php')
+
+    // 把请求发送出去
+    xhr.send(null)
+
+
+  </script>
+</body>
+</html>

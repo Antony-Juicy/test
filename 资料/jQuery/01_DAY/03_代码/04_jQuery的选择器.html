@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* input:checked {
+      width: 100px;
+      height: 100px;
+    } */
+
+
+  </style>
+</head>
+<body>
+
+  <!-- <div id="box" class="box">我是一个 div 标签</div>
+  <div id="box" class="box">我是一个 div 标签</div> -->
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+  <input type="checkbox" checked>
+  <input type="checkbox" name="a">
+  <input type="checkbox" name="a">
+  <input type="checkbox">
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 的选择器
+        + $()
+        + jQuery()
+        + 就是按照你书写 css 的方式进行获取
+
+      注意：
+        jQuery 获取到的元素我们叫做 jquery 元素
+          + 是一个数据集合（除了 id）
+          + 不能使用 原生 DOM 的方式
+          + 如果你想使用原生的 DOM 的方法或者属性
+            + 需要按照索引，把这个数据集合中的某一个拿出来
+          + 如果你是使用 id 的方式进行获取
+            + 只能获取到一个（一个数据集合里面有一个数据）
+          + 如果使用其他方式去获取元素
+            + 有多少拿多少
+    */
+
+    /*
+      css 获取这个 div 标签的方式有哪些
+        div
+        .box
+        #box
+      这些方法都可以直接填充在括号里面帮我获取元素
+    */
+
+    // const box = $('div')
+    // console.log(box)
+
+
+    console.log($('input[name=a]'))
+
+
+  </script>
+</body>
+</html>

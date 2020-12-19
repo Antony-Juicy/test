@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      selectsort 选择排序
+
+      选择排序
+        1. 假设数组中的第 0 个是最小的
+          然后遍历数组，从 1 开遍历
+          如果谁比我还小，那么我就记录下你的索引
+          遍历一遍以后，能得一个最小的数字的索引
+          让这个最小的数字的索引和 0 个交换位置
+        2. 假设数组中的第 1 个数最小
+          然后遍历数组，从 2 开始遍历
+          如果谁比我还小，那么我就记录下你的索引
+          遍历一遍以后，能得到一个除了第 0 个以外的最小的数字的索引
+          让这个最小的数字和 1 个交换位置
+
+      上面的代码重复执行数组的length - 1 遍就可以了
+
+      第一遍  假设 0 循环开始 1 交换 0
+      第二遍  假设 1 循环开始 2 交换 1
+      第三遍  假设 2 循环开始 3 交换 2
+    */
+
+    var arr = [3, 5, 1, 8, 6, 7, 9, 2, 4]
+
+    // var minIndex = 0
+    // for (var i = 1; i < arr.length; i++) {
+    //   if (arr[i] < arr[minIndex]) {
+    //     minIndex = i
+    //   }
+    // }
+
+    // 如果出现刚刚好我假设的最小的索引就是真实最小数字的索引
+    // 不需要交换
+    // 我假设的索引和真实最小数字的索引不一样的时候交换
+    // console.log(minIndex)
+
+    // if (0 !== minIndex) {
+    //   var tmp = arr[0]
+    //   arr[0] = arr[minIndex]
+    //   arr[minIndex] = tmp
+    // }
+
+
+
+    // for (var j = 0; j < arr.length - 1; j++) {
+    //   // j === 0 第一遍 假设 0 循环开始 1 交换 0
+    //   // j === 1 第二遍 假设 1 循环开始 2 交换 1
+    //   // j === 2 第二遍 假设 2 循环开始 3 交换 2
+
+    //   // j 是几就假设几，j 是几就和几交换
+    //   // j 是几，就从 （j + 1） 开始循环
+    //   var minIndex = j
+    //   for (var i = j + 1; i < arr.length; i++) {
+    //     if (arr[i] < arr[minIndex]) {
+    //       minIndex = i
+    //     }
+    //   }
+    //   var tmp = arr[j]
+    //   arr[j] = arr[minIndex]
+    //   arr[minIndex] = tmp
+
+    // }
+
+
+
+
+    // 默认最小数字的索引是 0
+    // var minIndex = 0
+
+    // // 遍历数组
+    // for (var i = 1; i < arr.length; i++) {
+    //   if (arr[i] < arr[minIndex]) {
+    //     // 把我假设的最小的索引换一下
+    //     minIndex = i
+    //   }
+    // }
+
+    // // 循环结束我能找到一个最小的数字的索引
+    // console.log(minIndex)
+
+    // // 让最小的那个数字和第 0 个交换
+    // var tmp = arr[0]
+    // arr[0] = arr[minIndex]
+    // arr[minIndex] = tmp
+
+
+    // 第二遍
+    // var minIndex = 1
+    // for (var i = 2; i < arr.length; i++) {
+    //   if (arr[i] < arr[minIndex]) {
+    //     minIndex = i
+    //   }
+    // }
+    // var tmp = arr[1]
+    // arr[1] = arr[minIndex]
+    // arr[minIndex] = tmp
+
+    // // 第三遍
+    // var minIndex = 2
+    // for (var i = 3; i < arr.length; i++) {
+    //   if (arr[i] < arr[minIndex]) {
+    //     minIndex = i
+    //   }
+    // }
+    // var tmp = arr[2]
+    // arr[2] = arr[minIndex]
+    // arr[minIndex] = tmp
+
+
+
+    var arr = [3, 5, 1, 8, 6, 7, 9, 2, 4]
+    /*
+      选择排序
+        1. 假设外层循环变量
+        2. 里层循环开始时外层变量 + 1
+        3. 交换外层循环变量
+    */
+
+    for (var i = 0; i < arr.length - 1; i++) {
+
+      var minIndex = i
+
+      for (var j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[minIndex]) {
+          minIndex = j
+        }
+      }
+
+      if (minIndex !== i) {
+        var tmp = arr[i]
+        arr[i] = arr[minIndex]
+        arr[minIndex] = tmp
+      }
+
+    }
+
+
+
+    console.log(arr)
+
+  </script>
+</body>
+</html>

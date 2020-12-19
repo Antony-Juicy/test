@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 操作对象
+    // 在 js 里面统一把 . 翻译成 的
+    // . 是对象操作的语法，只能操作对象
+    var obj = {} // 空的对象
+    var obj2 = {}
+
+    // 1. 创建对象
+    //   var obj = {}
+
+    // 2. 向对象中添加成员
+    //   使用点语法
+    // 向对象中添加了两个成员
+    obj.name = 'Jack'
+    obj.age = 18
+
+    obj2.name = 'Rose'
+    obj2.age = 20
+
+    // console.log(obj)
+    // console.log(obj2)
+    // 3. 删除某一个对象的成员
+    //   使用 delete 关键字
+    delete obj.name
+
+    // console.log(obj)
+    // console.log(obj2)
+
+    // 4. 修改某一个对象成员
+    //   对象有一个特性，不重名
+    //   使用点语法
+    //   当我使用点语法赋值的时候，如果对象中没有这个成员就是添加
+    //      如果对象中由这个成员就是修改
+    obj.age = 22
+
+    // 5. 访问某一个对象成员
+    // 直接使用点语法
+    console.log(obj)
+    console.log(obj.age) // 返回的就是 obj 空间中存储的 age 的值
+
+    // console.log(obj)
+
+  </script>
+</body>
+</html>

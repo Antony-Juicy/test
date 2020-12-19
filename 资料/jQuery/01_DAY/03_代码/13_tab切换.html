@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol, li {
+      list-style: none;
+    }
+
+    .box {
+      width: 600px;
+      height: 400px;
+      border: 3px solid #333;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box > ul {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box > ul > li {
+      flex: 1;
+      background-color: skyblue;
+      color: #fff;
+      font-size: 30px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box > ul > li.active {
+      background-color: orange;
+    }
+
+    .box > ol {
+      flex: 1;
+      position: relative;
+      width: 100%;
+    }
+
+    .box > ol > li {
+      width: 100%;
+      height: 100%;
+      background-color: pink;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .box > ol > li.active {
+      display: flex;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <ul>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ol>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ol>
+  </div>
+
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      选项卡
+    */
+
+    // 原生 js 写选项卡
+    // 1. 获取元素
+    // var btns = document.querySelectorAll('ul > li')
+    // var tabs = document.querySelectorAll('ol > li')
+
+    // btns.forEach((item, index) => {
+    //   item.setAttribute('index', index)
+    //   item.addEventListener('click', function () {
+    //     btns.forEach((item, index) => {
+    //       item.className = ''
+    //       tabs[index].className = ''
+    //     })
+
+    //     this.className = 'active'
+    //     tabs[this.getAttribute('index')].className = 'active'
+    //   })
+    // })
+
+    // 使用 jquery 来书写选项卡
+
+    // 因为 jquery 的隐式迭代
+    $('ul > li').click(function () {
+      // 这里的 this 是 dom 对象
+      // 不能使用 jQuery 的方法
+      // 原生 dom 对象想变成 jquery 对象
+      // 只要使用  $() 包裹就可以了
+      // console.log(this)
+      // console.log($(this).attr('abc', 100))
+
+      // 我要直到我点击的这个元素的索引是多少
+      // index()
+      //   用来获取元素是其父元素下的第几个（从 0 开始数数）
+      // console.log($(this).index())
+
+      // 自己有类名
+      $(this)
+        .addClass('active') // 给自己添加类名
+        .siblings() // 所有的兄弟元素，唯独没有自己
+        .removeClass('active')
+
+      // $(this)
+      //  .parent() // 我这个 li 的父元素就是 ul
+      //  .next() // 下一个兄弟元素 ol
+      //  .find('li') // ol 里面的所有 li
+      //  .removeClass('active') // 移出 active 类名
+      //  .eq($(this).index()) // 找到索引第几个
+      //  .addClass('active') // 添加 active 类名
+
+      $('ol > li')
+        .removeClass('active')
+        .eq($(this).index())
+        .addClass('active')
+    })
+  </script>
+</body>
+</html>

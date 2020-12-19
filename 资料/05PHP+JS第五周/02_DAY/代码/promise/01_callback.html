@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      callback(回调函数)
+        - 是一种函数的使用方式
+        - 把一个函数以参数的方式传递到另一个函数里面
+          + 再异步的末尾去以形参的方式来调用
+      目的：
+        + 就是为了解决我想在异步的末尾执行一些事情
+        + 为了代码的可读性和可维护性
+
+      如果你的代码全部都是同步的
+        + 那么没有必要写回调函数
+      如果你的代码时异步的，
+        + 那么最好写成回调函数的形式
+    */
+
+
+    function a(cb) {
+      // cb 接受到的是什么
+      // 一个函数地址
+      // 将来只要 cb 调用了
+      // 调用的就是全局的那个 b 函数
+      setTimeout(() => {
+        console.log('买报纸')
+
+        // 要执行第二个事情
+        cb() // 调用的就是全局的 b 函数
+      }, 2000)
+    }
+
+    // a 函数调用的时候传递了一个实参是 b
+    // b 存储的是什么 函数地址
+    a(b)
+
+    // 把 b 当作参数传递到 a 函数里面
+    function b() {
+      console.log('买水')
+    }
+
+
+
+
+
+
+
+    // 正常执行代码
+    // console.log('买报纸')
+    // console.log('买水')
+
+    // 异步执行
+    // 你完成某个事件是在将来的某一个时间点
+    // setTimeout(() => {
+    //   console.log('买报纸')
+
+    //   // 帮我做一些事情的东西就是函数
+    //   // 想在异步的末尾执行一些事情
+    //   fn()
+    // }, 2000)
+
+    // function fn() {
+    //   console.log('买水')
+    // }
+
+
+  </script>
+</body>
+</html>

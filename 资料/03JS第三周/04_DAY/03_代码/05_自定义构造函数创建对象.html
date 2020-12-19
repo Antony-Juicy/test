@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      自定义构造函数创建对象
+        - 先自己写一个构造函数
+        - 用这个构造函数去创建对象
+
+      构造函数
+        就是一个函数，当你把他和 new 连用的时候就是构造函数
+        再使用的时候必须要和 new 连用，不连用是没有创造对象的功能的
+        创造出来的对象我们管它叫做这个构造函数的一个 **实例对象**
+        我们管 new 的这个过程叫做一个 **实例化** 的过程
+        **当一个函数和 new 连用的时候，这个函数内部的 this 被改变了**
+          + this 就指向当前的实例对象（也就是你写 new xxx 前面接受的哪个变量）
+
+      工厂函数
+        1. 手动创建
+        2. 手动添加
+        3. 手动返回
+      构造函数
+        1. 自动创建
+        2. 手动添加
+        3. 自动返回
+    */
+
+    function createObj(name, age) {
+      // 这个构造函数第一次执行的时候，this 指向 obj
+      // this.name === obj.name
+      this.name = name
+      this.age = age
+    }
+
+    // new createObj()
+    // 他会把 createObj 里面的 this 改变成 obj
+    const obj = new createObj('Jack', 18)
+    console.log(obj)
+
+    // 构造函数又执行了一回
+    // 再这次执行的时候
+    // 这个函数里面的 this 就指向 obj2
+    const obj2 = new createObj('Rose', 20)
+    console.log(obj2)
+
+  </script>
+</body>
+</html>

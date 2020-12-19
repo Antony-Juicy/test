@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 640px;
+      height: 640px;
+      border: 10px solid pink;
+      border-radius: 10px;
+      margin: 10px auto;
+      position: relative;
+    }
+
+    li {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      border-radius: 10px;
+
+      color: #fff;
+      font-size: 100px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li style="top: 10px; left: 10px;">1</li>
+    <li style="top: 10px; left: 220px;">2</li>
+    <li style="top: 10px; left: 430px;">3</li>
+    <li style="top: 220px; left: 10px;">4</li>
+    <li style="top: 220px; left: 220px;">5</li>
+    <li style="top: 220px; left: 430px;">6</li>
+    <li style="top: 430px; left: 10px;">7</li>
+    <li style="top: 430px; left: 220px;">8</li>
+    <li style="top: 430px; left: 430px;">9</li>
+  </ul>
+
+  <script>
+    var arr = ['yellow', 'pink', 'red', 'orange', 'green', 'skyblue', 'purple', 'blue', 'hotpink']
+
+    var ul = document.querySelector('ul')
+    var lis = document.querySelectorAll('li')
+
+
+    // 添加背景颜色
+    arr.forEach(function (item, index) {
+      lis[index].style.backgroundColor = item
+    })
+
+  </script>
+</body>
+</html>

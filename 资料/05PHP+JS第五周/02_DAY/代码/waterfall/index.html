@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- 使用一个 meta 标签来解决图片防盗链 -->
+  <meta name="referrer" content="no-referrer">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .box {
+      width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .box > ul {
+      width: 280px;
+      padding: 0 10px;
+      float: left;
+    }
+
+    .box > ul > li {
+      width: 100%;
+      background-color: #fff;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #333;
+    }
+
+    .box > ul > li > .bottom {
+      height: 130px;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .box > ul > li > .bottom > .support {
+      display: flex;
+      align-items: center;
+    }
+
+    .box > ul > li > .bottom > .support > i {
+      width: 20px;
+      height: 20px;
+      background-color: #ccc;
+      margin-right: 5px;
+    }
+
+    .box > ul > li > .bottom > .support > span {
+      padding-right: 30px;
+    }
+
+
+    .box > ul > li > .bottom > .content {
+      display: flex;
+      font-size: 12px;
+    }
+
+    .box > ul > li > .bottom > .content > .left {
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+    }
+
+    .box > ul > li > .bottom > .content > .right span {
+      width: 100px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: -3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <ul>
+      <!-- <li>
+        <div class="top">
+          <img src="https://c-ssl.duitang.com/uploads/item/201807/29/20180729213827_iwcmj.thumb.400_0.jpeg" alt="">
+        </div>
+        <div class="bottom">
+          <div class="title">羊毛毡</div>
+          <div class="support">
+            <i></i>
+            <span>2</span>
+            <i></i>
+            <span>88</span>
+          </div>
+          <div class="content">
+            <div class="left">
+              <img src="https://c-ssl.duitang.com/uploads/people/201609/29/20160929002030_efrEL.thumb.100_100_c.jpeg" alt="">
+            </div>
+            <div class="right">
+              <div class="name">尼莫在天空游泳</div>
+              <div>
+                发布到
+                <span>我喜欢的羊毛我喜欢的羊毛我喜欢的羊毛我喜欢的羊毛我喜欢的羊毛我喜欢的羊毛</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li> -->
+    </ul>
+    <ul>
+      <!-- <li></li> -->
+    </ul>
+    <ul>
+      <!-- <li></li> -->
+    </ul>
+    <ul>
+      <!-- <li></li> -->
+    </ul>
+  </div>
+
+
+  <script>
+    /*
+      使用代理的方式拿到数据
+        https://www.duitang.com/napi/blog/list/by_filter_id/?
+        include_fields=top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count&
+        filter_id=%E6%89%8B%E5%B7%A5DIY&
+        start=48&
+        _=1568619932370
+    */
+
+    // 定义一个变量记录我的请求
+    let start_index = 0
+
+    // 获取所有的 ul
+    const ulArr = document.querySelectorAll('.box > ul')
+
+    getData()
+    function getData() {
+      const xhr = new XMLHttpRequest()
+
+      xhr.open('get', '/dt?include_fields=top_comments%2Cis_root%2Csource_link%2Citem%2Cbuyable%2Croot_id%2Cstatus%2Clike_count%2Csender%2Calbum%2Creply_count&filter_id=%E6%89%8B%E5%B7%A5DIY&start=' + start_index + '&_=1568619932370')
+
+      xhr.onload = function () {
+        // 返回的是 json 格式的字符串
+        // console.log(JSON.parse(xhr.responseText))
+
+        // 渲染页面
+        bindHtml(JSON.parse(xhr.responseText))
+      }
+
+      xhr.send()
+    }
+
+    function bindHtml(data) {
+      // console.log(data)
+      // 在这个函数里面进行页面渲染
+
+      // 把数据里面我有用的东西拿出来
+      // 1. next_start
+      start_index = data.data.next_start
+      const list = data.data.object_list
+
+      // console.log(list[0])
+
+      // list 得到的是一个数组
+      // 这个数组里面的每一项就是一个 li
+      // 循环数组
+      list.forEach(item => {
+        let str = `
+          <li>
+            <div style="height: ${ item.photo.height / 2 }px;" class="top">
+              <img src="${ item.photo.path }" alt="">
+            </div>
+            <div class="bottom">
+              <div class="title">${ item.msg }</div>
+              <div class="support">
+                <i></i>
+                <span>${ item.like_count }</span>
+                <i></i>
+                <span>${ item.favorite_count }</span>
+              </div>
+              <div class="content">
+                <div class="left">
+                  <img src="${ item.sender.avatar }" alt="">
+                </div>
+                <div class="right">
+                  <div class="name">${ item.sender.username }</div>
+                  <div>
+                    发布到
+                    <span>${ item.album.name }</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        `
+
+        // 准备号一个 str 就丢到一个 ul 里面
+        // 应该找到一个最短的 ul 放进去
+        let minUl = ulArr[0]
+        let minHeight = ulArr[0].clientHeight
+
+        ulArr.forEach(item => {
+          // 判断如果某一个 ul 的高度比我最短的那个还要短
+          // 替换以下
+          if (item.clientHeight < minHeight) {
+            minHeight = item.clientHeight
+            minUl = item
+          }
+        })
+
+        // 循环结束的时候，minUl 就是最短的那个 Ul
+        // 向 minUl 里面添加内容
+        minUl.innerHTML += str
+
+      })
+
+      /*
+        应该是把所有的数据填充到每一个 ul 里面
+          + 第一个 li 找到一个最短的 ul 添加进去
+          + 第二个 li 再找到一个最短的 ul 添加进去
+      */
+
+
+    }
+
+    // 要做的事情，当你滚动条到达底部的时候
+    // 继续加载第二页的数据
+
+    // window.onscroll 事件
+    window.onscroll = function () {
+      // console.log('浏览器滚动')
+
+      // 获取浏览器卷去的高度
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      // 获取窗口的高度
+      const windowHeight = document.documentElement.clientHeight
+      // 获取最短的那个 ul 的高度
+      let minHeight = ulArr[0].clientHeight
+
+      ulArr.forEach(item => {
+        if (item.clientHeight < minHeight) {
+          minHeight = item.clientHeight
+        }
+      })
+
+      if (scrollTop + windowHeight >= minHeight) {
+        // console.log('要加载数据了')
+        getData()
+      }
+
+    }
+
+ </script>
+</body>
+</html>

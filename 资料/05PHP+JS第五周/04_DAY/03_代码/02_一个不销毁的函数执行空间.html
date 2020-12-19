@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      一个不销毁的函数执行空间
+        + 当函数内部返回了一个复杂数据类型的时候
+        + 并且在函数外部还有变量在接受的时候
+        + 这个函数执行空间不会销毁，会一直存在
+
+      这个不销毁的空间能不能销毁？
+        + 可以销毁
+        + 当外部接受的变量不在引用着函数执行空间内部的这个复杂数据类型的时候
+        + 这个函数执行空间就销毁了
+
+
+    */
+
+
+    function fn() {
+      var obj = {
+        name: 'Jack',
+        age: 18
+      }
+
+      return obj
+    }
+
+    var res = fn()
+    // console.log(res) // 对象
+
+    // 函数的每一次执行都会生成一个函数执行空间
+    var res2 = fn()
+    // console.log(res2) // 对象
+
+
+    // 修改了 res 这个对象内部的 name 成员
+    res.name = 'Rose'
+
+    console.log(res)   // name => Rose
+    console.log(res2)  // name => Jack
+
+    // 当这个 res 不在执行函数的执行空间内部的复杂数据类型的时候
+    // 这个函数执行空间就销毁了
+    // res = 100
+
+
+  </script>
+</body>
+</html>

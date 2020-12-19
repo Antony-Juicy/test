@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      对象的访问
+        - 就是查看或者使用对象中的某一个成员
+
+      对象和作用域访问机制的区别
+        - 作用域的访问机制（为了获取变量的值）
+        - 对象的访问机制（为了获取对象中成员的值）
+
+      对象的访问机制
+        - 当你查找某一个对象用的成员的时候
+          + 如果对象自己本身就有，那么直接拿来给你，停止查找
+          + 如果自己没有，回去自己的 __proto__ 上查找，如果有，给你结果，停止查找
+          + 未完待续...
+
+      构造函数的书写
+        - **当你需要向对象中添加属性的时候，写在构造函数体内**
+        - **当你需要向对象中添加方法的时候，写在构造函数的 prototype 上**
+    */
+
+    // 写了一个构造函数
+    function Person(name) {
+      // 构造函数体内写了一句代码
+      // 回给每一个实例化对象添加一个 name 成员
+      this.name = name
+    }
+
+    // 再构造函数的 prototype 上添加了一个 sayHi 方法
+    Person.prototype.sayHi = function () {
+      console.log('我执行了')
+    }
+
+    // 使用 Person 构造函数实例化了一个对象出来
+    // p1 所属的构造函数就是 Person
+    // p1 身上会有一个 name 成员，是构造函数体给的
+    const p1 = new Person('Jack')
+
+    // p1 应该有自己 __proto__，指向 Person.prototype
+    // console.log(p1.__proto__ === Person.prototype)
+
+    // 现在是再访问 p1 的 sayHi 成员
+    // p1 自己身上没有 sayHi 成员
+    // 就会去到自己的 __proto__ 上查找
+    // 又因为 p1.__proto__ === Person.prototype
+    // 就相当于去 Person.prototype 上查找
+    // 因为 Person.prototype 上被写入了一个 sayHi 方法
+    // 所以 p1 应该是可以找得到的
+    // console.log(p1.sayHi)
+    p1.sayHi()
+
+
+    // p2 也是 Person 构造函数实例化的一个对象
+    // p2 的所属构造函数也是 Person
+    // p2 身上的 name 属性是 Person 构造函数体给的
+    const p2 = new Person('Rose')
+
+    // p2 应该也有自己的 __proto__
+    // p2.__proto__ === Person.prototype
+    // 当你访问 p2.sayHi 的时候，也是同样去 Person.prorotype 上查找
+    p2.sayHi()
+
+    // 每一个实例化对象使用的方法都是同一个方法
+    // 一个存在在所属构造函数的 prototype 上的方法
+    console.log(p1.sayHi === p2.sayHi)
+
+
+
+    // const obj = {
+    //   name: 'Jack',
+    //   fn: function () {}
+    // }
+
+    // console.log(obj.name) // 访问
+    // obj.fn() // 访问
+    // obj.name = 'Jack' // 不是访问，是赋值
+    // delete obj.age // 不是访问，是删除
+
+
+  </script>
+</body>
+</html>

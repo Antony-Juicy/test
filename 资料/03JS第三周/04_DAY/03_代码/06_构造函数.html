@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      构造函数对的使用
+        - 我们的规范，如果你写一个构造函数，那么请你首字母大写
+          + 将来我们看到首字母大写的函数，就要知道他是一个构造函数
+          + 要和 new 连用
+        - 我们的规范
+          + 如果你的构造函数不需要传递参数，那么最后的小括号可以不写
+          + 规范就是尽量都写上
+        - 规则
+          + 构造函数再使用的时候必须要和 new 连用
+          + 如果不练用，那么就是普通函数的功能（没有创造对象的能力了）
+        - 规则
+          + 构造函数内部不要写 return
+            1. 如果你 return 一个基本数据类型，那么你写了白写
+            2. 如果你 return 一个复杂数据类型，那么构造函数没有意义了
+
+      **面向对象的思想，就是再开发中先写构造函数，用构造函数去创造对象完成业务逻辑**
+      **构造函数的意义，就是为了创造一个有属性又方法的合理的对象**
+
+    */
+
+    function Person() {
+      this.name = 'Jack'
+      this.age = 18
+    }
+
+    const p1 = new Person()
+    console.log(p1)
+    const p2 = new Person
+    console.log(p2)
+
+
+
+
+
+
+
+
+    // function person(name) {
+    //   this.name = name
+    //   this.sayHi = function () {
+    //     console.log(this) // p2
+    //     console.log(this.name) // Rose
+    //     // 写在这里的方法，this 也是指向构造函数的当前实例
+    //   }
+    // }
+
+    // // 这个 new person 执行的时候
+    // // person 函数里面的 this 指向 p1
+    // const p1 = new person('Jack')
+    // // console.log(p1)
+    // // p1 得到的是一个对象
+    // // 里面有一个属性有一个方法
+    // // 那么方法就是可以执行的
+    // p1.sayHi() // this =》 点前面是谁就是谁
+
+
+    // const p2 = new person('Rose')
+    // p2.sayHi() // this => p2
+  </script>
+</body>
+</html>

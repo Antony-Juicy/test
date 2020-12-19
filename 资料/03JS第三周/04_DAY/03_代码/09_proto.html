@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      __proto__
+        - **每一个对象天生自带一个属性，叫做 __proto__，他指向所属构造函数的 prototype**
+        - 一个对象的 __proto__ 属性和这个对象所属的构造函数的 prototype 是一个对象空间
+        - 实例化对象也是对象，那么他也有 __proto__
+    */
+
+
+    function Person() {}
+    Person.prototype.fn = function () {}
+
+    // p1 是不是一个对象
+    // 就要有 __proto__
+    // p1 所属的构造函数是 Person
+    // p1.__proto__  和   Person.prototype 是一个空间
+    const p1 = new Person()
+
+    console.log(Person.prototype)
+    console.log(p1.__proto__)
+    console.log(p1.__proto__ === Person.prototype)
+
+  </script>
+</body>
+</html>

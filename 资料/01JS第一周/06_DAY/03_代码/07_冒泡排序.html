@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 排序就是把一个乱序的数组按照大小顺序拍好
+
+    // 1. 准备一个乱序的数组
+    // var arr = [1, 5, 7, 9, 4, 6, 3, 2, 8]
+
+    /*
+      bubblesort
+        1. 数组中的第 0 个和第 1 个进行比较
+          + 如果第 0 个比第 1 个大，那么就进行换位
+        2. 数组中的第 1 个和第 2 个进行比较
+          + 如果第 1 个比第 2 个大，那么就进行换位
+        3. 数组中的第 2 个和第 3 个进行比较
+          + 如果第 2 个比第 3 个大，那么就进行换位
+        ...
+        一直到数组遍历一遍 最大的那个数字一定再最后面
+
+        上面的东西重复执行数组的length-1遍
+    */
+
+
+    /*
+      第一轮
+      i === 0     arr[0] arr[1]
+      i === 1     arr[1] arr[2]
+      i === 2     arr[2] arr[3]
+      i === 3     arr[3] arr[4]
+      i === 4     arr[4] arr[5]
+      i === 5     arr[5] arr[6]
+      i === 6     arr[6] arr[7]
+      i === 7     arr[7] arr[8]
+      i === 8     arr[8] arr[9] 这一次不用执行
+
+      第一轮少执行 1 次
+      第二轮少执行 2 次
+      第三轮少执行 3 次
+      第四轮少执行 4 次
+    */
+    // for (var j = 0; j < arr.length - 1; j++) {
+
+    //   // j === 0  的时候 是第一轮 应该 - 1
+    //   // j === 1  的时候 是第二轮 应该 - 2
+    //   // j === 2  的时候 是第三轮 应该 - 3
+    //   // 应该减去 j + 1
+
+    //   for (var i = 0; i < arr.length - j - 1; i++) {
+
+    //     // 自己和自己的后一个进行比较
+    //     if (arr[i] > arr[i + 1]) {
+
+    //       // 交换变量
+    //       var tmp = arr[i]
+    //       arr[i] = arr[i + 1]
+    //       arr[i + 1] = tmp
+
+    //     }
+
+    //   }
+
+    // }
+
+
+    /*
+      第二轮
+      i === 0     arr[0] arr[1]
+      i === 1     arr[1] arr[2]
+      i === 2     arr[2] arr[3]
+      i === 3     arr[3] arr[4]
+      i === 4     arr[4] arr[5]
+      i === 5     arr[5] arr[6]
+      i === 6     arr[6] arr[7]
+      i === 7     arr[7] arr[8] 这一次不用执行
+      i === 8     arr[8] arr[9] 这一次不用执行
+    */
+    // for (var i = 0; i < arr.length - 2; i++) {
+
+    //   // 自己和自己的后一个进行比较
+    //   if (arr[i] > arr[i + 1]) {
+
+    //     // 交换变量
+    //     var tmp = arr[i]
+    //     arr[i] = arr[i + 1]
+    //     arr[i + 1] = tmp
+
+    //   }
+
+    // }
+
+    /*
+      第三轮
+      i === 0     arr[0] arr[1]
+      i === 1     arr[1] arr[2]
+      i === 2     arr[2] arr[3]
+      i === 3     arr[3] arr[4]
+      i === 4     arr[4] arr[5]
+      i === 5     arr[5] arr[6]
+      i === 6     arr[6] arr[7] 这一次不用执行
+      i === 7     arr[7] arr[8] 这一次不用执行
+      i === 8     arr[8] arr[9] 这一次不用执行
+    */
+    // for (var i = 0; i < arr.length - 2; i++) {
+
+    //   // 自己和自己的后一个进行比较
+    //   if (arr[i] > arr[i + 1]) {
+
+    //     // 交换变量
+    //     var tmp = arr[i]
+    //     arr[i] = arr[i + 1]
+    //     arr[i + 1] = tmp
+
+    //   }
+
+    // }
+
+
+
+
+
+    var arr = [1, 5, 7, 9, 4, 6, 3, 2, 8]
+
+    /*
+      冒泡排序核心
+        1. 双层 for 循环
+        2. 使用里层循环的变量去交换变量
+        3. 一个循环减去一个 1
+        4. 里层循环再减去一个外层循环变量
+
+    */
+
+    for (var i = 0; i < arr.length - 1; i++) {
+
+      for (var j = 0; j < arr.length - 1 - i; j++) {
+
+        if (arr[j] > arr[j + 1]) {
+          var tmp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = tmp
+        }
+
+      }
+
+    }
+
+    console.log(arr)
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    // 浏览器的弹出层
+    // 统一的特点，会把程序阻断
+    //   弹出层这一行的代码没有执行完毕（表示用户没有关闭弹出层）
+    //     这一行后面的代码都不会执行
+    //   只能输出字符串
+    //     如果是其他数据类型会自动转换成字符串输出
+
+    // 1. alert()
+    //    直接在浏览器弹出一个提示框
+    //    作用是提示一些信息，只有一个确定按钮
+    //    没有返回值
+    // alert('我是浏览器的弹出层')
+
+    // 2. confirm()
+    //    直接在浏览器弹出一个询问框
+    //    作用是提示用户一些消息，让用户选择
+    //    接受一个参数，参数就是提示用户的信息
+    //    是有返回值的，由用户点击的按钮决定
+    //       点击的是 确定，得到的就是 true
+    //       点击的是 取消，得到的就是 false
+    // var res = confirm('您已经注册成功，点击确定跳转页面，点击取消留在本页面')
+    // console.log(res)
+
+    // 3. prompt()
+    //    直接在浏览器弹出一个输出框
+    //    作用是提示用户一些信息，让用户输入一些内容
+    //    接受一个参数，参数就是提示用户的信息
+    //    有一个确定一个取消按钮
+    //    是有返回值的，返回值由用户输入内容或者点击按钮决定
+    //       点击确定，得到的就是你输入的内容，不输入内容就是空字符串
+    //       点击取消，不管是否输入内容，得到的都是 null
+    // var res = prompt('请输入您的年龄')
+    // console.log(res)
+
+
+    console.log('script start')
+  </script>
+</body>
+</html>

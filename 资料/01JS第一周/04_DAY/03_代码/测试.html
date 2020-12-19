@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var sum = 0
+    // var count = 1
+    // for (var i = 1; i <= 64; i++) {
+    //   // i 式 1 ~ 64 的数字
+
+    //   if (i !== 1) {
+    //     count *= 2
+    //   }
+
+    //   sum += count
+    // }
+
+    // // 当循环结束的时候，sum 就是 64 个格子里面所有芝麻数量的总和
+    // console.log(sum * 0.00001 + 'kg')
+
+
+    function fn() {
+      // arguments 接收到是一个伪数组
+      // [19, 15, 21]
+
+      // 假设这个伪数组里面的第 0 个是最小的
+      var min = arguments[0]
+
+      // 假设这个伪数组里面的第 0 个是最大的
+      var max = arguments[0]
+
+      var center = 0
+
+      for (var i = 0; i < arguments.length; i++) {
+        // 如果这里的某一个数字比我假设的数字小
+        // 把我假设的替换掉
+        if (arguments[i] < min) {
+          min = arguments[i]
+        }
+
+        if (arguments[i] > max) {
+          max = arguments[i]
+        }
+
+      }
+
+      for (var j = 0; j < arguments.length; j++) {
+        // 找到一个和 min 和 max 都不相等的数字
+        if (arguments[j] !== min && arguments[j] !== max) {
+          center = arguments[j]
+        }
+      }
+
+
+      console.log(min, center, max)
+    }
+
+    fn(22, 33, 16)
+  </script>
+</body>
+</html>

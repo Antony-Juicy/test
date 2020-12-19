@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+  <div></div>
+
+  <script>
+    var div = document.getElementsByTagName('div')[0]
+
+    // dom 0级 事件
+    //   只能绑定一个事件处理函数
+    // div.onclick = function () {
+    //   console.log('我被点击了')
+    // }
+
+    // div.onclick = function () {
+    //   console.log('我是第二个事件处理函数')
+    // }
+
+    // 1998 年 dom 1级 事件
+    //   因为他不是很完善，就被废掉了
+
+    // 2000 年 dom 2级 事件
+    //   是一个新的给元素绑定事件的方式
+
+    // dom 2级事件
+    //   1. addEventListener   标准浏览器
+    //   2. attachEvent        IE 低版本浏览器
+
+    // 语法： 元素.addEventListener()
+    //   三个常用参数
+    //   第一个参数： 事件类型（不需要 on）
+    //   第二个参数： 事件处理函数
+    // 可以给一个事件类型绑定若干个事件处理函数
+    //   当触发的时候就是按照你绑定的顺序去执行函数
+    // div.addEventListener('click', function (event) {
+    //   // 事件对象的方式和之前一样
+    //   event = event || window.event
+    //   console.log('我被点击了')
+    // })
+
+    // div.addEventListener('click', function () {
+    //   console.log('我是第二个事件')
+    // })
+    // div.addEventListener('click', function () {
+    //   console.log('我是第三个事件')
+    // })
+
+    // 语法： 元素.attachEvent()
+    //   两个参数
+    //   第一个参数： 事件类型（on + 事件类型）
+    //   第二个参数： 事件处理函数
+    // 可以给一个事件类型绑定多个事件处理函数
+    //   按照你绑定的顺序倒序执行
+    // div.attachEvent('onclick', function () {
+    //   // console.log(window.event)
+    //   console.log('我被点击了')
+    // })
+
+    // div.attachEvent('onclick', function () {
+    //   console.log('我是第二个事件')
+    // })
+  </script>
+
+</body>
+</html>

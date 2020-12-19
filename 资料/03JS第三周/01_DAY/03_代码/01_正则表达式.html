@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    <input type="email" name="email">
+    <input type="number" name="number">
+    <input type="password" name="passowrd">
+    <input type="text" name="username">
+    <button>提交</button>
+  </form>
+
+  <script>
+    /*
+      正则表达式（规则表达式）
+        + 由我们自己书写规则
+        + **专门用来检测一个字符串是否符合我书写的标准**
+        + 一般都是用在 表单验证 / 从字符串中获取某些内容
+
+      创建正则表达式的方式
+        1. 字面量创建
+          var reg = /abcd/
+        2. 内置构造函数创建
+          var reg = new RegExp('abcd')
+
+      正则表达式是一个复杂数据类型
+    */
+
+    var reg = /abcd/
+    console.log(reg)
+
+    var reg2 = new RegExp('abcc')
+    console.log(reg2)
+  </script>
+</body>
+</html>

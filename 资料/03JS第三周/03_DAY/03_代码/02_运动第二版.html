@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+    /*
+      把刚才写的运动一些列操作封装成一个函数
+
+      封装函数必须要考虑的问题
+        1. 参数有哪些
+        2. 要不要返回值
+        3. 要不要传递函数
+
+      参数有哪些
+        1. 元素
+        2. 哪个方向
+        3. 目标位置
+
+      move(div, 'left', 200)
+
+      问题： 不能多个方向同时运动
+        换一种方式传递参数
+        以对象的形式传递参数
+    */
+
+    const box = document.querySelector('div')
+
+    box.addEventListener('click', function () {
+      move(this, 'top', 200)
+    })
+
+
+    function move(ele, type, target) {
+      let distance = 0
+      let timerId = null
+
+      timerId = setInterval(() => {
+        distance += 5
+        ele.style[type] = distance + 'px'
+
+        if (distance === target) {
+          clearInterval(timerId)
+        }
+      }, 30)
+    }
+
+
+
+
+
+
+  </script>
+</body>
+</html>

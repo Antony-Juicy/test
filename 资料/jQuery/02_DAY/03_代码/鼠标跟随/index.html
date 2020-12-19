@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 600px;
+      height: 200px;
+      border: 10px solid #333;
+      margin: 30px auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: relative;
+    }
+
+    .box > p {
+      width: 150px;
+      height: 150px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .box > span {
+      width: 288px;
+      height: 180px;
+      position: absolute;
+      top: 400px;
+      left: 400px;
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <p><img src="1.png" alt=""></p>
+    <p><img src="2.png" alt=""></p>
+    <p><img src="3.png" alt=""></p>
+    <span>
+      <img src="1.png" alt="">
+    </span>
+  </div>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+
+    /*
+      1. 每一个 img 标签光标移入的时候，让 span 显示
+         光标移出的时候，让 span 消失
+
+      2. 当我光标再 img 上移动的时候
+          让 span 的位置进行改变
+    */
+
+    $('.box > p > img')
+      .hover(function () {
+        // 移入
+        $('.box > span')
+          .show()  // 让他显示
+          .find('img')  // 找到 img
+          .attr('src', $(this).attr('src')) // 设置 src 属性
+
+        // 显示的这个图片应该是我移入的这个 img 的 src
+        // 要获取移入的这个 img 不能写箭头函数
+      }, () => {
+        // 移出
+        $('.box > span').hide()
+      })
+      .mousemove(e => {
+        // console.log('移动')
+        // console.log(e)
+
+        // 我要设置 span 的位置关系
+        // 使用 css()
+        $('.box > span').css({
+          left: e.pageX - $('.box').offset().left + 15,
+          top: e.pageY - $('.box').offset().top + 15
+        })
+      })
+
+  </script>
+</body>
+</html>

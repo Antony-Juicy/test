@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      构造函数的问题1
+        当我再构造函数体内写方法的时候
+        会造成内存空间的浪费
+        因为每一个被实例化出来的实例对象中都会又一个一摸一样的方法，而且还不是一个地址
+    */
+
+    function Person(name) {
+      this.name = name
+      this.sayHi = function () {
+        console.log('你好 ' + this.name)
+      }
+    }
+
+    // 第一次执行的时候会创建一个函数赋值给 p1.sayHi
+    const p1 = new Person('Jack')
+    p1.sayHi()
+
+    // 第二次执行的时候又会创建一个函数赋值给 p2.sayHi
+    const p2 = new Person('Rose')
+    p2.sayHi()
+
+    console.log(p1 == p2) // false
+    console.log(p1.sayHi == p2.sayHi)
+  </script>
+</body>
+</html>

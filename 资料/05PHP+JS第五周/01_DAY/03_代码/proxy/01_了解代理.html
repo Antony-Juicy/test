@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      代理
+        + 你把你要做的事情交给我
+        + 我来帮你把事情做了
+
+      正向代理
+        + 当一个 客户端 去请求服务器的时候
+        + 再服务端架设一个 临时服务器 A
+        + 你的所有请求都是再请求临时服务器A
+        + 由 临时服务器A 来转发你的请求给真正的服务器
+        + 真正的服务器把数据返回给临时服务器。
+        + 临时服务器再把数据返回给客户端
+
+      反向代理
+        + 你的客户端请求服务端的时候会有同源策略
+        + 但是如果是 服务器A 请求 服务器B 是没有同源策略
+        + 当你的 客户端要请求一个 服务端B 的数据的时候，出现了同源策略
+          + 再 客户端同源 位置架设一个临时 服务器A
+          + 客户端 可以把请求发送给 服务器A
+          + 由 服务器A 转发请求到 服务器B
+          + 服务器B 把结果返回给 服务器A
+          + 服务器A 再把结果给到 客户端
+    */
+
+
+  </script>
+</body>
+</html>

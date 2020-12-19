@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script src="../jquery/jquery.min.js"></script>
+
+  <script>
+    /*
+      jQuery 里面由一个 post 的方法
+        + 专门用来发送 post 请求的
+        + $.post(地址，携带的参数，成功的回调, 期望的返回数据类型)
+    */
+    $.post('../server/post.php', 'a=100&b=200', (res) => {
+      console.log(res)
+    })
+
+    $.post('../server/post_json.php', { a: 300, b: 400 }, res => {
+      console.log(res)
+    }, 'json')
+
+  </script>
+</body>
+</html>

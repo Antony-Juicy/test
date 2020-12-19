@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <img src="http://pic16.nipic.com/20111006/6239936_092702973000_2.jpg" alt="">
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      入口函数
+        + 就是页面加载完毕后执行
+        + 叫做 ready() 的方法
+        + 是一个 jquery 的全局函数
+        + 使用： $(window).ready(function () {})
+          + 这个 ready 函数有一个简写的形式
+          + $(function () {})
+
+      window.onload
+        + 会在页面中所有资源加载完毕后执行
+        + 包括所有的  img video audio ...
+      $().ready()
+        + 会在 html 结构加载完毕后执行
+    */
+
+    $(window).ready(function () {
+      // 当 html 结构加载完毕就会执行了
+      console.log('html 结构加载完毕了')
+    })
+
+    $(function () {
+      console.log('html 结构加载完毕了')
+    })
+
+    window.onload = function () {
+      console.log('所有资源加载完毕了')
+    }
+
+
+  </script>
+</body>
+</html>

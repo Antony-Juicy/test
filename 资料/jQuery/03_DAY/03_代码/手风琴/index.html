@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 670px;
+      height: 280px;
+      border: 10px solid pink;
+      margin: 30px auto;
+      /* display: flex; */
+    }
+
+    ul > li {
+      width: 25%;
+      overflow: hidden;
+      float: left;
+    }
+
+    img {
+      width: 520px;
+      height: 280px;
+      display: block;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <ul>
+    <li><img src="./01.jpg" alt=""></li>
+    <li><img src="./02.jpg" alt=""></li>
+    <li><img src="./03.jpg" alt=""></li>
+    <li><img src="./04.jpg" alt=""></li>
+  </ul>
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+
+    /*
+      jQuery 里面由一个方法叫做 end()
+        + 在当前数据集合下使用，回归到之前的一个数据集合
+
+    */
+
+    // 1. 给每一个 li 一个 hover
+    $('ul > li')
+      .hover(function () {
+        // 移入的时候也要先停下来
+        $('ul > li').stop()
+
+        $(this) // 自己 返回值： 移入的这个元素
+          .siblings() // 找到兄弟 返回值： 所有的兄弟元素的数据集合
+          .animate({ // 设置动画 返回值： 所有兄弟元素的数据集合
+            width: 50
+          })
+          .end() // 回归一个数据集合 返回值： 移入的这个元素了
+          .animate({
+            width: 520
+          })
+      }, function () {
+        $('ul > li')
+          .stop()
+          .animate({
+            width: '25%'
+          })
+      })
+
+  </script>
+</body>
+</html>

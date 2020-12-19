@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      函数的两个阶段做的事情
+
+        + 函数定义阶段
+          1. 开辟一个空间
+          2. 把代码一摸一样的存储进去（不解析变量）
+          3. 把空间地址赋值给变量名（函数名）
+        + 函数调用阶段
+          1. 按照地址找到空间
+          2. 形参赋值
+          3. 预解析
+          4. 把代码拿出来执行（解析变量）
+
+
+        + 函数调用阶段
+          1. 按照地址找到空间
+          2. 形参赋值
+          3. 预解析
+          4. **在内存中单独开辟一个空间**
+          5. **把之前存储的代码拿出来放在这个空间中执行（解析变量）**
+          6. **把新开辟出来的执行空间销毁**
+    */
+
+    // function fn() {
+    //   console.log('我是 fn 函数')
+    // }
+
+    // fn()
+
+
+    // fn 函数在定义的时候会有一个存储空间
+    // function fn() {
+    //   var num = 100
+    //   console.log(num)
+    // }
+
+    // 在函数执行的时候
+    // 在函数的执行空间里面生成了一个变量
+    // 当函数执行完毕，这个变量就不存在了
+    // fn()
+
+
+    function fn() {
+      var num = 100
+      console.log(num)
+      return num
+    }
+
+    // 执行完毕以后，函数内部的 num 变量就被销毁了
+    var res = fn()
+    console.log(res) // 100
+
+
+  </script>
+</body>
+</html>

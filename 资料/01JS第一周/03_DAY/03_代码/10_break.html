@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    // 再循环里面可以使用给一个关键字叫做 break
+    // 会立即停止循环不在继续向下执行了
+
+    // console.log('for start')
+
+    // for (var i = 0; i < 10; i++) {
+    //   console.log(i)
+
+    //   if (i === 6) {
+    //     // 使用 break 关键字
+    //     // 那么直接从这里跳出循环
+    //     break
+    //   }
+
+    // }
+
+    // console.log('for end')
+
+
+    // 判断一个数字是不是质数
+
+    // 10  2  5
+    // 12  2 3 4 6
+
+    var flag = true
+    for (var i = 2; i <= 10 - 1; i++) {
+      if (10 % i === 0) {
+        flag = false
+        break
+      }
+    }
+
+    console.log(flag ? '是质数' : '不是质数')
+
+  </script>
+</body>
+</html>

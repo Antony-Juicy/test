@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div></div>
+
+  <script>
+
+    // button 信息，表示你按下的是左键还是右键
+    // button === 0 表示你点击的是左键
+    // button === 2 表示你点击的是右键
+
+    var div = document.querySelector('div')
+
+    div.onclick = function (e) {
+      e = e || window.event
+
+      console.log(e)
+    }
+
+    div.oncontextmenu = function (e) {
+      e = e || window.event
+
+      console.log(e)
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      constructor 构造者（构造器）
+        - **每一个函数天生自带的那个 prototype 里面有一个属性，叫做 constructor**
+        - 这个属性就只想这个原型的构造函数
+        - "谁" 的 prototype 里面的 constructor 就指向 "谁"
+
+      这个构造函数的实例去访问 constructor 的时候
+      得到的就是我的名字存储的那个地址
+
+      他也可以帮我们检测数据类型
+    */
+
+    function Person() {}
+
+    const p1 = new Person()
+    // p1 去访问 constructor 的时候，自己没有
+    // 去 Person.prototype 上找，找到了
+    // Person的prototype 上的 constructor 就指向 Person
+    // console.log(p1.constructor)
+
+    /*
+      当一个数组去访问 constructor 的时候
+        自己没有，去到 Array 的 prototype 上找
+        Array.prototype 上的 constructor 指向 Array
+        [].constructor === Array
+    */
+
+    const arr = []
+    console.log(arr.constructor === Array)
+
+
+  </script>
+</body>
+</html>

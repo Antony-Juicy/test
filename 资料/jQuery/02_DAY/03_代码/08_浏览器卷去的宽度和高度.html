@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 3000px;
+      width: 3000px;
+    }
+
+    button {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <button>归0</button>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      浏览器卷去的宽度和高度
+        + scrollTop() 和 scrollLeft()
+        + 这两个都是方法
+
+        + 获取就是直接使用就可以了
+        + 还可以进行设置
+          + 设置的时候可以直接设置。但是是直接跳转到某个位置
+          + 如果想要滚动的回去，那么我们需要动画来帮助
+    */
+
+    $(window).scroll(() => {
+      // console.log($(window).scrollTop())
+      // console.log($(window).scrollLeft())
+    })
+
+
+    $('button').click(() => {
+      $(window).scrollTop(0).scrollLeft(0)
+    })
+
+
+  </script>
+</body>
+</html>

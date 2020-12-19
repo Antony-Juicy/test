@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 900px;
+      height: 40px;
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 3px solid pink;
+      position: relative;
+    }
+
+    ul > li {
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    ul > span {
+      width: 100px;
+      height: 3px;
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      background-color: red;
+    }
+
+    ul > p {
+      width: 100px;
+      height: 100%;
+      background-color: skyblue;
+      color: #fff;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>我是第1个</li>
+    <li>我是第2个</li>
+    <li>我是第3个</li>
+    <li>我是第4个</li>
+    <li>我是第5个</li>
+    <li>我是第6个</li>
+    <li>我是第7个</li>
+    <li>我是第8个</li>
+    <li>我是第9个</li>
+    <span></span>
+    <p>我是第1个</p>
+  </ul>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+
+  <script>
+    // 1. 给每一个 li 绑定一个鼠标移入事件
+    $('ul > li').mouseenter(function () {
+      // 获取你移入的是第几个 li
+      // 我要拿到我移入的那个 li 的索引
+      // const index = $(this).index()
+      // console.log(index)
+
+      // 直接使用 animate 给下面定位的那个 span 设置 left 值
+      // 你在作动画之前，不管你之前的动画左到了什么程度，都先停下来，做我这个动画
+      $('ul > span').stop().animate({
+        left: $(this).width() * $(this).index()
+      })
+
+      $('ul > p').stop().animate({
+        left: $(this).width() * $(this).index()
+      }).text($(this).text())
+    })
+
+
+  </script>
+</body>
+</html>

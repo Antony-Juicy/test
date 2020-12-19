@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+
+
+    /*
+
+      && 两边都要是true
+      || 只要有一遍是 true
+
+    */
+
+    // 从左到右 true
+    // 先执行 && true
+    // 先执行 || false
+    // hello 如果打印出来了，证明肯定不是先或
+    if (false && true || true && true) {
+      console.log('hello')
+    }
+
+    // 从左到右 false
+    // 先执行 && true
+    // world 如果打印出来了，证明先执行 &&
+    if (true || false && false) {
+      console.log('world')
+    }
+
+    // 结论： && 和 || 同时出现的时候 限制性 && 后执行 ||
+  </script>
+</body>
+</html>

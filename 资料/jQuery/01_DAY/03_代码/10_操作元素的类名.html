@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>
+    hello world
+  </div>
+
+  <button>删除类名</button>
+  <button>判断类名</button>
+  <button>切换类名</button>
+
+  <script src="./jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jquery 有一套方法专门用来操作类名
+
+      1. addClass(你要添加的类名)
+        + 用来添加类名
+      2. removeClass(你要删除的类名)
+        + 用来移除类名的
+      3. hasClass(你要判断的类名)
+        + 用来判断有没有某一个类名的
+      4. toggleClass(你要切换的类名)
+        + 用来切换类名使用的
+        + 本身有，就删除
+        + 本身没有，就添加
+    */
+
+    $('div').addClass('box')
+    $('div').addClass('box2')
+
+    $('button').first().click(function () {
+      $('div').removeClass('box2')
+    })
+
+    $('button').eq(1).click(() => {
+      console.log($('div').hasClass('box2'))
+    })
+
+    $('button').last().click(() => {
+      $('div').toggleClass('box2')
+    })
+  </script>
+</body>
+</html>

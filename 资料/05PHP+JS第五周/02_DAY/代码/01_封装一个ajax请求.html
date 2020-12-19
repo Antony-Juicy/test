@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+    /*
+      封装一个 ajax
+
+      1. 函数的参数
+        + 在这个 ajax 请求里面可以变的内容作为参数
+        + url 必填
+        + 请求方式 我可以设置一个默认值 get
+        + 是否异步 我可以设置一个默认值 true
+        + 是否执行 JSON.parse 方法，默认不执行
+        + 请求的时候像后端发送的参数 默认空
+
+      怎么传递参数
+      // function ajax(url, type, async, dataType, data) {}
+
+      // ajax('./ajax.php', true, 'string', 'a=100')
+
+      以对象的形式传递参数
+      function ajax(options) {
+
+      }
+
+      ajax({
+        url: '',
+        type: ''
+      })
+    */
+
+    // 这个创造实例化不需要变
+    const xhr = new XMLHttpRequest()
+
+    // open 里面的参数要改变
+    xhr.open('', '', true)
+
+    xhr.onreadystatechange = function () {
+      // 如果后端返回的是字符串
+      // 直接打印
+      // console.log(xhr.responseText)
+
+      // 如果后端返回的是一个 json 格式的字符串
+      // console.log(JSON.parse(xhr.responseText))
+    }
+
+    xhr.setRequestHeader()
+
+    xhr.send()
+
+
+
+  </script>
+</body>
+</html>

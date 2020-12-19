@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 就相当于你定义了一个 first 变量，这个变量的值就是这个文本框 -->
+  <input id="first" type="text"> +
+  <input id="second" type="text">
+  <button id="btn">=</button>
+  <input id="result" type="text">
+
+  <script>
+
+    /*
+      解决几个技术问题
+        1. 获取文本框
+          在 js 里面，元素的 id 是可以直接代表这个元素
+        2. 什么时候获取值
+          当你点击这个 button 按钮的时候获取
+        3. 你怎么知道他什么时候点击
+          给这个 button 按钮注册一个点击的事件
+          语法： 元素.onclick = function () { // 这个大括号会在触发事件的时候执行 }
+        4. 获取文本框的值
+          元素.value
+          只要是从页面中拿出来的数据都是字符串
+        5. 把结果丢回文本框
+          元素.value = xxx
+
+    */
+
+    // console.log(first)
+    // console.log(second)
+    // console.log(btn)
+
+    // btn.onclick = function () {
+    //   // 这个大括号内的代码平时不会执行
+    //   // 只要 btn 这个元素发生了 click 行为
+    //   // 那么这个 {} 里面的代码就会执行了
+    //   console.log('我被点击了')
+
+    //   var firstNum = first.value - 0
+    //   var secondNum = second.value - 0
+
+    //   // 就要让两个数字相加
+    //   var sum = firstNum + secondNum
+
+    //   // console.log(typeof firstNum)
+    //   // console.log(typeof secondNum)
+    //   result.value = sum
+    // }
+
+    // false
+    // 这里会在打开页面的时候执行
+    // 两个变量获取的是两个 ''
+    // var firstNum = first.value
+    // var secondNum = second.value
+
+    // // 当你点击的时候执行 {} 里面的代码
+    // btn.onclick = function () {
+    //   var sum = firstNum + secondNum
+
+    //   result.value = sum
+    // }
+
+  </script>
+</body>
+</html>

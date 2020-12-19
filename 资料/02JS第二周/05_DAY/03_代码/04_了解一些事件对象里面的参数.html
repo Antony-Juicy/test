@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 2000px;
+      height: 2000px;
+    }
+
+    div {
+      width: 300px;
+      height: 300px;
+
+      border: 10px solid #333;
+      padding: 20px;
+      margin: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+
+
+  <script>
+
+    var box = document.querySelector('div')
+
+    box.onmousemove = function (e) {
+      e = e || window.event
+
+      var offsetX = e.offsetX
+      var offsetY = e.offsetY
+
+      console.log('offsetX : ' + offsetX)
+      console.log('offsetY : ' + offsetY)
+
+      var clientX = e.clientX
+      var clientY = e.clientY
+      console.log('===========================')
+      console.log('clientX : ' + clientX)
+      console.log('clientY : ' + clientY)
+
+      var pageX = e.pageX
+      var pageY = e.pageY
+      console.log('===========================')
+      console.log('pageX : ' + pageX)
+      console.log('pageY : ' + pageY)
+
+      console.log('===========================')
+      console.log('===========================')
+    }
+
+    /*
+      offsetX 和 offsetY
+        根据你点击的哪个元素的左上角（边框内侧）来确定的坐标点
+      clientX 和 clientY
+        根据你可视窗口的左上角来确定的坐标点
+      pageX 和 pageY
+        根据你整个文档流的左上角来确定的坐标点
+
+      clientWidth offsetLeft
+
+      只要是 X Y 这样的属性
+        都是表示坐标的信息
+        都是在事件对象中获取
+      只要是 width height left top
+        都是表示元素或者 window 的尺寸
+        都是依靠元素来获取或者window获取
+    */
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 的遍历
+        + jQuery 里面有一个方法
+        + 叫做 each()
+          + 专门用来遍历的
+
+      forEach - DOM
+        forEach(function (item, index, arr) {})
+      each - jQuery
+        each(function (index, item) {})
+    */
+
+    var arr = [1, 2, 3, 4, 5, 6, 7]
+
+    $(arr).each(function (index, item) {
+      // console.log(index)
+      console.log(index + ' ---- ' + item)
+      // console.log(123)
+    })
+
+
+  </script>
+</body>
+</html>

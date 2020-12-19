@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    input {
+      width: 770px;
+      height: 40px;
+      padding-left: 30px;
+      margin: 30px auto 0;
+      display: block;
+      outline: none;
+    }
+
+    ul {
+      width: 800px;
+      border: 1px solid #333;
+      margin: 0 auto;
+
+      display: none;
+    }
+
+    ul > li {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    ul > li:hover {
+      background-color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text">
+  <ul>
+    <!-- <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li> -->
+  </ul>
+
+
+  <script>
+    // 随着用户书写内容发送请求
+
+    // 1. 获取元素
+    const inp = document.querySelector('input')
+    const ul = document.querySelector('ul')
+
+    // 2. 绑定事件
+    //   input 事件
+    inp.addEventListener('input', function () {
+      // console.log('我输入内容了')
+      // 获取到用户输入的内容
+      // console.log(this.value)
+
+      // 使用这个关键字去发送请求
+
+      // https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=29634,1439,21115,29522,29518,29721,29568,29220&wd=关键字&req=2&bs=a%27b%27c&pbs=a%27b%27c&csor=2&pwd=zhong%27guo&cb=fn&_=1568617231200
+
+      // 使用刚才的方法发送一个 jsonp 请求
+      const script = document.createElement('script')
+      script.className = 'jsonp'
+      script.src = 'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=29634,1439,21115,29522,29518,29721,29568,29220&wd=' + this.value + '&req=2&bs=a%27b%27c&pbs=a%27b%27c&csor=2&pwd=zhong%27guo&cb=fn&_=1568617231200'
+
+
+
+      document.body.appendChild(script)
+
+    })
+
+    // 准备一个函数
+    function fn(res) {
+      // console.log(res)
+
+      // 使用 res 这个数据去渲染页面
+      // 准备一个字符串
+      let str = ''
+
+      if (!res.g) {
+        ul.style.display = 'none'
+      } else {
+        // 渲染
+
+        res.g.forEach(item => {
+          // console.log(item)
+          str += '<li>' + item.q + '</li>'
+        })
+
+        ul.innerHTML = str
+        ul.style.display = 'block'
+      }
+    }
+
+  </script>
+</body>
+</html>

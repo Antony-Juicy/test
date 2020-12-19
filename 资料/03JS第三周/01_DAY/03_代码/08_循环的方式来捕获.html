@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      循环捕获
+        1. 使用什么循环
+    */
+
+    var arr = []
+
+    var reg = /\d{3}/g
+    var str = 'abcdefg123abcdefg234abcdefg456asdasd'
+
+    var res = reg.exec(str)
+    // res 的值要么是一个 数组，要么就是 null
+
+    while (res) {
+      // 进入循环表示 res 不是 null
+      arr.push(res[0])
+      // 改变自身
+      res = reg.exec(str)
+    }
+
+    console.log(arr)
+
+    /*
+      var res = ['123', ...]
+
+      while 循环的条件判断 true
+        arr.push(res[0]) => arr.push('123')
+        res = ['234', ...]
+      while 循环的条件判断 true
+        arr.push(res[0]) => arr.push('234')
+        res = ['456', ...]
+      while 循环的条件判断 true
+        arr.push(res[0]) => arr.push('456')
+        res = null
+      while 的循环判断 false
+        循环结束
+    */
+  </script>
+</body>
+</html>

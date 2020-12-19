@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .banner {
+      width: 520px;
+      height: 280px;
+      perspective: 900px;
+      margin: 50px auto;
+    }
+
+    .banner > ul {
+      width: 20%;
+      height: 100%;
+      position: relative;
+      transform: rotateX(0deg);
+      transform-style: preserve-3d;
+      float: left;
+    }
+
+    .banner > ul > li {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+    }
+
+    .banner > ul > li:nth-child(1) {
+      transform: rotateX(0deg) translateZ(140px);
+      background-image: url(./imgs/01.jpg);
+    }
+
+    .banner > ul > li:nth-child(2) {
+      transform: rotateX(-90deg) translateZ(140px);
+      background-image: url(./imgs/02.jpg);
+    }
+
+    .banner > ul > li:nth-child(3) {
+      transform: rotateX(-180deg) translateZ(140px);
+      background-image: url(./imgs/03.jpg);
+    }
+
+    .banner > ul > li:nth-child(4) {
+      transform: rotateX(-270deg) translateZ(140px);
+      background-image: url(./imgs/04.jpg);
+    }
+
+    .banner > ul:nth-child(2) > li {
+      background-position: -104px 0;
+    }
+
+    .banner > ul:nth-child(3) > li {
+      background-position: -208px 0;
+    }
+
+    .banner > ul:nth-child(4) > li {
+      background-position: -312px 0;
+    }
+
+    .banner > ul:nth-child(5) > li {
+      background-position: -416px 0;
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <div class="banner">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+
+  <script>
+    // 获取所有的 ul
+    const banner = document.querySelector('.banner')
+    const uls = banner.querySelectorAll('ul')
+
+    // 遍历所有的 ul 给每一个添加一个 transition 属性
+    uls.forEach((item, index) => {
+
+      item.style.transition = `all 3s linear ${ index * 1 }s`
+    })
+
+    let count = 0
+
+    // 让他转起来
+    autoplay()
+    function autoplay() {
+      setInterval(() => {
+        count++
+        // 给每一个 ul 赋值一个 transform： rotateX 就行了
+        uls.forEach(item => {
+          item.style.transform = `rotateX(${ count * 90 }deg)`
+        })
+      }, 10000)
+    }
+
+
+  </script>
+</body>
+</html>

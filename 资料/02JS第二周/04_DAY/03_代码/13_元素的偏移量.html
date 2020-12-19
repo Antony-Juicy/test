@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      border: 10px solid #333;
+
+      margin-left: 50px;
+
+      /* position: relative; */
+    }
+
+    p {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      border: 10px solid red;
+
+      /* margin-left: 20px; */
+      margin-top: 10px;
+
+      /* position: absolute;
+      left: 300px;
+      top: 300px; */
+    }
+
+    ul {
+      width: 200px;
+      height: 200px;
+      border: 10px solid #333;
+      padding: 20px;
+      margin: 20px;
+      background-color: orange;
+
+      /* box-sizing: border-box; */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- <div>
+    <p></p>
+  </div>  -->
+
+  <ul></ul>
+
+  <script>
+    // 元素的偏移量
+    // var div = document.querySelector('div')
+    // var p = document.querySelector('p')
+    var ul = document.querySelector('ul')
+
+    // offsetLeft 和 offsetTop
+
+    // 1. 定位情况下，offsetLeft 是距离定位父级的左边框内部开始计算的距离
+    // 2. 没有定位的时候，根据页面的最左边来计算的尺寸
+    // console.log(p.offsetLeft)
+    // console.log(p.offsetTop)
+
+    /*
+      没有定位父级的情况下，就是根据页面左上角来计算距离
+      有定位父级的情况，根据定位父级的左上角（边框以内）开始计算距离
+    */
+
+    // offsetWidth 和 offsetHeight
+
+    // 1. offsetHeight 得到的是 元素的 内容 + padding + border
+    //    不管元素的盒模型是什么模式，都是 内容 + padding + boder
+    console.log(ul.offsetHeight)
+    console.log(ul.offsetWidth)
+
+    /*
+      offsetHeight 和 offsetWidth
+        都是获取元素 内容 + padding + border 区域的尺寸
+        都是不管盒模型是什么状态都是  内容 + padding + border
+    */
+
+
+  </script>
+</body>
+</html>

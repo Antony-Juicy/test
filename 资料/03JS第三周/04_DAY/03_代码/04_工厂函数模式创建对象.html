@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      工厂函数创建对象
+        - 我们先要创建一个工厂函数
+        - 然后使用这个工厂函数去创造一个对象
+    */
+
+    // function createTab() {
+    //   // 创建一个对象
+    //   const obj = {
+    //     btns: '三个按钮',
+    //     tans: '三个盒子',
+    //     change () {
+    //       // 操作三个
+    //     }
+    //   }
+
+    //   // 把对象的地址 return 到了函数外面
+    //   return obj
+    // }
+
+    // 函数的执行，就是把里面的代码拿出来全部执行一遍
+    // 这个函数第一次执行的时候，创建了一个对象
+    // return 第一次创建的对象的地址
+    // const obj = createTab()
+    // console.log(obj)
+    // 这个函数第二次执行的时候，创建了一个对象
+    // return 第二次创建的对象的地址
+    // const obj2 = createTab()
+    // console.log(obj2)
+
+    // console.log(obj == obj2)
+
+
+    // function createTab(n) {
+    //   // 创建一个对象
+    //   const obj = {
+    //     btns: n + '个按钮',
+    //     tans: n + '个盒子',
+    //     change () {
+    //       // 操作三个
+    //     }
+    //   }
+
+    //   // 把对象的地址 return 到了函数外面
+    //   return obj
+    // }
+
+    // const obj = createTab(3)
+    // console.log(obj)
+
+    // const obj2 = createTab(4)
+    // console.log(obj2)
+
+
+    function createObj(name, age, gender) {
+      // 1. 手动创建一个对象
+      const obj = {}
+
+      // 2. 手动添加成员
+      obj.name = name
+      obj.age = age
+      obj.gender = gender
+
+      // 3. 手动返回这个对象
+      return obj
+    }
+
+    const obj1 = createObj('Jack', 18, '男')
+    const obj2 = createObj('Rose', 20, '女')
+
+    console.log(obj1)
+    console.log(obj2)
+  </script>
+</body>
+</html>

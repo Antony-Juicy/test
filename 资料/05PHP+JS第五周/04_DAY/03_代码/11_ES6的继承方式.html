@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      ES6 的继承方式
+        + 使用两个关键字就可以了
+          + extends
+          + super
+        + 当你使用了 extends 继承以后
+          + 需要在 constructor 里面写一句代码完成继承
+          + super()
+        + 给父类的构造函数传递的参数就写在 super 的括号里面
+
+      注意：
+        super() 你要写在前面
+    */
+
+    // 准备一个父类
+    class Person {
+      constructor (name) {
+        this.name = name
+      }
+
+      sayHi () {
+        console.log('hello world')
+      }
+    }
+
+
+    // 子类
+    class Student extends Person {
+      constructor (age, name) {
+        super(name)
+        this.age = age
+      }
+
+      fn () {
+        console.log('你好 世界')
+      }
+    }
+
+    const s = new Student(20, 'Jack')
+    console.log(s)
+
+
+  </script>
+</body>
+</html>

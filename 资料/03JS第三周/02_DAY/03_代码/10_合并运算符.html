@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    /*
+      展开运算符是 ...
+      合并运算符是 ...
+        + ... 写在形参位置的时候，是合并
+        + ... 写在解构数组的时候，是合并
+
+      写在形参的位置，会把所有形参组合在一个数组里面返回
+        1. 把所用形参组合在一起，一位内 arguments 是一个伪数组，用不了数组常用方法
+        2. 因为箭头函数没有实参的集合，所以我们使用 ... 创造一个
+          + 在箭头函数里面使用的时候，一定要写小括号
+    */
+
+    // function fn( ...arg) {
+    //   console.log(a)
+    //   console.log(arg)
+    //   // console.log(arguments)
+    // }
+
+    // fn(1, 2, 3, 4, 5, 6)
+
+    // const fun = (...arg) => {
+    //   console.log(arg)
+    // }
+    // fun(1, 2, 3, 4, 5, 6, 7, 8)
+
+    const arr = [1, 2, 3, 4, 5, 6]
+
+    const [a, c, ...b] = arr
+
+    console.log(a)
+    console.log(b)
+
+  </script>
+</body>
+</html>

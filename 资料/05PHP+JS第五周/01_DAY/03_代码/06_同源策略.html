@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      同源策略
+        1. 一个请求和几个地址相关
+          + 至少和两个地址相关
+          + 你请求的地址
+          + 你从哪个地址发出的请求
+        const xhr = new XMLHttpRequest()
+        xhr.open('get', 'http://locahost:80/ceshi.php')
+        xhr.sned()
+          + 你请求的是 http://localhost:80/ceshi.php
+          + 你发送请求的位置是 http://localhost:80/06_同源策略.html
+
+        当两个地址之间（你要请求的地址和你发送的地址）
+          + 必须要 端口号一样 并且 域名一样 并且 请求协议版本一样
+
+        2. 同源策略是什么？
+          + **是浏览器给的**
+          + 不允许请求 “别人家的” 服务器
+          + 当你一个请求发送出去的时候
+            + 如果 请求地址 和 发送地址的
+            + 端口号/域名/传输协议
+            + 只要有任意一个不一样，那么就触发了同源策略
+            + 这个请求一定会失败
+
+      一个触发了同源策略的请求，我们叫做 跨域请求
+        + 一个跨域请求，不是发送不到服务器
+        + 而是响应回来以后，浏览器不允许你使用
+    */
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('get', 'http://localhost:80/ceshi.php')
+
+    xhr.onload = function () {
+      console.log(xhr.responseText)
+    }
+
+    xhr.send()
+
+
+  </script>
+</body>
+</html>

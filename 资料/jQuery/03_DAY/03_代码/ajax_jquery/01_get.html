@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 里面有一个 get 方法
+        + 专门用来发送 get 方式的 ajax 请求
+
+      jQuery 的 ajax 方法不是依托元素发送
+        + jQuery 的全局方法
+        语法： $.get(地址，携带的参数，成功的回调函数，期望后台返回的数据类型)
+          + 地址： 你的请求地址
+          + 参数： 可以是字符串，也可以是对象
+          + 回调： 请求成功以后执行的函数
+          + 期望的返回值： 如果你传递一个 'json' 就会执行一步 JSON.parse()
+    */
+
+    // $.get('../server/get.php', { a: 300, b: 400 }, function (res) {
+    //   // res 就是后端给的响应体
+    //   console.log(res)
+    // }, 'json')
+
+    // $.get('../server/get_json.php', { a: 500, b: 600 }, function (res) {
+    //   console.log(res)
+    // }, 'json')
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('get', './ceshi.php')
+
+    // 再 ajax 对象中有一个事件
+    // 叫做 onload(不兼容)
+    // 表示再 readyState === 4 并且 xhr.status 是 2 开头的时候会执行
+    xhr.onload = function () {
+      // 这个会在请求成功，并且 ajax 结束后执行
+      console.log(xhr.responseText)
+    }
+
+    xhr.send()
+  </script>
+</body>
+</html>

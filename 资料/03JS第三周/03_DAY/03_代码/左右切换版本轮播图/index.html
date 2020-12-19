@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <!--
+    布局
+  -->
+  <div class="banner">
+    <ul class="img_box">
+      <li style="background-color: red;">1</li>
+      <li style="background-color: orange;">2</li>
+      <li style="background-color: green;">3</li>
+      <li style="background-color: skyblue;">4</li>
+      <li style="background-color: hotpink;">5</li>
+    </ul>
+
+    <ol class="point_box"></ol>
+
+    <div class="leftRight">
+      <span class="left">&lt;</span>
+      <span class="right">&gt;</span>
+    </div>
+  </div>
+
+
+
+  <script src="./utils.js"></script>
+  <script>
+    /*
+      分析
+        1. 焦点要不要直接写好
+          + 焦点按钮最好是用 js 代码生成
+          + 焦点按钮的盒子也要动态设置
+        2. 要复制元素
+          + 把本来的第一张复制一个放在最后
+          + 把本来的最后一张复制一个放在最前
+          + 重新设置一下 ul 的宽度
+        3. 让轮播图动起来
+          + 使用 move 函数
+          + 把 move 函数放在一个定时器里面调用
+          + 使用了一个 index 的变量记录第几张
+            + index === 1 表示第一张
+            + index === 2 表示第二张
+            + index === 5 表示第五章
+            + index === 6 表示第六章（真实是和第一张一摸一样的那一张）
+              + 当这一张运动完毕以后，要拉回第一张
+              + 从新让 index === 1
+        4. 让焦点跟着走
+          + 运动结束的时候设置焦点按钮
+          + 让所有的焦点都没有 active
+          + 让索引和 图片 配套的哪一个有类名
+        5. 移入移出
+          + 移入定时器停止
+          + 移出定时器再次开启
+        6. 点击左右按钮
+          + 点击右变的时候，index++
+            + 让你运动的过去
+          + 点击左边的时候，index--
+            + 让你运动的过去
+        7. 点击焦点切换
+          + 点击哪个焦点
+          + 就应该直接运动到图片配套的那一张
+        8. 优化
+          + 点击第一次好使
+          + 运动结束之前你点击都不好使
+          + 运动结束之后你点击又好使了
+    */
+
+    // 0. 获取元素
+    // 获取可视区域盒子
+    const banner_box = document.querySelector('.banner')
+    // 获取图片盒子
+    const img_box = banner_box.querySelector('ul')
+    // 获取焦点盒子
+    const point_box = banner_box.querySelector('ol')
+    // 获取左右切换的盒子
+    const leftRight_box = banner_box.querySelector('.leftRight')
+
+    // 获取一个可视区域的宽度
+    const window_width = banner_box.clientWidth
+
+    // 准备一个变量，记录你是第几张
+    let index = 1
+
+    // 准备一个变量，接受定时器 id
+    let loopTimer = null
+
+    // 准备一个变量，作为开关使用
+    let flag = true
+
+    // 1. 设置焦点
+    setPoint()
+    // 2. 复制元素
+    copyEle()
+    // 3. 自动轮播
+    autoplay()
+    // 4. 移入移出
+    overOut()
+    // 5. 左右切换
+    leftRight()
+    // 6. 点击焦点
+    pointClick()
+
+
+    // 设置焦点的函数
+    function setPoint() {
+      // 根据 img_box 的子元素的数量来设置焦点的数量
+      // 获取图片盒子子元素的数量
+      const pointNumber = img_box.children.length
+
+      // 有多少个就生成多少个焦点 li
+      const frg = document.createDocumentFragment()
+      for (let i = 0; i < pointNumber; i++) {
+        const li = document.createElement('li')
+        // 判断一下 第一个 有一个 active
+        if (i === 0) {
+          li.className = 'active'
+        }
+
+        // 设置的时候直接把索引记录下来
+        li.setAttribute('index', i)
+
+        frg.appendChild(li)
+      }
+
+      // 设置一下 point_box 的宽度
+      point_box.style.width = pointNumber * 20 * 2 + 'px'
+
+      // 一次性把 frg 丢到 point_box 盒子里面
+      point_box.appendChild(frg)
+    }
+
+    // 复制元素的函数
+    function copyEle() {
+      // 先把第一个和最后一个克隆一份
+      const first = img_box.firstElementChild.cloneNode(true)
+      const last = img_box.lastElementChild.cloneNode(true)
+
+      // 放到 img_box 里面
+      img_box.appendChild(first)
+      // 放到本身第一个的前面
+      img_box.insertBefore(last, img_box.firstElementChild)
+
+      // 从新设置 img_box 的宽度
+      // 现在的子元素的个数 * 可视区域的宽度
+      img_box.style.width = window_width * img_box.children.length + 'px'
+
+      // 让 img_box 的 left 属性变一下
+      // 来到 -1 个可视区域的宽度
+      img_box.style.left = -1 * window_width + 'px'
+    }
+
+    // 自动轮播的函数
+    function autoplay() {
+      loopTimer = setInterval(() => {
+        // 先执行 index++
+        index++
+
+        // 再定时器里面调用 move 函数，让轮播图动起来
+        move(img_box, {
+          // 让 left 动，-index * 600
+          left: -index * window_width
+        }, () => {
+          // 当你等于最后一张的时候
+          // 拉回第一个
+          if (index === img_box.children.length - 1) {
+            index = 1
+            // 让 img_box 回到第一张的位置
+            // 不能再运动的回去了
+            // 直接设置定位
+            img_box.style.left = -index * window_width + 'px'
+          }
+
+          // 如果 index === 0
+          // 看到的是第 0 张，实际上是 和 第五章那个一摸一样
+          // 应该让 index === 5
+          if (index === 0) {
+            // 拉会到倒数第二章的位置
+            // 倒数第二章的索引是 length - 2
+            index = img_box.children.length - 2
+
+            // 直接拉取回来
+            img_box.style.left = -index * window_width + 'px'
+          }
+
+          // 让所有的焦点都没有 active
+          for (let i = 0; i < point_box.children.length; i++) {
+            point_box.children[i].className = ''
+          }
+
+          // 让图片和我配套的显示
+          // index === 1 第一张 第 0 个
+          // index === 2 第二章 第 1 个
+          // 刚好是 index - 1 个亮起来
+          point_box.children[index - 1].className = 'active'
+
+          flag = true
+        })
+      }, 1000)
+    }
+
+    // 移入移出的函数
+    function overOut() {
+      // 把事件绑定给 banner_box
+      banner_box.addEventListener('mouseover', () => clearInterval(loopTimer))
+      banner_box.addEventListener('mouseout', () => autoplay())
+    }
+
+    // 左右切换的函数
+    function leftRight() {
+      leftRight_box.addEventListener('click', e => {
+        e = e || window.event
+        const target = e.target || e.srcElement
+
+        /*
+          第一次点击的时候
+            flag 时 true 不进 if 条件 falg === false
+          第二次点击的时候
+            flag 是 false，进入 if 条件了 直接 return 后面就不执行了
+            不会再继续切换了
+        */
+
+        // 做一个判断
+        // 如果时 false，下面的代码都不执行
+        if (flag === false) {
+          return
+        }
+
+        // 以点击按钮就变成 false
+        flag = false
+
+        // 通过 target 的 className 去判断左还是右
+        if (target.className === 'left') {
+          console.log('你点击的是左按钮')
+          // 切换上一张
+          index--
+          move(img_box, {
+            // 让 left 动，-index * 600
+            left: -index * window_width
+          }, () => {
+            // 当你等于最后一张的时候
+            // 拉回第一个
+            if (index === img_box.children.length - 1) {
+              index = 1
+              // 让 img_box 回到第一张的位置
+              // 不能再运动的回去了
+              // 直接设置定位
+              img_box.style.left = -index * window_width + 'px'
+            }
+
+            // 如果 index === 0
+            // 看到的是第 0 张，实际上是 和 第五章那个一摸一样
+            // 应该让 index === 5
+            if (index === 0) {
+              // 拉会到倒数第二章的位置
+              // 倒数第二章的索引是 length - 2
+              index = img_box.children.length - 2
+
+              // 直接拉取回来
+              img_box.style.left = -index * window_width + 'px'
+            }
+
+            // 让所有的焦点都没有 active
+            for (let i = 0; i < point_box.children.length; i++) {
+              point_box.children[i].className = ''
+            }
+
+            // 让图片和我配套的显示
+            // index === 1 第一张 第 0 个
+            // index === 2 第二章 第 1 个
+            // 刚好是 index - 1 个亮起来
+            point_box.children[index - 1].className = 'active'
+
+            flag = true
+          })
+        }
+
+        if (target.className === 'right') {
+          console.log('你点击的是右按钮')
+          // 切换下一张
+          index++
+
+          // 你现在 index === 3
+          // 切换下一张 index === 4
+          move(img_box, {
+            // 让 left 动，-index * 600
+            left: -index * window_width
+          }, () => {
+            // 当你等于最后一张的时候
+            // 拉回第一个
+            if (index === img_box.children.length - 1) {
+              index = 1
+              // 让 img_box 回到第一张的位置
+              // 不能再运动的回去了
+              // 直接设置定位
+              img_box.style.left = -index * window_width + 'px'
+            }
+
+            // 如果 index === 0
+            // 看到的是第 0 张，实际上是 和 第五章那个一摸一样
+            // 应该让 index === 5
+            if (index === 0) {
+              // 拉会到倒数第二章的位置
+              // 倒数第二章的索引是 length - 2
+              index = img_box.children.length - 2
+
+              // 直接拉取回来
+              img_box.style.left = -index * window_width + 'px'
+            }
+
+            // 让所有的焦点都没有 active
+            for (let i = 0; i < point_box.children.length; i++) {
+              point_box.children[i].className = ''
+            }
+
+            // 让图片和我配套的显示
+            // index === 1 第一张 第 0 个
+            // index === 2 第二章 第 1 个
+            // 刚好是 index - 1 个亮起来
+            point_box.children[index - 1].className = 'active'
+
+            flag = true
+          })
+        }
+      })
+    }
+
+    // 点击焦点的函数
+    function pointClick() {
+      // 事件委托给 point_box
+      point_box.addEventListener('click', e => {
+        e = e || window.event
+        const target = e.target || e.srcElement
+
+        // 通过标签名就能判断是不是焦点
+        if (target.tagName === 'LI') {
+          // console.log('你点击的是焦点')
+
+          // 如果你是 false，那么我让你点击没有用
+          if (!flag) return
+
+          flag = false
+
+          // 我们要知道你点击的是第几个焦点
+          // 可不可以再设置焦点的时候，把索引直接写在标签身上
+          // 就可以获取你的索引
+
+          // const res = target.getAttribute('index')
+          // console.log(res)
+
+          // 焦点索引是 0 应该看第一张， 让 index === 1
+          // 焦点索引是 1 应该看第二章， 让 index === 2
+          index = target.getAttribute('index') - 0 + 1
+          move(img_box, {
+            // 让 left 动，-index * 600
+            left: -index * window_width
+          }, () => {
+            // 当你等于最后一张的时候
+            // 拉回第一个
+            if (index === img_box.children.length - 1) {
+              index = 1
+              // 让 img_box 回到第一张的位置
+              // 不能再运动的回去了
+              // 直接设置定位
+              img_box.style.left = -index * window_width + 'px'
+            }
+
+            // 如果 index === 0
+            // 看到的是第 0 张，实际上是 和 第五章那个一摸一样
+            // 应该让 index === 5
+            if (index === 0) {
+              // 拉会到倒数第二章的位置
+              // 倒数第二章的索引是 length - 2
+              index = img_box.children.length - 2
+
+              // 直接拉取回来
+              img_box.style.left = -index * window_width + 'px'
+            }
+
+            // 让所有的焦点都没有 active
+            for (let i = 0; i < point_box.children.length; i++) {
+              point_box.children[i].className = ''
+            }
+
+            // 让图片和我配套的显示
+            // index === 1 第一张 第 0 个
+            // index === 2 第二章 第 1 个
+            // 刚好是 index - 1 个亮起来
+            point_box.children[index - 1].className = 'active'
+
+            flag = true
+          })
+        }
+      })
+    }
+ </script>
+</body>
+</html>

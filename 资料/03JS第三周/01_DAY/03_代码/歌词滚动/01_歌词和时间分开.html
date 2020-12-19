@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .lrc {
+      width: 300px;
+      height: 300px;
+      background-color: #fff;
+      border: 2px solid #333;
+      margin: 30px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 150px;
+    }
+
+    li {
+      width: 100%;
+      height: 20px;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    li.active {
+      color: hotpink;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="lrc">
+    <ul>
+      <li class="active">布拉格广场</li>
+    </ul>
+  </div>
+
+
+  <script src="./lrc.js"></script>
+  <script>
+    // 1. 先把字符串切割成一个数组
+    // var tmpArr = lrcStr.split('\n')
+    // 2. 把每一项的空格去掉
+    // tmpArr.forEach(function (item) {
+    //   // 把空格干掉
+    //   // 我们有一个 trim() 字符串方法
+    //   //   专门用来去除首位空格
+    //   tArr.push(item.trim())
+    //   // item = item.trim()
+    // })
+    var tmpArr = lrcStr.split('\n').map(function (item) {
+      return item.trim()
+    })
+
+    // 3. 书写正则，去比配字符串
+    //    [00:00.00]布拉格广场
+    var lrcReg = /^\[(\d{2}:\d{2})\.\d{2}\](.+)$/
+
+    // 4. 准备一个数组放时间，准备一个数组放歌词
+    var timeArr = []
+    var lrcArr = []
+
+    tmpArr.forEach(function (item) {
+      // 先判断你不是 null
+      // 王对应的数组里面填充
+      var res = lrcReg.exec(item)
+
+      if (res) {
+        // 表示res 不是 null
+        timeArr.push(res[1])
+        lrcArr.push(res[2])
+      }
+    })
+
+    console.log(timeArr)
+    console.log(lrcArr)
+
+
+
+  </script>
+</body>
+</html>

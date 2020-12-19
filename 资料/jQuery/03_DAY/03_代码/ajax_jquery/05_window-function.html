@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script src="../jquery/jquery.min.js"></script>
+  <script>
+    /*
+      jQuery 里面关于 ajax 的几个全局函数
+        + 也叫做 "钩子函数"
+        + 独立于 ajax 之外设置的函数
+          + 会再每一个 ajax 请求的时候触发
+        + 他们的使用方式
+          $(window).全局ajax函数名(function () {})
+
+      1. ajaxStart()
+        + 再一个代码块里面请求开始的时候触发
+        + 如果一个代码块里面同时有多个请求，只会再最开始的时候执行一次
+      2. ajaxSend()
+        + 当每一个请求发送之前触发
+        + 会执行再每一个请求的 send 之前
+      3. ajaxSuccess()
+        + 只要有一个请求成功了，就会触发
+      4. ajaxError()
+        + 只要有一个请求失败了，就会触发
+      5. ajaxComplete()
+        + 只要有一个请求完成了，就会触发
+        + 不管成功还是失败
+      6. ajaxStop()
+        + 在一个代码块里面，请求结束的时候触发
+        + 如果在一个代码块里面有多个请求，只会在最后一个请求结束以后触发
+    */
+
+    $(window).ajaxStart(function () {
+      // 当前代码块里面有 ajax 请求发送的时候触发
+      console.log('ajax 开始了')
+    })
+
+    $(window).ajaxSend(function () {
+      // 只要有 send 要执行了
+      // 会在 send 之前触发一下
+      console.log('ajax 要执行 send 步骤了')
+    })
+
+    $(window).ajaxSuccess(function () {
+      // 只要有一个请求成功了，就会触发
+      console.log('有一个请求成功了')
+    })
+
+    $(window).ajaxError(function () {
+      // 只要有一个请求失败了，就会触发
+      console.log('有一个请求失败了')
+    })
+
+    $(window).ajaxComplete(function () {
+      // 只要有一个请求完成了，就会触发
+      console.log('有一个请求完成了')
+    })
+
+    $(window).ajaxStop(function () {
+      console.log('ajax 请求结束了')
+    })
+
+
+
+    $.ajax({
+      url: '../server/get.php',
+      data: 'a=100&b=200',
+      success (res) {
+        console.group('ajax 请求的成功回调')
+        console.log('本次请求成功了')
+        console.log(res)
+        console.groupEnd()
+      }
+    })
+
+    $.ajax({
+      url: '../server/get.php',
+      data: 'a=100&b=200',
+      dataType: 'json',
+      success (res) {
+        console.group('ajax 请求的成功回调')
+        console.log('本次请求成功了')
+        console.log(res)
+        console.groupEnd()
+      }
+    })
+
+
+  </script>
+</body>
+</html>

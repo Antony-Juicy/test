@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script src="../utils.js"></script>
+  <script>
+    /*
+      1. 发送一个请求
+      2. 发送第二个请求，但是要把第一个请求的响应结果带过去
+      3. 发送第三个请求，但是要把第二个请求的响应结果带过去
+    */
+
+    // let n1 = 0
+    // let n2 = 0
+
+    ajax({
+      url: './data1.php',
+      dataType: true,
+      success (res) {
+        // 再这个位置表示第一个请求成功了
+        // console.log(res)
+
+        n1 = res.n1
+        n2 = res.n2
+
+        // 再这里发送第二个请求
+
+        ajax({
+          url: './data2.php',
+          dataType: true,
+          data: {
+            n1: res.n1,
+            n2: res.n2
+          },
+          success (res) {
+
+            // 表示第二个请求成功了
+            // 可以拿到第二个请求的结果了
+            // console.log(res)
+
+            // 进行第三个请求的发送
+            ajax({
+              url: './data3.php',
+              dataType: true,
+              data: res,
+              success (res) {
+
+                // 接受的的时第三次的结果
+                console.log(res)
+              }
+            })
+          }
+        })
+      }
+    })
+
+    // 再这里能不能发送第二个请求
+    // n1 和 n2 时多少
+    // console.log(n1)
+    // console.log(n2)
+
+
+
+  </script>
+</body>
+</html>

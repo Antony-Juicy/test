@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    // 我们的 js 代码都是从上到下的执行
+
+    // 分支语句，就是当你执行到这里的时候，选择行的执行或者不执行这段代码
+
+    // 1. if (条件) { 条件成立的时候执行的代码 }
+    //    if 后面的 {} 只有在条件成立的时候执行，条件不成立，那么不执行
+    //    if 的 () 会进行隐式转换，不管 () 里面写的是什么都会转换成 布尔 来看待进行判断
+    //       如果是 true 就执行，如果是 false，就不执行
+    // if (true) {
+    //   console.log('条件成立')
+    // }
+
+    // 2. if (条件) { 条件成的时候执行 } else { 条件不成立的时候执行 }
+    //    两个 {} 一定会执行一个
+    // var age = 0
+
+    // if (age >= 18) {
+    //   console.log('成年人')
+    // } else {
+    //   console.log('未成年')
+    // }
+
+    // 3. if (条件) { 条件成立 } else if (条件2) { 条件2成立，并且条件1不成立 }
+    //    这两个 {} 只能执行一个
+    //    可以写多个条件的语法
+    //      从第一个条件开始判断
+    //      如果第一个满足了，那么执行第一个 {},后面的就都不执行了
+    //      如果第一个不满足，那么判断第二个条件，如果满足执行第二个 {}，后面的就都不执行了
+    //      如果第二个条件不满足，那么判断第三个条件，...
+    //      如果都不满足就都不执行
+
+    // var age = 16
+
+    // if (age >= 22) {
+    //   console.log('可以结婚了')
+    // } else if (age >= 18) {
+    //   console.log('可以去网吧了')
+    // }
+
+    // 4. if (条件1) { 代码1 } else if (条件2) { 代码2 } else { 都不满足的时候执行 }
+    //    多个 {} 里面一定会有一个被执行
+
+    var age = 5
+
+    if (age >= 22) {
+      console.log('可以结婚了')
+    } else if (age >= 18) {
+      console.log('可以去网吧了')
+    } else if (age >= 12) {
+      console.log('可以谈恋爱了')
+    } else if (age >= 6) {
+      console.log('可以和女生坐同桌')
+    } else {
+      console.log('在家呆着')
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input id="number" type="text"><br>
+  <button id="btn">=</button><br>
+  <input id="result" type="text">
+
+  <script>
+    /*
+      使用函数完成任意数字阶乘的计算
+      要求：页面输入任意数字，点击按钮后计算阶乘
+
+      1. 注册点击事件
+        + 一定要在点击事件里面去获取 number 这个元素的值
+    */
+
+    btn.onclick = function () {
+      var n = number.value - 0
+
+      var sum = 1
+      // 计算数字的阶乘
+      for (var i = n; i >= 1; i--) {
+        sum *= i
+      }
+
+      // sum 就是你输入的哪个数字的阶乘的结果
+      // 吧结果放在 result 的文本框里面
+      result.value = sum
+    }
+
+  </script>
+</body>
+</html>

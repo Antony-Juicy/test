@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    ul {
+      width: 150px;
+      border: 1px solid #333;
+
+      display: none;
+
+      position: fixed;
+      top: 0;
+      padding: 0;
+    }
+
+    li {
+      padding: 5px 10px;
+    }
+
+    li:hover {
+      color: #fff;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <ul>
+    <li>hello world</li>
+    <li>打开</li>
+    <li>删除</li>
+    <li>创建</li>
+    <li>你好</li>
+  </ul>
+
+
+  <script>
+    // 1. 获取 ul
+    var ul = document.querySelector('ul')
+
+    // 2. 不能让默认的这个菜单弹出来
+    window.addEventListener('contextmenu', function (e) {
+      e = e || window.event
+      if (e.preventDefault) {
+        e.preventDefault()
+      } else {
+        e.returnValue = false
+      }
+
+      // 给 ul 一个位置
+      // 获取光标位置
+      var x = e.clientX
+      var y = e.clientY
+
+      // 给 ul 设置 left 和 top
+      ul.style.left = x + 'px'
+      ul.style.top = y + 'px'
+      ul.style.display = 'block'
+    })
+
+    // 让菜单消失
+    document.addEventListener('click', function () {
+      ul.style.display = 'none'
+    })
+
+  </script>
+</body>
+</html>

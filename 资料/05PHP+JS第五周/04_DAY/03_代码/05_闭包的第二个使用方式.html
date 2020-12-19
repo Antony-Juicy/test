@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      闭包：
+        利用函数不销毁的空间
+          在函数内部返回一个复杂数据类型
+        2. 返回一个对象
+          + 对象里面的成员是一个一个的函数
+    */
+
+    function outer() {
+      var n1 = 100
+      var n2 = 200
+      var n3 = 300
+
+      var obj = {
+        a: function () {
+          return n1
+        },
+        b: function () {
+          return n2
+        },
+        c: function () {
+          return n3
+        },
+        setN1: function (n) {
+          // console.log(n)
+
+          // 这里访问的 n1 是谁
+          // outer 函数里面定义的 n1 变量
+          // 把 outer 函数里面定义的 n1 变量给修改了
+          n1 += 10
+        }
+      }
+
+      return obj
+    }
+
+    // 我的 res 接受到的内容是什么
+    // 是一个对象，里面有一些函数
+    var res = outer()
+    console.log(res)
+
+    // 在访问 outer 函数内部的 n1 变量
+    // res.a()
+
+    // 在访问 outer 函数内部的 n2 变量
+    // res.b()
+
+
+    // 第一次访问 outer 函数内部的 n1 变量
+    console.log(res.a())
+
+    // 执行完毕，就把 outer 函数里面的 n1 变量给修改了
+    res.setN1(10)
+
+    // 第二次访问 outer 函数内部的 n1 变量
+    console.log(res.a())
+
+
+
+  </script>
+</body>
+</html>

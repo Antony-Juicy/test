@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+    /*
+      限定符
+        + 用来描述每一个正则 元字符 出现的次数
+
+      1. +(加号)
+        表示 1 到 正无穷次
+      2. *（星号）
+        表示 0 到 正无穷次
+      3. ?（问号）
+        表示 0 或者 1 次
+      4. {n}
+        表示 n 次
+      5. {n,}
+        表示至少 n 次 {1,}
+        {1,} 等价于 +
+        {0,} 等价于 *
+      6. {n,m}
+        表示 至少 n 次，至多 m 次
+        {0,1} 等价于 ?
+    */
+
+    // 表示字符串只能由 一位以上的数字组成
+    // var reg = /^\d+$/
+    // var str = '123454'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要出现数字 0 到 正无穷次
+    // var reg = /\d*/
+    // var str = 'abcdefg123456'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 字符串只能由 0 到多个数字组成
+    // var reg = /^\d*$/
+    // var str = ''
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串中需要出现数字 0 次 或者 1 次
+    // var reg = /\d?/
+    // var str = 'adasdsd1234'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串只能由 0 个 或 1 个数字组成
+    // var reg = /^\d?$/
+    // var str = '123'
+    // var res = reg.test(str)
+    // console.log(res)
+
+
+    // 表示字符串里面需要包含一个 三个数字连着 的字符片段
+    // var reg = /\d{3}/
+    // var str = 'abcdefg123456'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串只能由 三位数字 组成
+    // var reg = /^\d{3}$/
+    // var str = '12345'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串从开头到结尾只能由三位以上的数字组成
+    // var reg = /^\d{3,}$/
+    // var str = '12345676889'
+    // var res = reg.test(str)
+    // console.log(res)
+
+    // 表示字符串只能由 6 ~ 16 位数字组成
+    var reg = /^\d{6,16}$/
+    var str = '1234567890123456'
+    var res = reg.test(str)
+    console.log(res)
+
+    // 在谷歌应用商店搜索 FEHelper
+  </script>
+</body>
+</html>

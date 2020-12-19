@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      闭包：
+        利用函数不销毁的空间
+          在函数内部返回一个复杂数据类型
+        1. 返回一个函数
+          + 在这个函数里面使用了外部函数的变量
+          + 管 inner 叫做 outer 的闭包函数
+
+
+      闭包的特点：
+        可以在函数外部访问函数内部的变量
+          优点： 在函数外部访问
+          缺点： 函数执行空间不会销毁（占用内存）
+        延长了变量的生命周期
+          优点： 延长生命周期
+          缺点： 函数执行空间不会销毁（占用内存）（内存泄漏）
+    */
+
+    function outer() {
+      var num = 100
+
+      function inner() {
+        // 在访问 num 变量
+        // 我自己没有，就去上一级作用域查找
+        // 上一级作用域就是 outer
+        // 拿到的就是 outer 的 num 变量
+        return num
+      }
+
+      return inner
+    }
+
+    var res = outer() // res 接受的是 inner 这个函数的地址
+
+    /*
+      在内存中开辟了一个 **函数存储空间 xxff00(outer)**
+      outer()
+        在内存中开辟了一个 **函数执行空间 xxff11(outer)**
+        在 xxff11 内部定义了一个变两 num
+        在 xxff11 内部定义了一个 **函数存储空间 xxff12(inner)**
+        return inner => return xxff12
+      全局 res 接受到的就是 xxff11 空间内部的 xxff12 函数存储空间
+        导致了一个问题： xxff11 这个空间没有销毁，那么 xxff11 里面的 num 也一直留着
+
+      从这里开始， 我随是使用 res() ，随是可以获取到 outer 函数内部的变量 num
+    */
+
+  </script>
+</body>
+</html>

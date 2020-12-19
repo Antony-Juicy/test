@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script>
+    /*
+      对象的简写方式
+        1. 当对象的 key 和 对象的 value 长得一样的时候
+          + 可以省略不写
+        2. 在对象里面写函数表达式的时候（不是箭头函数的时候）
+          + 可以省略 function 关键字
+    */
+
+    const age = 18
+    const gender = '男'
+    const obj = {
+      age,
+      name: 'Jack',
+      gender,
+      fn: () => {}, // 这个不能再简写了
+      fun: function () {}, // 这个可以进行简写
+      f () { // 等价于 f: function () {}
+        // 这个里面是有 this 的
+        console.log(this)
+      }
+    }
+    console.log(obj)
+    obj.f()
+
+  </script>
+</body>
+</html>
