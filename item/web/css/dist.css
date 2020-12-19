@@ -1,0 +1,239 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "\5FAE\8F6F\96C5\9ED1", 'Microsoft YaHei';
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#vue_view{
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+}
+.index_head {
+    width: 1400px;
+    height: 40px;
+    background: #ee0c4b;
+    margin: 0 auto;
+}
+
+.index_head .left {
+    background-image: url(../img/logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 40px;
+    margin-left: 56px;
+    position: absolute;
+}
+
+.index_head .index_nav_div {
+    width: 100%;
+    float: left;
+}
+
+.index_head .index_nav_div .index_nav {
+    width: 740px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    color: #ffffff;
+    margin: 0 auto;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.index_nav li:hover {
+    background-color: #d9043e;
+}
+
+.index_head .index_nav_div .index_nav .nav_left {
+    color: #ffffff;
+    float: left;
+}
+
+.index_head .index_nav_div .index_nav .nav_left .white {
+    padding: 0 25px;
+    color: #ffffff;
+}
+
+
+/* ********轮播******** */
+.swiper-container {
+    width: 1092px;
+    height: 654px;
+
+}
+
+.swiper-container img {
+    width: 1162px;
+    height: 654px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    outline: none;
+    cursor: pointer
+}
+
+.swiper-pagination-bullet {
+    width: 50px !important;
+    height: 1px !important;
+    background-color: #000 !important;
+}
+
+.swiper-button-next:hover {
+    color: rgba(151, 143, 143, 0.693);
+}
+
+.swiper-button-prev:hover {
+    color: rgba(151, 143, 143, 0.693);
+}
+
+.index_menu {
+    width: 100%;
+    height: 442.5px;
+    float: left;
+    background-color: #f4f4f4;
+}
+
+.index_menu .index_menu_ul {
+    width: 1092px;
+    height: 218px;
+    margin: 0 auto;
+    margin-top: 113px;
+}
+
+.index_menu .index_menu_ul .index_menu_li {
+    width: 270px;
+    height: 218px;
+    background-color: #ffffff;
+    margin-right: 3px;
+    float: left;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_title {
+    width: 270px;
+    font-size: 22px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 37.5px;
+    color: #222222;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_desc a {
+    float: left;
+    display: block;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_desc .index_menu_box {
+    width: 135px;
+    height: 24px;
+    margin: 0 auto;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_desc .margin_left {
+    margin-left: 15px;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_desc span {
+    float: left;
+    font-size: 11.5px;
+    width: 1px;
+    display: block;
+    margin-left: 5px;
+    margin-right: 6px;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_img {
+    width: 270px;
+    margin-top: 22.5px;
+    text-align: center;
+}
+
+.index_menu .index_menu_ul .index_menu_li .index_menu_img img {
+    margin-top: 22.5px;
+    width: 165.75px;
+    height: 127.5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* footer */
+.index_footer {
+    width: 100%;
+    height: 121px;
+    float: left;
+    background-color: #282828;
+    border-bottom: 1px solid #999999;
+}
+
+.index_footer .footer_top {
+    width: 1440px;
+    height: 60px;
+    margin: 0 auto;
+   
+}
+
+.index_footer .footer_top .footer_nav {
+    width: 548px;
+    height: 40px;
+    margin: 0 auto;
+
+}
+
+.index_footer .footer_top .footer_nav .footer_li {
+    float: left;
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.index_footer .footer_top .footer_nav .footer_li .footer_li_a {
+    width: 96px;
+    color: #999999;
+    margin-top: 8px;
+    display: inline-block;
+
+}
+
+.index_footer .footer_top .footer_nav .footer_line {
+    width: 1px;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
+    margin: 0 20px;
+    margin-top: 20px;
+    color: #888888;
+
+}
+
+.footer_bottom {
+    width: 100%;
+  
+}
+.footer_bottom .footer_info {
+    width: 600px;
+    font-size: 13px;
+    margin: 0 auto;
+    margin-top: 14px;
+    color: #999999;
+}
+
+.footer_bottom .footer_info .footer_span {
+    width: 378px;
+}
+.footer_bottom .footer_info .beian {
+    display: inline;
+    float: right;
+    color: #999999;
+}
