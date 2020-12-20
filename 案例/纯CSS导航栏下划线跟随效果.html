@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            top: 100px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-left: 100px;
+        }
+
+        li {
+            position: relative;
+            padding: 20px;
+            font-size: 24px;
+            color: #000;
+            line-height: 1;
+            transition: 0.2s all linear;
+            cursor: pointer;
+            list-style: none;
+
+        }
+
+        /* 借助伪元素 */
+        /* 利用绝对定位，将 li 的伪元素的宽度设置为0，在 hover 的时候，宽度从 width: 0 -> width: 100% */
+        li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 0;
+            height: 100%;
+            border-bottom: 2px solid #000;
+            transition: 0.2s all linear;
+        }
+        /* 当前 hover 的 li ，其对应伪元素的下划线的定位是 left: 100% */
+        li:hover::before {
+            width: 100%;
+            top: 0;
+            left: 0;
+            transition-delay: 0.1s;
+            border-bottom-color: #000;
+            z-index: -1;
+        }
+
+        /* ~ 选择符     */  
+        /* 定位是 left: 0 */
+        li:hover~li::before {
+            left: 0;
+        }
+
+        li:active {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+
+            <li>不可思议的CSS</li>
+
+            <li>导航栏</li>
+
+            <li>光标小下划线跟随</li>
+
+            <li>PURE CSS</li>
+
+            <li>Nav Underline</li>
+
+        </ul>
+    </div>
+</body>
+
+</html>

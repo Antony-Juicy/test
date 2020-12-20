@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 800px;
+            margin: 50px auto;
+            border: 1px solid #333;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #333;
+            height: 30px;
+            text-align: center;
+        }
+
+        input[type="button"] {
+            outline: none;
+            width: 20px;
+            height: 20px;
+            color: sandybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td><input type="checkbox" class="checkbox" id="all"></td>
+                <td>#</td>
+                <td>姓名</td>
+                <td>呢称</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>爱好</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <!-- <tr>
+            <td><input type="checkbox"></td>
+            <td>1</td>
+            <td>姓名</td>
+            <td>呢称</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>爱好</td>
+            <td><input type="button" value="x"></td> 
+            </tr> -->
+        </tbody>
+        <script src="./data.js"></script>
+        <script>
+            //获取元素
+            let tbody = document.querySelector("#tbody")
+
+            function xunren() {
+                let str = ""
+                data.forEach((item, index) => {
+                    str += `<tr idx="${item.id}" id="tr">
+            <td><input type="checkbox" class="box"></td>
+            <td>${index+1}</td>
+            <td>${item.name}</td>
+            <td>${item.nickname}</td>
+            <td>${item.age}</td>
+            <td>${item.gender}</td>
+            <td>${item.hobby}</td>
+            <td><input type="button" value="x" class = "del"></td> 
+            </tr>`
+                    tbody.innerHTML = str
+                });
+            }
+
+            xunren()
+            //删除
+            tbody.onclick = function () {
+                e = window.event
+                let tr = e.target.parentNode.parentNode
+                // console.log(tr);
+                let idx = tr.getAttribute("idx")
+                // console.log(idx);
+                data.forEach(function (item, index, arr) {
+                    // console.log(arr);
+                    if (e.target.className == "del" && idx == item.id) {
+                        arr.splice(index, 1)
+                        xunren()
+                    }
+                })
+
+            }
+            //全选
+            let all = document.querySelector("#all")
+            let box = document.querySelectorAll(".box")
+            var arr = []
+            for (var i = 0; i < box.length; i++) {
+                arr.push(box[i])
+                box[i].onclick = function () {
+                    if (this.checked == true) {
+                        this.parentNode.parentNode.style.backgroundColor = "sandybrown"
+                    } else {
+                        this.parentNode.parentNode.style.backgroundColor = "white"
+                    }
+                    var res = arr.every(function (item, index, arr) {
+                        return item.checked == true
+
+                    })
+                    if (res == true) {
+                        all.checked = true
+                    } else {
+                        all.checked = false
+                    }
+                }
+            }
+            all.onclick = function () {
+                for (var j = 0; j < box.length; j++) {
+                    box[j].checked = all.checked
+                    if (box[j].checked == true) {
+                        box[j].parentNode.parentNode.style.backgroundColor = "sandybrown"
+                    } else {
+                        box[j].parentNode.parentNode.style.backgroundColor = "white"
+                    }
+
+                }
+                // if(box.checked ==true){
+                //     console.log(1);
+
+            }
+        </script>
+</body>
+
+</html>

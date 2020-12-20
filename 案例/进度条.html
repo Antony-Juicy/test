@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 800px;
+            height: 30px;
+            border: 1px solid slateblue;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .box #box1 {
+            height: 100%;
+            width: 0px;
+            background: rgb(49, 105, 122);
+        }
+
+        .box #txte {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="box1"></div>
+        <span id="txte">0%</span>
+    </div>
+
+    <script>
+        let box1 = document.querySelector("#box1");
+        let txte = document.querySelector("#txte");
+      
+        let box1width = 0;
+
+        /* 设置定时器 */
+        setInterval(function () {
+            box1width = box1width + 5;
+            if (box1width>=800) {
+                box1width = 800;
+            }
+            box1.style.width = `${box1width}px`;
+            txte.style.left = `${box1width}px`;
+
+            // 还需要改变txt 内容 （box1的宽度 /800）
+            let ger = parseInt(box1width / 800 * 100);  ///整数
+            txte.innerHTML = `${ger}%`
+        }, 100)
+    </script>
+</body>
+
+</html>

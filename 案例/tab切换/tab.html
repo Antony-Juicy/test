@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 450px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        .box button {
+            border: none;
+            background: #ccc;
+            width: 150px;
+            height: 50px;
+            outline: none;
+            float: left;
+        }
+
+        .box div .active {
+            background: orange;
+        }
+
+        .box ul {
+            height: 250px;
+            background: pink;
+        }
+
+        .box ul li {
+            height: 100%;
+            display: none;
+        }
+
+        .box ul .active {
+            display: block;
+        }
+
+
+
+
+        /* css清除浮动clearfix:after的用法 */
+        .clearfix::after {
+            content: "";
+            display: block;
+            overflow: hidden;
+            visibility: hidden;
+            height: 0px;
+            clear: both;
+        }
+    </style>
+    <script src="../jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="clearfix">
+            <button class="active">吴亦凡</button>
+            <button>蔡徐坤</button>
+            <button>陈伟霆</button>
+        </div>
+        <ul>
+            <li class="active">大碗宽面</li>
+            <li>打篮球</li>
+            <li>野狼disco</li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    /*    
+            给button绑定点击事件
+        */
+    $("button").on("click", function () {
+        // siblings() 找到元素的所有兄弟元素
+        $(this).addClass("active").siblings().removeClass("active");
+        let index = $(this).index();
+    //    console.log(index);
+    // eq(index)找到集合中索引
+    $("li").eq(index).addClass("active").siblings().removeClass('active');
+    })
+</script>
+
+</html>

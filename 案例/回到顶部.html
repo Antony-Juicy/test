@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 10000px;
+            width: 1000px;
+        }
+
+        #btn {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">回到顶部</button>
+
+    <script>
+
+
+let btn = document.querySelector('#btn');
+
+
+
+        window.onscroll = function () {
+            if (scrollY > 500) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        }
+        btn.onclick = function () {
+            scrollTo({
+                top: 0,
+                behavior: "smooth"  // 匀速回归滚动条
+            })
+
+        }
+
+        // 
+        // btn.onclick = function () {
+        //     scrollTo({
+        //         left: 0,
+        //         top: 0
+        //     })
+        // }
+    </script>
+
+</body>
+
+</html>

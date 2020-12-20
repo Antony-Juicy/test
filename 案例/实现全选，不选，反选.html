@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">全选</button>
+    <button id="btn2">不选</button>
+    <button id="btn3">反选</button>
+    <br>
+    <br>
+    <input type="checkbox" id="num1">
+    <input type="checkbox" id="num2">
+    <input type="checkbox" id="num3">
+    <input type="checkbox" id="num4">
+
+
+    <script>
+        var kuang = document.getElementsByTagName("input");
+        var btn1 = document.getElementById("btn1");
+
+
+        btn1.onclick = function () {
+            // 当点击的是全选按钮，所有的复选框都被勾上 元素添加 checked  = true     num.checked = true选中   num.checked = false不选
+
+            for (var i = 0; i < kuang.length; i++) {
+                kuang[i].checked = true;
+            }
+
+        }
+        btn2.onclick = function () {
+            for (var i = 0; i < kuang.length; i++) {
+                kuang[i].checked = false;
+            }
+        }
+        btn3.onclick = function () {
+            for (var i = 0; i < kuang.length; i++) {
+
+                if (kuang[i].checked ==false) {
+
+                    kuang[i].checked = true;
+
+
+                } else if (kuang[i].checked==true) {
+                    kuang[i].checked = false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

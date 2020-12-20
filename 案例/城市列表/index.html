@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .box #box1 {
+            width: 200px;
+            height: 20px;
+            outline: none;
+            cursor:pointer;
+        }
+
+        ul {
+            width: 200px;
+            position: absolute;
+            left: 88px;
+            top: 25px;
+            border: 1px solid #ccc;
+            display: none;
+            cursor:pointer;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            height: 25px;
+
+        }
+
+        ul li~li {
+            border-top: 1px dashed #ccc;
+        }
+
+        ul .active {
+            background: #bea26e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span>选择城市：</span>
+        <input type="text" id="box1">
+        <span class="box2"></span>
+        <ul class="box3"></ul>
+    </div>
+    <script src="./js/data.js"></script>
+    <script>
+        let box1 = document.querySelector("#box1");
+        let box2 = document.querySelector(".box2");
+        let box3 = document.querySelector(".box3");
+        // console.log(box3);
+
+        box3.innerHTML = fun();
+
+        function fun() {
+            return data.map(function (item, index) {
+                console.log(item);
+                // 三元 判断
+                return item.hot ?  `<li class="active">
+                        <span class="name">${item.name}</span>
+                        <span>${item.id}</span>
+                    </li>` : 
+                  
+                    `<li>
+                        <span class="name">${item.name}</span>
+                        <span>${item.id}</span>
+                    </li>`;
+                  
+            }).join('');
+        }
+        box1.onclick = function (e) {
+            // 阻止冒泡事件
+            e.cancelBubble = true;
+            box3.style.display = 'block';
+           
+
+        }
+        // 列表城市
+        box3.onclick = function (e) {
+            e.cancelBubble = true;
+        // 赋值
+        // console.log(e.target);
+            box1.value = e.target.innerText;
+      
+   
+            box2.innerText = `你选择了：` + e.target.nextElementSibling.innerText;
+            box3.style.display = "none";
+        }
+
+        // 点击取消列表
+        document.onclick = function () {
+            box3.style.display = "none"
+        }
+    </script>
+</body>
+
+</html>

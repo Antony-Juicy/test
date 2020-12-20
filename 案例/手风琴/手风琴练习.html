@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+            width: 200px;
+            flex-shrink: 0;
+
+        }
+
+        ul {
+            width: 800px;
+            height: 280px;
+            border: 2px solid orange;
+            display: flex;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+    </style>
+    <script src="../jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li><img src="01.jpg" alt=""></li>
+        <li><img src="02.jpg" alt=""></li>
+        <li><img src="03.jpg" alt=""></li>
+        <li><img src="04.jpg" alt=""></li>
+    </ul>
+    <script src="../code/jquery/jquery.min.js"></script>
+    <script>
+        $("li").hover(function () {
+            $(this)
+            .siblings() // 子元素集合
+            .finish()
+            .animate({
+                width:80
+            })
+             .end()
+            .finish()
+            //方法停止当前运行的动画
+            .animate({
+                width:500
+            }) 
+            console.log($(this));
+        })
+        $("ul").on("mouseout",function(){
+            $('li').stop().animate({
+                width:200
+            })
+        })
+    </script>
+</body>
+
+</html>

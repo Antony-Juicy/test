@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+
+
+    <br>
+    <button id="btn">全选</button>
+    <button id="btn1">不选</button>
+    <button id="btn2">反选</button>
+
+
+    <script>
+        // 通常用来制作插件
+        jQuery.fn.extend({
+            // jquery集合不能使用原生的方法和属性
+            // 传递的参数为 1的是表示全选
+            checked: function (attr) {
+                this.each(function (index, itme) {
+                    if (attr == 2) {
+                        itme.checked = !itme.checked;
+                    } else {
+                        itme.checked = attr
+                    }
+
+                })
+            }
+        });
+
+
+        // 全选
+        $("#btn").click(function () {
+            // 传递的参数为 1的是表示全选
+            //  $("input").attr("checked",true);
+
+            // 全选
+            // $('input').checked(true);
+
+            //  反选
+            $('input').checked(1)
+
+        });
+
+
+        $("#btn1").click(function () {
+            // 不选
+            // $("input").attr('checked',false);
+            // $('input').checked(false);
+
+            $('input').checked(0)
+        });
+
+
+
+        $("#btn2").click(function () {
+            // 不选
+            // $("input").attr('checked',false);
+            // $('input').checked(false);
+
+            //    反选
+            $('input').checked(2)
+        });
+
+
+
+
+        // jQuery.extend({ 
+        //      max:function(){
+        //          console.log(1);
+        //      }
+        // })
+        // $.max();
+    </script>
+</body>
+
+</html>

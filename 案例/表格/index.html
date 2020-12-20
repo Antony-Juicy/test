@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 600px;
+            border: 1px solid #eeecec;
+            border-spacing: 0px;
+            border-collapse: collapse;
+        }
+
+        table thead tr {
+            background: #eeecec;
+        }
+
+        table tbody tr:nth-child() {
+            background: #eeecec;
+        }
+
+        table tbody .active {
+            background: #f6d18e !important;
+        }
+
+        table td,
+        table th {
+            border: 1px solid #eeecec;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input class="box" type="checkbox">
+                </th>
+                <th>#</th>
+                <th>姓名</th>
+                <th>昵称</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>爱好</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="box1">
+            <!-- <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script src="./data.js"></script>
+    <script>
+        let box1 = document.querySelector("#box1");
+
+
+        // 渲染数据
+        fun(box1, data)
+
+        function fun(box1, data) {
+            box1.innerHTML = data.map((item, index) => {
+                return `<tr id= "${item.id}">
+                <td>
+                    <input class="box2" type="checkbox">
+                </td>
+                <td>${index + 1}</td>
+                <td>${item.name}</td>
+                <td>${item.nickname}</td>
+                <td>${item.age}</td>
+                <td>${item.gender}</td>
+                <td>${item.hobby.join()}</td>
+                <td><button class="deleteBtn">删除</button></td>
+            </tr> `
+
+            }).join("")
+        }
+        // 获取元素
+        let box = document.querySelector('.box');
+        let box2 = document.querySelectorAll('.box2');
+        let deleteBtn = document.querySelectorAll('.deleteBtn');
+
+
+        //  全选
+        box.onclick = function () {
+            box2.forEach(function (item, index) {
+                if (box.checked) {
+                    item.parentNode.parentNode.classList.add('active');
+                } else {
+                    item.parentNode.parentNode.classList.remove('active');
+                }
+                item.checked = box.checked;
+            })
+
+        }
+        // 单选
+        box2.forEach(function (item, index) {
+            item.onclick = () => {
+                if (item.checked) {
+                    item.parentNode.parentNode.classList.add('active');
+                } else {
+                    item.parentNode.parentNode.classList.remove('active');
+                }
+
+                for (let i = 0; i < box2.length; i++) {
+                    if (!box2[i].checked) {
+                        box.checked = false;
+                        return
+                    }
+                    box.checked = true;
+                }
+            }
+        })
+
+        //  删除
+        box1.onclick = function (e) {
+            if (e.target.className === 'deleteBtn') {
+                let id = e.target.parentNode.parentNode.getAttribute('id');
+                data = data.filter((item, index) => {
+                    return item.id != id;
+                });
+                fun(box1, data)
+            }
+        }
+    </script>
+</body>
+
+</html>

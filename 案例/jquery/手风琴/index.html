@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        ul {
+            width: 640px;
+            height: 280px;
+            display: flex;
+            border: 2px solid blue;
+            margin: 50px auto;
+            /* 640-520 = 120/ 2 = 40 */
+        }
+
+        ul>li {
+            width: 160px;
+            height: 100%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li><img src="01.jpg" alt=""></li>
+        <li><img src="02.jpg" alt=""></li>
+        <li><img src="04.jpg" alt=""></li>
+        <li><img src="03.jpg" alt=""></li>
+    </ul>
+
+    <script src='../code/jquery/jquery.min.js'></script>
+    <script>
+        /*
+           当鼠标已过 当前li的时候，把当前的这个li宽度设置为520px
+           当前这个元素的其他兄弟元素 宽度为设置为40
+           盒子总宽度为：640
+           当前元素的宽度为：520
+           剩下120px可以是使用，这120需要放三个li，每个li只能为40
+        */
+        $('li').hover(function () {
+            // 当给这个元素添加 动画之前，应该先停止这个元素之前的动画
+            // 160*3+520 > 640
+            // 当宽度变大的元素在变化的是，变小的那些元素还没有变化
+            // 先让变小的元素先执行，在执行变大的元素
+            // $(this).siblings().finish().animate({ width: 40 }).finish().animate({ width: 520 })
+            // console.log($(this).siblings().finish().animate({ width: 40 })); 返回当前元素的兄弟元素
+            // console.log($(this).siblings().finish().animate({ width: 40 }).end());
+            // 返回当前的元素
+            $(this)
+                .siblings()
+                .finish()
+                .animate({ width: 40 })
+                .end() //返回上一级jquery集合
+                .finish()
+                .animate({ width: 520 });
+        }, function () {
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            position: relative;
+        }
+        .btn{
+            color: blue;
+            cursor: pointer;
+            font-size: 15px;
+            display: inline;
+        }
+        .user{
+            color: cadetblue;
+           
+        }
+        .box{
+           
+            width: 450px;
+            height: 250px;
+            position: absolute;
+            border: 1px solid #ccc;
+            left: 50%;
+            top: 180px;
+            margin-left: -250px;
+            display: none;
+           
+        }
+
+        h4{
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delbtn{
+            background-color: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        .mbox {
+           margin: 30px;
+        }
+        .mbox p{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p label{
+            margin-right: 15px;
+        }
+        p span{
+            color: red;
+            font-size: 12px;
+            display: none;
+            }
+        .longin{
+            margin-left: 150px;
+        }
+        .user{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <p class="title">你好<span class="user"></span>,欢迎来到国家安全信息系统,请先<span class="btn">登录</span></p>
+    <div class="box">
+        <h4 class="zhuce"><span>登录注册</span> <button class="delbtn">X</button></h4>
+        <div class="mbox">
+            <p><label for="username">用户名:</label><input type="text" id="username"> <span class="usertips">请输入正确用户名</span></p>
+            <p ><label for="password">密码:</label><input type="password" id="password"> <span class="mimatips">请输入正确用户名</span></p>
+            <p><input type="checkbox" id="xieyi">同意 <a href="#">保密协议</a></p>
+           <button class="longin">登录</button>
+        </div>  
+    </div>
+</body>
+<script>
+    //获取元素
+    let box = document.querySelector(".box")
+    let btn = document.querySelector(".btn")
+    let delbtn = document.querySelector(".delbtn")
+    let zhuce = document.querySelector(".zhuce")
+    let username = document.querySelector("#username")
+    let password = document.querySelector("#password")
+    let usertips = document.querySelector(".usertips")
+    let mimatips = document.querySelector(".mimatips")
+    let longin = document.querySelector(".longin")
+    let xieyi = document.querySelector("#xieyi")
+    let user = document.querySelector(".user")
+//点击出现
+btn.onclick = function(){
+    if(btn.innerHTML=="登录"){
+ box.style.display = "block"
+    btn.innerHTML = "退出";
+    }else if(btn.innerHTML=="退出"){
+        box.style.display = "none"
+         btn.innerHTML = "登录";
+    }
+   
+}
+//点击删除消失
+delbtn.onclick = function(){
+    box.style.display = "none"
+    btn.innerHTML = "登录";
+}
+
+//判断正正则
+
+    var flag1 = false
+    //用户名验证
+    username.onblur = function () {
+        
+       var req = /^[a-zA-z]([a-zA-Z]|\d){5,11}$/
+        res1 = req.test(username.value)
+        if (!res1) {
+            usertips.style.display = "block"
+        }else{
+            usertips.style.display = "none"
+             flag1 = true
+    
+        }
+    }
+    //密码
+    var flag2;
+    password.onblur = function () {
+        flag2 = false
+        var req = /^\S{6,18}$/
+        res2 = req.test(password.value)
+        if (!res2) {
+            mimatips.style.display = "block"
+        }else{
+            mimatips.style.display = "none"
+            flag2 = true
+        }
+    }
+
+    //登录
+    longin.onclick = function(){
+        // e.preventDefault();
+        if(xieyi.checked == true &&  flag1 == true && flag2 == true){
+            user.innerHTML = username.value
+          
+        }else{
+            alert("请完善信息")
+        }
+    } 
+
+
+
+//拖拽
+let Drag = function (ele,ele2) {
+            this.ele = ele;
+            this.ele2 = ele2
+            this.init();
+        };
+
+        Drag.prototype.init = function () {
+            // 鼠标按下时候实现拖拽效果
+            this.ele.onmousedown = () => {
+                this.down();
+            };
+
+
+            // 鼠标抬起 停止拖拽
+            document.onmouseup = this.up;
+        }
+
+        Drag.prototype.down = function () {
+            let e = window.event;
+            let x = e.offsetX;
+            let y = e.offsetY;
+
+
+            document.onmousemove = () => {
+                this.move(x, y);
+            }
+        }
+        Drag.prototype.move = function (x, y) {
+            let event = window.event;
+            let left = event.clientX - x ;
+            let top = event.clientY - y ;
+            // 判断边界值
+            if (left <= 0) {
+                left = 0;
+            }
+            if (top <= 0) {
+                top = 0;
+            }
+            if(left >=  event.clientX - this.ele2.offsetX){
+                left = event.clientX - this.ele2.offsetX
+            }
+            if(top >=  event.clientY - this.ele.offsetY){
+                top = event.clientY - this.ele.offsetY;
+            }
+            this.ele2.style.left = left + 'px';
+            this.ele2.style.top = top + 'px';
+        }
+        Drag.prototype.up = function () {
+            document.onmousemove = null;
+        }
+
+        new Drag(zhuce,box);
+
+</script>
+</html>

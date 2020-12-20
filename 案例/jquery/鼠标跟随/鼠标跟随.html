@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        ul {
+            width: 930px;
+            height: 200px;
+            display: flex;
+            justify-content: space-around;
+            margin: 100px auto;
+            align-items: center;
+            border: 2px solid orange;
+        }
+
+        ul li {
+            list-style: none;
+
+        }
+
+        #div img img {
+            width: 100%;
+        }
+
+        div {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><img src="./img/1.png" alt=""></li>
+        <li><img src="./img/2.png" alt=""></li>
+        <li><img src="./img/3.png" alt=""></li>
+    </ul>
+    <div>
+        <img src="./img/1.png" alt="">
+    </div>
+
+    <script src="./jquery.min.js"></script>
+
+    <script>
+        $("li>img").mousemove(function (e) {
+            $("div").css({
+                    display: "block" // 鼠标移入的时候显示div元素
+                })
+                .offset({ // 让div跟随鼠标的位置
+                    left: e.clientX + 10,
+                    top: e.clientY + 10
+                })
+            // 拿当前一定的和这张图片 换给div中的图片
+            $("div>img").attr("src", $(this).attr("src")) // attr 属性 属性值
+            console.log($(this).attr('src'));
+        })
+        $("li>img").mouseout(function () {
+            $("div").css({
+                display: "none" 
+            })
+        })
+    </script>
+</body>
+
+</html>
